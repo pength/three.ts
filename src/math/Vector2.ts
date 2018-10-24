@@ -1,6 +1,6 @@
 /**
- * three.js:Vector2.js
- * 
+ * Converted from three.js/Vector2.js, If you want to see the js source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 export class Vector2 {
 	public x: number;
@@ -17,7 +17,7 @@ export class Vector2 {
 		this.y = y || 0;
 	}
 
-	public getWidth(): number {
+	getWidth(): number {
 
 		return this.x;
 	}

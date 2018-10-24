@@ -1,7 +1,8 @@
 import { Vector2 } from "./Vector2";
 
 /**
- * three.js:Box2.js
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 export class Box2 {
 	public _min: Vector2 = undefined;
