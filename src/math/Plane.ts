@@ -2,10 +2,12 @@ import { Matrix3 } from './Matrix3.js';
 import { Vector3 } from './Vector3.js';
 
 /**
- * @author bhouston / http://clara.io
+ * Converted from three.js/Plane.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Plane( normal, constant ) {
+export class Plane {
+init( normal, constant ) {
 
 	// normal is assumed to be normalized
 
@@ -239,7 +241,4 @@ Object.assign( Plane.prototype, {
 
 	}
 
-} );
-
-
-export { Plane };
+}

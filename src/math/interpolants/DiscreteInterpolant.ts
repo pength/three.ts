@@ -1,30 +1,20 @@
-import { Interpolant } from '../Interpolant.js';
+import { Interpolant } from '../Interpolant';
 
 /**
- *
- * Interpolant that evaluates to the sample value at the position preceeding
- * the parameter.
- *
- * @author tschw
+ * Converted from three.js/CubicInterpolant.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
+export class DiscreteInterpolant {
 
-function DiscreteInterpolant( parameterPositions, sampleValues, sampleSize, resultBuffer ) {
+init( parameterPositions, sampleValues, sampleSize, resultBuffer ) {
 
 	Interpolant.call( this, parameterPositions, sampleValues, sampleSize, resultBuffer );
 
 }
 
-DiscreteInterpolant.prototype = Object.assign( Object.create( Interpolant.prototype ), {
+	interpolate_( i1 ) {
 
-	constructor: DiscreteInterpolant,
-
-	interpolate_: function ( i1 /*, t0, t, t1 */ ) {
-
-		return this.copySampleValue_( i1 - 1 );
+		return Interpolant.copySampleValue_( i1 - 1 );
 
 	}
-
-} );
-
-
-export { DiscreteInterpolant };
+}

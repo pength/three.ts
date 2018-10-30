@@ -1,46 +1,48 @@
 /**
- * Abstract base class of interpolants over parametric samples.
- *
- * The parameter domain is one dimensional, typically the time or a path
- * along a curve defined by the data.
- *
- * The sample values can have any dimensionality and derived classes may
- * apply special interpretations to the data.
- *
- * This class provides the interval seek in a Template Method, deferring
- * the actual interpolation to derived classes.
- *
- * Time complexity is O(1) for linear access crossing at most two points
- * and O(log N) for random access, where N is the number of positions.
- *
- * References:
- *
- * 		http://www.oodesign.com/template-method-pattern.html
- *
- * @author tschw
+ * Converted from three.js/Interpolant.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Interpolant( parameterPositions, sampleValues, sampleSize, resultBuffer ) {
+export class Interpolant {
+	private parameterPositions;
+	private _cachedIndex = 0;
 
-	this.parameterPositions = parameterPositions;
-	this._cachedIndex = 0;
+	private resultBuffer = undefined;
+	private sampleValues;
+	private valueSize;
 
-	this.resultBuffer = resultBuffer !== undefined ?
-		resultBuffer : new sampleValues.constructor( sampleSize );
-	this.sampleValues = sampleValues;
-	this.valueSize = sampleSize;
+	//( 0, t, t0 ), returns this.resultBuffer
+	beforeStart_ = Interpolant.prototype.copySampleValue_;
 
-}
+	//( N-1, tN-1, t ), returns this.resultBuffer
+	afterEnd_ = Interpolant.prototype.copySampleValue_;
 
-Object.assign( Interpolant.prototype, {
+	settings = null; // optional, subclass-specific settings structure
+	// Note: The indirection allows central control of many interpolants.
 
-	evaluate: function ( t ) {
+	// --- Protected interface
+
+	DefaultSettings_ = {};
+
+	init(parameterPositions, sampleValues, sampleSize, resultBuffer) {
+
+		this.parameterPositions = parameterPositions;
+		this._cachedIndex = 0;
+
+		this.resultBuffer = resultBuffer !== undefined ?
+			resultBuffer : new sampleValues.constructor(sampleSize);
+		this.sampleValues = sampleValues;
+		this.valueSize = sampleSize;
+
+	}
+
+	evaluate(t) {
 
 		var pp = this.parameterPositions,
 			i1 = this._cachedIndex,
 
-			t1 = pp[ i1 ],
-			t0 = pp[ i1 - 1 ];
+			t1 = pp[i1],
+			t0 = pp[i1 - 1];
 
 		validate_interval: {
 
@@ -54,28 +56,28 @@ Object.assign( Interpolant.prototype, {
 					//- slower code:
 					//-
 					//- 				if ( t >= t1 || t1 === undefined ) {
-					forward_scan: if ( ! ( t < t1 ) ) {
+					forward_scan: if (!(t < t1)) {
 
-						for ( var giveUpAt = i1 + 2; ; ) {
+						for (var giveUpAt = i1 + 2; ;) {
 
-							if ( t1 === undefined ) {
+							if (t1 === undefined) {
 
-								if ( t < t0 ) break forward_scan;
+								if (t < t0) break forward_scan;
 
 								// after end
 
 								i1 = pp.length;
 								this._cachedIndex = i1;
-								return this.afterEnd_( i1 - 1, t, t0 );
+								return this.afterEnd_(i1 - 1, t, t0);
 
 							}
 
-							if ( i1 === giveUpAt ) break; // this loop
+							if (i1 === giveUpAt) break; // this loop
 
 							t0 = t1;
-							t1 = pp[ ++ i1 ];
+							t1 = pp[++i1];
 
-							if ( t < t1 ) {
+							if (t < t1) {
 
 								// we have arrived at the sought interval
 								break seek;
@@ -92,13 +94,13 @@ Object.assign( Interpolant.prototype, {
 
 					//- slower code:
 					//-					if ( t < t0 || t0 === undefined ) {
-					if ( ! ( t >= t0 ) ) {
+					if (!(t >= t0)) {
 
 						// looping?
 
-						var t1global = pp[ 1 ];
+						var t1global = pp[1];
 
-						if ( t < t1global ) {
+						if (t < t1global) {
 
 							i1 = 2; // + 1, using the scan for the details
 							t0 = t1global;
@@ -107,23 +109,23 @@ Object.assign( Interpolant.prototype, {
 
 						// linear reverse scan
 
-						for ( var giveUpAt = i1 - 2; ; ) {
+						for (var giveUpAt = i1 - 2; ;) {
 
-							if ( t0 === undefined ) {
+							if (t0 === undefined) {
 
 								// before start
 
 								this._cachedIndex = 0;
-								return this.beforeStart_( 0, t, t1 );
+								return this.beforeStart_(0, t, t1);
 
 							}
 
-							if ( i1 === giveUpAt ) break; // this loop
+							if (i1 === giveUpAt) break; // this loop
 
 							t1 = t0;
-							t0 = pp[ -- i1 - 1 ];
+							t0 = pp[--i1 - 1];
 
-							if ( t >= t0 ) {
+							if (t >= t0) {
 
 								// we have arrived at the sought interval
 								break seek;
@@ -147,11 +149,11 @@ Object.assign( Interpolant.prototype, {
 
 				// binary search
 
-				while ( i1 < right ) {
+				while (i1 < right) {
 
-					var mid = ( i1 + right ) >>> 1;
+					var mid = (i1 + right) >>> 1;
 
-					if ( t < pp[ mid ] ) {
+					if (t < pp[mid]) {
 
 						right = mid;
 
@@ -163,23 +165,23 @@ Object.assign( Interpolant.prototype, {
 
 				}
 
-				t1 = pp[ i1 ];
-				t0 = pp[ i1 - 1 ];
+				t1 = pp[i1];
+				t0 = pp[i1 - 1];
 
 				// check boundary cases, again
 
-				if ( t0 === undefined ) {
+				if (t0 === undefined) {
 
 					this._cachedIndex = 0;
-					return this.beforeStart_( 0, t, t1 );
+					return this.beforeStart_(0, t, t1);
 
 				}
 
-				if ( t1 === undefined ) {
+				if (t1 === undefined) {
 
 					i1 = pp.length;
 					this._cachedIndex = i1;
-					return this.afterEnd_( i1 - 1, t0, t );
+					return this.afterEnd_(i1 - 1, t0, t);
 
 				}
 
@@ -187,28 +189,22 @@ Object.assign( Interpolant.prototype, {
 
 			this._cachedIndex = i1;
 
-			this.intervalChanged_( i1, t0, t1 );
+			this.intervalChanged_(i1, t0, t1);
 
 		} // validate_interval
 
-		return this.interpolate_( i1, t0, t, t1 );
+		return this.interpolate_(i1, t0, t, t1);
 
-	},
+	}
 
-	settings: null, // optional, subclass-specific settings structure
-	// Note: The indirection allows central control of many interpolants.
 
-	// --- Protected interface
-
-	DefaultSettings_: {},
-
-	getSettings_: function () {
+	getSettings_() {
 
 		return this.settings || this.DefaultSettings_;
 
-	},
+	}
 
-	copySampleValue_: function ( index ) {
+	copySampleValue_(index) {
 
 		// copies a sample value to the result buffer
 
@@ -217,43 +213,16 @@ Object.assign( Interpolant.prototype, {
 			stride = this.valueSize,
 			offset = index * stride;
 
-		for ( var i = 0; i !== stride; ++ i ) {
+		for (var i = 0; i !== stride; ++i) {
 
-			result[ i ] = values[ offset + i ];
+			result[i] = values[offset + i];
 
 		}
 
 		return result;
 
-	},
-
-	// Template methods for derived classes:
-
-	interpolate_: function ( /* i1, t0, t, t1 */ ) {
-
-		throw new Error( 'call to abstract method' );
-		// implementations shall return this.resultBuffer
-
-	},
-
-	intervalChanged_: function ( /* i1, t0, t1 */ ) {
-
-		// empty
-
 	}
 
-} );
-
-//!\ DECLARE ALIAS AFTER assign prototype !
-Object.assign( Interpolant.prototype, {
-
-	//( 0, t, t0 ), returns this.resultBuffer
-	beforeStart_: Interpolant.prototype.copySampleValue_,
-
-	//( N-1, tN-1, t ), returns this.resultBuffer
-	afterEnd_: Interpolant.prototype.copySampleValue_,
-
-} );
-
-
-export { Interpolant };
+	intervalChanged_( /* i1, t0, t1 */) {
+	}
+}

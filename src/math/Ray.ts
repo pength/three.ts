@@ -1,10 +1,12 @@
 import { Vector3 } from './Vector3.js';
 
 /**
- * @author bhouston / http://clara.io
+ * Converted from three.js/Ray.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Ray( origin, direction ) {
+export class Ray {
+init( origin, direction ) {
 
 	this.origin = ( origin !== undefined ) ? origin : new Vector3();
 	this.direction = ( direction !== undefined ) ? direction : new Vector3();
@@ -540,7 +542,4 @@ Object.assign( Ray.prototype, {
 
 	}
 
-} );
-
-
-export { Ray };
+}

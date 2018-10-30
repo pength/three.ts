@@ -1,16 +1,12 @@
 import { _Math } from './Math.js';
 
 /**
- * @author bhouston / http://clara.io
- * @author WestLangley / http://github.com/WestLangley
- *
- * Ref: https://en.wikipedia.org/wiki/Spherical_coordinate_system
- *
- * The polar angle (phi) is measured from the positive y-axis. The positive y-axis is up.
- * The azimuthal angle (theta) is measured from the positive z-axiz.
+ * Converted from three.js/Spherical.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Spherical( radius, phi, theta ) {
+export class Spherical {
+init( radius, phi, theta ) {
 
 	this.radius = ( radius !== undefined ) ? radius : 1.0;
 	this.phi = ( phi !== undefined ) ? phi : 0; // polar angle
@@ -84,7 +80,4 @@ Object.assign( Spherical.prototype, {
 
 	}
 
-} );
-
-
-export { Spherical };
+}

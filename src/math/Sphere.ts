@@ -1,12 +1,12 @@
 import { Box3 } from './Box3.js';
 import { Vector3 } from './Vector3.js';
-
 /**
- * @author bhouston / http://clara.io
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Sphere.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Sphere( center, radius ) {
+export class Sphere {
+init( center, radius ) {
 
 	this.center = ( center !== undefined ) ? center : new Vector3();
 	this.radius = ( radius !== undefined ) ? radius : 0;
@@ -174,7 +174,4 @@ Object.assign( Sphere.prototype, {
 
 	}
 
-} );
-
-
-export { Sphere };
+}

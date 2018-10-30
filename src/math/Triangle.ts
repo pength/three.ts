@@ -1,11 +1,12 @@
 import { Vector3 } from './Vector3.js';
 
 /**
- * @author bhouston / http://clara.io
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Triangle.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Triangle( a, b, c ) {
+export class Triangle {
+init( a, b, c ) {
 
 	this.a = ( a !== undefined ) ? a : new Vector3();
 	this.b = ( b !== undefined ) ? b : new Vector3();
@@ -343,7 +344,4 @@ Object.assign( Triangle.prototype, {
 
 	}
 
-} );
-
-
-export { Triangle };
+}
