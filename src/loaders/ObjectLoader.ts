@@ -18,47 +18,48 @@ import {
 	LinearFilter,
 	LinearMipMapNearestFilter,
 	LinearMipMapLinearFilter
-} from '../constants.js';
-import { Color } from '../math/Color.js';
-import { Object3D } from '../core/Object3D.js';
-import { Group } from '../objects/Group.js';
-import { Sprite } from '../objects/Sprite.js';
-import { Points } from '../objects/Points.js';
-import { Line } from '../objects/Line.js';
-import { LineLoop } from '../objects/LineLoop.js';
-import { LineSegments } from '../objects/LineSegments.js';
-import { LOD } from '../objects/LOD.js';
-import { Mesh } from '../objects/Mesh.js';
-import { SkinnedMesh } from '../objects/SkinnedMesh.js';
-import { Shape } from '../extras/core/Shape.js';
-import { Fog } from '../scenes/Fog.js';
-import { FogExp2 } from '../scenes/FogExp2.js';
-import { HemisphereLight } from '../lights/HemisphereLight.js';
-import { SpotLight } from '../lights/SpotLight.js';
-import { PointLight } from '../lights/PointLight.js';
-import { DirectionalLight } from '../lights/DirectionalLight.js';
-import { AmbientLight } from '../lights/AmbientLight.js';
-import { RectAreaLight } from '../lights/RectAreaLight.js';
-import { OrthographicCamera } from '../cameras/OrthographicCamera.js';
-import { PerspectiveCamera } from '../cameras/PerspectiveCamera.js';
-import { Scene } from '../scenes/Scene.js';
-import { CubeTexture } from '../textures/CubeTexture.js';
-import { Texture } from '../textures/Texture.js';
-import { ImageLoader } from './ImageLoader.js';
-import { LoadingManager, DefaultLoadingManager } from './LoadingManager.js';
-import { AnimationClip } from '../animation/AnimationClip.js';
-import { MaterialLoader } from './MaterialLoader.js';
-import { BufferGeometryLoader } from './BufferGeometryLoader.js';
-import { JSONLoader } from './JSONLoader.js';
-import { FileLoader } from './FileLoader.js';
-import * as Geometries from '../geometries/Geometries.js';
-import * as Curves from '../extras/curves/Curves.js';
+} from '../constants';
+import { Color } from '../math/Color';
+import { Object3D } from '../core/Object3D';
+import { Group } from '../objects/Group';
+import { Sprite } from '../objects/Sprite';
+import { Points } from '../objects/Points';
+import { Line } from '../objects/Line';
+import { LineLoop } from '../objects/LineLoop';
+import { LineSegments } from '../objects/LineSegments';
+import { LOD } from '../objects/LOD';
+import { Mesh } from '../objects/Mesh';
+import { SkinnedMesh } from '../objects/SkinnedMesh';
+import { Shape } from '../extras/core/Shape';
+import { Fog } from '../scenes/Fog';
+import { FogExp2 } from '../scenes/FogExp2';
+import { HemisphereLight } from '../lights/HemisphereLight';
+import { SpotLight } from '../lights/SpotLight';
+import { PointLight } from '../lights/PointLight';
+import { DirectionalLight } from '../lights/DirectionalLight';
+import { AmbientLight } from '../lights/AmbientLight';
+import { RectAreaLight } from '../lights/RectAreaLight';
+import { OrthographicCamera } from '../cameras/OrthographicCamera';
+import { PerspectiveCamera } from '../cameras/PerspectiveCamera';
+import { Scene } from '../scenes/Scene';
+import { CubeTexture } from '../textures/CubeTexture';
+import { Texture } from '../textures/Texture';
+import { ImageLoader } from './ImageLoader';
+import { LoadingManager, DefaultLoadingManager } from './LoadingManager';
+import { AnimationClip } from '../animation/AnimationClip';
+import { MaterialLoader } from './MaterialLoader';
+import { BufferGeometryLoader } from './BufferGeometryLoader';
+import { JSONLoader } from './JSONLoader';
+import { FileLoader } from './FileLoader';
+import * as Geometries from '../geometries/Geometries';
+import * as Curves from '../extras/curves/Curves';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function ObjectLoader( manager ) {
+export function ObjectLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 	this.texturePath = '';
@@ -69,7 +70,7 @@ Object.assign( ObjectLoader.prototype, {
 
 	crossOrigin: 'anonymous',
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		if ( this.texturePath === '' ) {
 
@@ -80,7 +81,7 @@ Object.assign( ObjectLoader.prototype, {
 		var scope = this;
 
 		var loader = new FileLoader( scope.manager );
-		loader.load( url, function ( text ) {
+		loader.load( url, export function ( text ) {
 
 			var json = null;
 
@@ -109,34 +110,34 @@ Object.assign( ObjectLoader.prototype, {
 
 			scope.parse( json, onLoad );
 
-		}, onProgress, onError );
+		} onProgress, onError );
 
-	},
+	}
 
-	setTexturePath: function ( value ) {
+	setTexturePath( value ) {
 
 		this.texturePath = value;
 		return this;
 
-	},
+	}
 
-	setCrossOrigin: function ( value ) {
+	setCrossOrigin( value ) {
 
 		this.crossOrigin = value;
 		return this;
 
-	},
+	}
 
-	parse: function ( json, onLoad ) {
+	parse( json, onLoad ) {
 
 		var shapes = this.parseShape( json.shapes );
 		var geometries = this.parseGeometries( json.geometries, shapes );
 
-		var images = this.parseImages( json.images, function () {
+		var images = this.parseImages( json.images, export function () {
 
 			if ( onLoad !== undefined ) onLoad( object );
 
-		} );
+		}
 
 		var textures = this.parseTextures( json.textures, images );
 		var materials = this.parseMaterials( json.materials, textures );
@@ -157,9 +158,9 @@ Object.assign( ObjectLoader.prototype, {
 
 		return object;
 
-	},
+	}
 
-	parseShape: function ( json ) {
+	parseShape( json ) {
 
 		var shapes = {};
 
@@ -177,9 +178,9 @@ Object.assign( ObjectLoader.prototype, {
 
 		return shapes;
 
-	},
+	}
 
-	parseGeometries: function ( json, shapes ) {
+	parseGeometries( json, shapes ) {
 
 		var geometries = {};
 
@@ -443,9 +444,9 @@ Object.assign( ObjectLoader.prototype, {
 
 		return geometries;
 
-	},
+	}
 
-	parseMaterials: function ( json, textures ) {
+	parseMaterials( json, textures ) {
 
 		var materials = {};
 
@@ -484,9 +485,9 @@ Object.assign( ObjectLoader.prototype, {
 
 		return materials;
 
-	},
+	}
 
-	parseAnimations: function ( json ) {
+	parseAnimations( json ) {
 
 		var animations = [];
 
@@ -504,27 +505,27 @@ Object.assign( ObjectLoader.prototype, {
 
 		return animations;
 
-	},
+	}
 
-	parseImages: function ( json, onLoad ) {
+	parseImages( json, onLoad ) {
 
 		var scope = this;
 		var images = {};
 
-		function loadImage( url ) {
+		export function loadImage( url ) {
 
 			scope.manager.itemStart( url );
 
-			return loader.load( url, function () {
+			return loader.load( url, export function () {
 
 				scope.manager.itemEnd( url );
 
-			}, undefined, function () {
+			} undefined, export function () {
 
 				scope.manager.itemEnd( url );
 				scope.manager.itemError( url );
 
-			} );
+			}
 
 		}
 
@@ -572,11 +573,11 @@ Object.assign( ObjectLoader.prototype, {
 
 		return images;
 
-	},
+	}
 
-	parseTextures: function ( json, images ) {
+	parseTextures( json, images ) {
 
-		function parseConstant( value, type ) {
+		export function parseConstant( value, type ) {
 
 			if ( typeof value === 'number' ) return value;
 
@@ -654,13 +655,13 @@ Object.assign( ObjectLoader.prototype, {
 
 		return textures;
 
-	},
+	}
 
-	parseObject: function ( data, geometries, materials ) {
+	parseObject( data, geometries, materials ) {
 
 		var object;
 
-		function getGeometry( name ) {
+		export function getGeometry( name ) {
 
 			if ( geometries[ name ] === undefined ) {
 
@@ -672,7 +673,7 @@ Object.assign( ObjectLoader.prototype, {
 
 		}
 
-		function getMaterial( name ) {
+		export function getMaterial( name ) {
 
 			if ( name === undefined ) return undefined;
 
@@ -748,7 +749,7 @@ Object.assign( ObjectLoader.prototype, {
 				if ( data.zoom !== undefined ) object.zoom = data.zoom;
 				if ( data.filmGauge !== undefined ) object.filmGauge = data.filmGauge;
 				if ( data.filmOffset !== undefined ) object.filmOffset = data.filmOffset;
-				if ( data.view !== undefined ) object.view = Object.assign( {}, data.view );
+				if ( data.view !== undefined ) object.view = Object.assign( {} data.view );
 
 				break;
 
@@ -757,7 +758,7 @@ Object.assign( ObjectLoader.prototype, {
 				object = new OrthographicCamera( data.left, data.right, data.top, data.bottom, data.near, data.far );
 
 				if ( data.zoom !== undefined ) object.zoom = data.zoom;
-				if ( data.view !== undefined ) object.view = Object.assign( {}, data.view );
+				if ( data.view !== undefined ) object.view = Object.assign( {} data.view );
 
 				break;
 
@@ -940,7 +941,7 @@ Object.assign( ObjectLoader.prototype, {
 
 	}
 
-} );
+}
 
 var TEXTURE_MAPPING = {
 	UVMapping: UVMapping,

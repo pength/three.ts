@@ -1,12 +1,12 @@
-import { Object3D } from '../core/Object3D.js';
-import { Color } from '../math/Color.js';
+import { Object3D } from '../core/Object3D';
+import { Color } from '../math/Color';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Light( color, intensity ) {
+export function Light( color, intensity ) {
 
 	Object3D.call( this );
 
@@ -25,7 +25,7 @@ Light.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	isLight: true,
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		Object3D.prototype.copy.call( this, source );
 
@@ -34,9 +34,9 @@ Light.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	toJSON: function ( meta ) {
+	toJSON( meta ) {
 
 		var data = Object3D.prototype.toJSON.call( this, meta );
 
@@ -56,7 +56,7 @@ Light.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	}
 
-} );
+}
 
 
 export { Light };

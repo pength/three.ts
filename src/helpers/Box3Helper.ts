@@ -1,15 +1,16 @@
 /**
- * @author WestLangley / http://github.com/WestLangley
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { LineSegments } from '../objects/LineSegments.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { BufferAttribute } from '../core/BufferAttribute.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Object3D } from '../core/Object3D.js';
+import { LineSegments } from '../objects/LineSegments';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { BufferAttribute } from '../core/BufferAttribute';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Object3D } from '../core/Object3D';
 
-function Box3Helper( box, hex ) {
+export function Box3Helper( box, hex ) {
 
 	this.type = 'Box3Helper';
 
@@ -36,7 +37,7 @@ function Box3Helper( box, hex ) {
 Box3Helper.prototype = Object.create( LineSegments.prototype );
 Box3Helper.prototype.constructor = Box3Helper;
 
-Box3Helper.prototype.updateMatrixWorld = function ( force ) {
+Box3Helper.prototype.updateMatrixWorld = export function ( force ) {
 
 	var box = this.box;
 

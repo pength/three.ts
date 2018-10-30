@@ -1,7 +1,8 @@
 'use strict';
 
 /**
- * Screen-space ambient occlusion pass.
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
  * Has the following parameters
  *  - radius
@@ -19,7 +20,7 @@
  * @author tentone
  * @class SSAOPass
  */
-THREE.SSAOPass = function ( scene, camera, width, height ) {
+THREE.SSAOPass = export function ( scene, camera, width, height ) {
 
 	if ( THREE.SSAOShader === undefined ) {
 
@@ -44,7 +45,7 @@ THREE.SSAOPass = function ( scene, camera, width, height ) {
 	this.depthMaterial.blending = THREE.NoBlending;
 
 	//Depth render target
-	this.depthRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter } );
+	this.depthRenderTarget = new THREE.WebGLRenderTarget( this.width, this.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter }
 	//this.depthRenderTarget.texture.name = 'SSAOShader.rt';
 
 	//Shader uniforms
@@ -63,58 +64,58 @@ THREE.SSAOPass = function ( scene, camera, width, height ) {
 	Object.defineProperties( this, {
 
 		radius: {
-			get: function () {
+			get() {
 
 				return this.uniforms[ 'radius' ].value;
 
-			},
-			set: function ( value ) {
+			}
+			set( value ) {
 
 				this.uniforms[ 'radius' ].value = value;
 
 			}
-		},
+		}
 
 		onlyAO: {
-			get: function () {
+			get() {
 
 				return this.uniforms[ 'onlyAO' ].value;
 
-			},
-			set: function ( value ) {
+			}
+			set( value ) {
 
 				this.uniforms[ 'onlyAO' ].value = value;
 
 			}
-		},
+		}
 
 		aoClamp: {
-			get: function () {
+			get() {
 
 				return this.uniforms[ 'aoClamp' ].value;
 
-			},
-			set: function ( value ) {
+			}
+			set( value ) {
 
 				this.uniforms[ 'aoClamp' ].value = value;
 
 			}
-		},
+		}
 
 		lumInfluence: {
-			get: function () {
+			get() {
 
 				return this.uniforms[ 'lumInfluence' ].value;
 
-			},
-			set: function ( value ) {
+			}
+			set( value ) {
 
 				this.uniforms[ 'lumInfluence' ].value = value;
 
 			}
-		},
+		}
 
-	} );
+	}
 
 };
 
@@ -130,7 +131,7 @@ THREE.SSAOPass.prototype = Object.create( THREE.ShaderPass.prototype );
  * @param {Number} delta Delta time in milliseconds.
  * @param {Boolean} maskActive Not used in this pass.
  */
-THREE.SSAOPass.prototype.render = function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+THREE.SSAOPass.prototype.render = export function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 	//Render depth into depthRenderTarget
 	this.scene2.overrideMaterial = this.depthMaterial;
@@ -151,7 +152,7 @@ THREE.SSAOPass.prototype.render = function ( renderer, writeBuffer, readBuffer, 
  * @method setScene
  * @param {Scene} scene
  */
-THREE.SSAOPass.prototype.setScene = function ( scene ) {
+THREE.SSAOPass.prototype.setScene = export function ( scene ) {
 
 	this.scene2 = scene;
 
@@ -163,7 +164,7 @@ THREE.SSAOPass.prototype.setScene = function ( scene ) {
  * @method setCamera
  * @param {Camera} camera
  */
-THREE.SSAOPass.prototype.setCamera = function ( camera ) {
+THREE.SSAOPass.prototype.setCamera = export function ( camera ) {
 
 	this.camera2 = camera;
 
@@ -179,7 +180,7 @@ THREE.SSAOPass.prototype.setCamera = function ( camera ) {
  * @param {Number} width
  * @param {Number} height
  */
-THREE.SSAOPass.prototype.setSize = function ( width, height ) {
+THREE.SSAOPass.prototype.setSize = export function ( width, height ) {
 
 	this.width = width;
 	this.height = height;

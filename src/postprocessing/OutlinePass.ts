@@ -1,8 +1,8 @@
 /**
- * @author spidersharma / http://eduperiment.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-THREE.OutlinePass = function ( resolution, scene, camera, selectedObjects ) {
+THREE.OutlinePass = export function ( resolution, scene, camera, selectedObjects ) {
 
 	this.renderScene = scene;
 	this.renderCamera = camera;
@@ -25,7 +25,7 @@ THREE.OutlinePass = function ( resolution, scene, camera, selectedObjects ) {
 	var resx = Math.round( this.resolution.x / this.downSampleRatio );
 	var resy = Math.round( this.resolution.y / this.downSampleRatio );
 
-	this.maskBufferMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff } );
+	this.maskBufferMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff }
 	this.maskBufferMaterial.side = THREE.DoubleSide;
 	this.renderTargetMaskBuffer = new THREE.WebGLRenderTarget( this.resolution.x, this.resolution.y, pars );
 	this.renderTargetMaskBuffer.texture.name = "OutlinePass.mask";
@@ -93,7 +93,7 @@ THREE.OutlinePass = function ( resolution, scene, camera, selectedObjects ) {
 		depthTest: false,
 		depthWrite: false,
 		transparent: true
-	} );
+	}
 
 	this.enabled = true;
 	this.needsSwap = false;
@@ -112,7 +112,7 @@ THREE.OutlinePass = function ( resolution, scene, camera, selectedObjects ) {
 	this.tempPulseColor2 = new THREE.Color();
 	this.textureMatrix = new THREE.Matrix4();
 
-	function replaceDepthToViewZ( string, camera ) {
+	export function replaceDepthToViewZ( string, camera ) {
 
 		var type = camera.isPerspectiveCamera ? 'perspective' : 'orthographic';
 
@@ -126,7 +126,7 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 
 	constructor: THREE.OutlinePass,
 
-	dispose: function () {
+	dispose() {
 
 		this.renderTargetMaskBuffer.dispose();
 		this.renderTargetDepthBuffer.dispose();
@@ -136,9 +136,9 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 		this.renderTargetEdgeBuffer1.dispose();
 		this.renderTargetEdgeBuffer2.dispose();
 
-	},
+	}
 
-	setSize: function ( width, height ) {
+	setSize( width, height ) {
 
 		this.renderTargetMaskBuffer.setSize( width, height );
 
@@ -157,11 +157,11 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 
 		this.separableBlurMaterial2.uniforms[ "texSize" ].value = new THREE.Vector2( resx, resy );
 
-	},
+	}
 
-	changeVisibilityOfSelectedObjects: function ( bVisible ) {
+	changeVisibilityOfSelectedObjects( bVisible ) {
 
-		function gatherSelectedMeshesCallBack( object ) {
+		export function gatherSelectedMeshesCallBack( object ) {
 
 			if ( object.isMesh ) {
 
@@ -188,13 +188,13 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 
 		}
 
-	},
+	}
 
-	changeVisibilityOfNonSelectedObjects: function ( bVisible ) {
+	changeVisibilityOfNonSelectedObjects( bVisible ) {
 
 		var selectedMeshes = [];
 
-		function gatherSelectedMeshesCallBack( object ) {
+		export function gatherSelectedMeshesCallBack( object ) {
 
 			if ( object.isMesh ) selectedMeshes.push( object );
 
@@ -207,7 +207,7 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 
 		}
 
-		function VisibilityChangeCallBack( object ) {
+		export function VisibilityChangeCallBack( object ) {
 
 			if ( object.isMesh || object.isLine || object.isSprite ) {
 
@@ -242,9 +242,9 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 
 		this.renderScene.traverse( VisibilityChangeCallBack );
 
-	},
+	}
 
-	updateTextureMatrix: function () {
+	updateTextureMatrix() {
 
 		this.textureMatrix.set( 0.5, 0.0, 0.0, 0.5,
 			0.0, 0.5, 0.0, 0.5,
@@ -253,9 +253,9 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 		this.textureMatrix.multiply( this.renderCamera.projectionMatrix );
 		this.textureMatrix.multiply( this.renderCamera.matrixWorldInverse );
 
-	},
+	}
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		if ( this.selectedObjects.length > 0 ) {
 
@@ -368,17 +368,17 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 
 		}
 
-	},
+	}
 
-	getPrepareMaskMaterial: function () {
+	getPrepareMaskMaterial() {
 
 		return new THREE.ShaderMaterial( {
 
 			uniforms: {
-				"depthTexture": { value: null },
-				"cameraNearFar": { value: new THREE.Vector2( 0.5, 0.5 ) },
+				"depthTexture": { value: null }
+				"cameraNearFar": { value: new THREE.Vector2( 0.5, 0.5 ) }
 				"textureMatrix": { value: new THREE.Matrix4() }
-			},
+			}
 
 			vertexShader: [
 				'varying vec4 projTexCoord;',
@@ -412,20 +412,20 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 				'}'
 			].join( '\n' )
 
-		} );
+		}
 
-	},
+	}
 
-	getEdgeDetectionMaterial: function () {
+	getEdgeDetectionMaterial() {
 
 		return new THREE.ShaderMaterial( {
 
 			uniforms: {
-				"maskTexture": { value: null },
-				"texSize": { value: new THREE.Vector2( 0.5, 0.5 ) },
-				"visibleEdgeColor": { value: new THREE.Vector3( 1.0, 1.0, 1.0 ) },
-				"hiddenEdgeColor": { value: new THREE.Vector3( 1.0, 1.0, 1.0 ) },
-			},
+				"maskTexture": { value: null }
+				"texSize": { value: new THREE.Vector2( 0.5, 0.5 ) }
+				"visibleEdgeColor": { value: new THREE.Vector3( 1.0, 1.0, 1.0 ) }
+				"hiddenEdgeColor": { value: new THREE.Vector3( 1.0, 1.0, 1.0 ) }
+			}
 
 			vertexShader:
 				"varying vec2 vUv;\n\
@@ -457,24 +457,24 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 					vec3 edgeColor = 1.0 - visibilityFactor > 0.001 ? visibleEdgeColor : hiddenEdgeColor;\
 					gl_FragColor = vec4(edgeColor, 1.0) * vec4(d);\
 				}"
-		} );
+		}
 
-	},
+	}
 
-	getSeperableBlurMaterial: function ( maxRadius ) {
+	getSeperableBlurMaterial( maxRadius ) {
 
 		return new THREE.ShaderMaterial( {
 
 			defines: {
 				"MAX_RADIUS": maxRadius,
-			},
+			}
 
 			uniforms: {
-				"colorTexture": { value: null },
-				"texSize": { value: new THREE.Vector2( 0.5, 0.5 ) },
-				"direction": { value: new THREE.Vector2( 0.5, 0.5 ) },
+				"colorTexture": { value: null }
+				"texSize": { value: new THREE.Vector2( 0.5, 0.5 ) }
+				"direction": { value: new THREE.Vector2( 0.5, 0.5 ) }
 				"kernelRadius": { value: 1.0 }
-			},
+			}
 
 			vertexShader:
 				"varying vec2 vUv;\n\
@@ -510,23 +510,23 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 					}\
 					gl_FragColor = vec4(diffuseSum/weightSum, 1.0);\
 				}"
-		} );
+		}
 
-	},
+	}
 
-	getOverlayMaterial: function () {
+	getOverlayMaterial() {
 
 		return new THREE.ShaderMaterial( {
 
 			uniforms: {
-				"maskTexture": { value: null },
-				"edgeTexture1": { value: null },
-				"edgeTexture2": { value: null },
-				"patternTexture": { value: null },
-				"edgeStrength": { value: 1.0 },
-				"edgeGlow": { value: 1.0 },
+				"maskTexture": { value: null }
+				"edgeTexture1": { value: null }
+				"edgeTexture2": { value: null }
+				"patternTexture": { value: null }
+				"edgeStrength": { value: 1.0 }
+				"edgeGlow": { value: 1.0 }
 				"usePatternTexture": { value: 0.0 }
-			},
+			}
 
 			vertexShader:
 				"varying vec2 vUv;\n\
@@ -561,11 +561,11 @@ THREE.OutlinePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 			depthTest: false,
 			depthWrite: false,
 			transparent: true
-		} );
+		}
 
 	}
 
-} );
+}
 
 THREE.OutlinePass.BlurDirectionX = new THREE.Vector2( 1.0, 0.0 );
 THREE.OutlinePass.BlurDirectionY = new THREE.Vector2( 0.0, 1.0 );

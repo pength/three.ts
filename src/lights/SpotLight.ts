@@ -1,12 +1,12 @@
-import { Light } from './Light.js';
-import { SpotLightShadow } from './SpotLightShadow.js';
-import { Object3D } from '../core/Object3D.js';
+import { Light } from './Light';
+import { SpotLightShadow } from './SpotLightShadow';
+import { Object3D } from '../core/Object3D';
 
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function SpotLight( color, intensity, distance, angle, penumbra, decay ) {
+export function SpotLight( color, intensity, distance, angle, penumbra, decay ) {
 
 	Light.call( this, color, intensity );
 
@@ -18,21 +18,21 @@ function SpotLight( color, intensity, distance, angle, penumbra, decay ) {
 	this.target = new Object3D();
 
 	Object.defineProperty( this, 'power', {
-		get: function () {
+		get() {
 
 			// intensity = power per solid angle.
 			// ref: equation (17) from https://seblagarde.files.wordpress.com/2015/07/course_notes_moving_frostbite_to_pbr_v32.pdf
 			return this.intensity * Math.PI;
 
-		},
-		set: function ( power ) {
+		}
+		set( power ) {
 
 			// intensity = power per solid angle.
 			// ref: equation (17) from https://seblagarde.files.wordpress.com/2015/07/course_notes_moving_frostbite_to_pbr_v32.pdf
 			this.intensity = power / Math.PI;
 
 		}
-	} );
+	}
 
 	this.distance = ( distance !== undefined ) ? distance : 0;
 	this.angle = ( angle !== undefined ) ? angle : Math.PI / 3;
@@ -49,7 +49,7 @@ SpotLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	isSpotLight: true,
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		Light.prototype.copy.call( this, source );
 
@@ -66,7 +66,7 @@ SpotLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	}
 
-} );
+}
 
 
 export { SpotLight };

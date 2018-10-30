@@ -1,12 +1,12 @@
-import { AudioContext } from '../audio/AudioContext.js';
-import { FileLoader } from './FileLoader.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
+import { AudioContext } from '../audio/AudioContext';
+import { FileLoader } from './FileLoader';
+import { DefaultLoadingManager } from './LoadingManager';
 
 /**
- * @author Reece Aaron Lecrivain / http://reecenotes.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function AudioLoader( manager ) {
+export function AudioLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
@@ -14,28 +14,28 @@ function AudioLoader( manager ) {
 
 Object.assign( AudioLoader.prototype, {
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		var loader = new FileLoader( this.manager );
 		loader.setResponseType( 'arraybuffer' );
-		loader.load( url, function ( buffer ) {
+		loader.load( url, export function ( buffer ) {
 
 			// Create a copy of the buffer. The `decodeAudioData` method
 			// detaches the buffer when complete, preventing reuse.
 			var bufferCopy = buffer.slice( 0 );
 
 			var context = AudioContext.getContext();
-			context.decodeAudioData( bufferCopy, function ( audioBuffer ) {
+			context.decodeAudioData( bufferCopy, export function ( audioBuffer ) {
 
 				onLoad( audioBuffer );
 
-			} );
+			}
 
-		}, onProgress, onError );
+		} onProgress, onError );
 
 	}
 
-} );
+}
 
 
 export { AudioLoader };

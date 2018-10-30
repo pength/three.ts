@@ -1,15 +1,11 @@
-import { KeyframeTrack } from '../KeyframeTrack.js';
+import { KeyframeTrack } from '../KeyframeTrack';
 
 /**
- *
- * A Track of numeric keyframe values.
- *
- * @author Ben Houston / http://clara.io/
- * @author David Sarno / http://lighthaus.us/
- * @author tschw
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function NumberKeyframeTrack( name, times, values, interpolation ) {
+export function NumberKeyframeTrack( name, times, values, interpolation ) {
 
 	KeyframeTrack.call( this, name, times, values, interpolation );
 
@@ -25,6 +21,6 @@ NumberKeyframeTrack.prototype = Object.assign( Object.create( KeyframeTrack.prot
 
 	// DefaultInterpolation is inherited
 
-} );
+}
 
 export { NumberKeyframeTrack };

@@ -1,11 +1,11 @@
-import { Color } from '../math/Color.js';
+import { Color } from '../math/Color';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function FogExp2( color, density ) {
+export function FogExp2( color, density ) {
 
 	this.name = '';
 
@@ -16,13 +16,13 @@ function FogExp2( color, density ) {
 
 FogExp2.prototype.isFogExp2 = true;
 
-FogExp2.prototype.clone = function () {
+FogExp2.prototype.clone = export function () {
 
 	return new FogExp2( this.color, this.density );
 
 };
 
-FogExp2.prototype.toJSON = function ( /* meta */ ) {
+FogExp2.prototype.toJSON = export function ( /* meta */ ) {
 
 	return {
 		type: 'FogExp2',

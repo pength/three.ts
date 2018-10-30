@@ -1,18 +1,19 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { LinearFilter, NearestFilter, RGBFormat, RGBAFormat, DepthFormat, DepthStencilFormat, UnsignedShortType, UnsignedIntType, UnsignedInt248Type, FloatType, HalfFloatType, ClampToEdgeWrapping, NearestMipMapLinearFilter, NearestMipMapNearestFilter } from '../../constants.js';
-import { _Math } from '../../math/Math.js';
+import { LinearFilter, NearestFilter, RGBFormat, RGBAFormat, DepthFormat, DepthStencilFormat, UnsignedShortType, UnsignedIntType, UnsignedInt248Type, FloatType, HalfFloatType, ClampToEdgeWrapping, NearestMipMapLinearFilter, NearestMipMapNearestFilter } from '../../constants';
+import { _Math } from '../../math/Math';
 
-function WebGLTextures( _gl, extensions, state, properties, capabilities, utils, info ) {
+export function WebGLTextures( _gl, extensions, state, properties, capabilities, utils, info ) {
 
 	var _videoTextures = {};
 	var _canvas;
 
 	//
 
-	function clampToMaxSize( image, maxSize ) {
+	export function clampToMaxSize( image, maxSize ) {
 
 		if ( image.width > maxSize || image.height > maxSize ) {
 
@@ -45,13 +46,13 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function isPowerOfTwo( image ) {
+	export function isPowerOfTwo( image ) {
 
 		return _Math.isPowerOfTwo( image.width ) && _Math.isPowerOfTwo( image.height );
 
 	}
 
-	function makePowerOfTwo( image ) {
+	export function makePowerOfTwo( image ) {
 
 		if ( image instanceof HTMLImageElement || image instanceof HTMLCanvasElement || image instanceof ImageBitmap ) {
 
@@ -73,7 +74,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function textureNeedsPowerOfTwo( texture ) {
+	export function textureNeedsPowerOfTwo( texture ) {
 
 		if ( capabilities.isWebGL2 ) return false;
 
@@ -82,14 +83,14 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function textureNeedsGenerateMipmaps( texture, isPowerOfTwo ) {
+	export function textureNeedsGenerateMipmaps( texture, isPowerOfTwo ) {
 
 		return texture.generateMipmaps && isPowerOfTwo &&
 			texture.minFilter !== NearestFilter && texture.minFilter !== LinearFilter;
 
 	}
 
-	function generateMipmap( target, texture, width, height ) {
+	export function generateMipmap( target, texture, width, height ) {
 
 		_gl.generateMipmap( target );
 
@@ -100,7 +101,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function getInternalFormat( glFormat, glType ) {
+	export function getInternalFormat( glFormat, glType ) {
 
 		if ( ! capabilities.isWebGL2 ) return glFormat;
 
@@ -134,7 +135,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	// Fallback filters for non-power-of-2 textures
 
-	function filterFallback( f ) {
+	export function filterFallback( f ) {
 
 		if ( f === NearestFilter || f === NearestMipMapNearestFilter || f === NearestMipMapLinearFilter ) {
 
@@ -148,7 +149,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	//
 
-	function onTextureDispose( event ) {
+	export function onTextureDispose( event ) {
 
 		var texture = event.target;
 
@@ -166,7 +167,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function onRenderTargetDispose( event ) {
+	export function onRenderTargetDispose( event ) {
 
 		var renderTarget = event.target;
 
@@ -180,7 +181,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	//
 
-	function deallocateTexture( texture ) {
+	export function deallocateTexture( texture ) {
 
 		var textureProperties = properties.get( texture );
 
@@ -205,7 +206,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function deallocateRenderTarget( renderTarget ) {
+	export function deallocateRenderTarget( renderTarget ) {
 
 		var renderTargetProperties = properties.get( renderTarget );
 		var textureProperties = properties.get( renderTarget.texture );
@@ -249,7 +250,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 
 
-	function setTexture2D( texture, slot ) {
+	export function setTexture2D( texture, slot ) {
 
 		var textureProperties = properties.get( texture );
 
@@ -281,7 +282,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function setTexture3D( texture, slot ) {
+	export function setTexture3D( texture, slot ) {
 
 		var textureProperties = properties.get( texture );
 
@@ -298,7 +299,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 	}
 
 
-	function setTextureCube( texture, slot ) {
+	export function setTextureCube( texture, slot ) {
 
 		var textureProperties = properties.get( texture );
 
@@ -426,14 +427,14 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function setTextureCubeDynamic( texture, slot ) {
+	export function setTextureCubeDynamic( texture, slot ) {
 
 		state.activeTexture( _gl.TEXTURE0 + slot );
 		state.bindTexture( _gl.TEXTURE_CUBE_MAP, properties.get( texture ).__webglTexture );
 
 	}
 
-	function setTextureParameters( textureType, texture, isPowerOfTwoImage ) {
+	export function setTextureParameters( textureType, texture, isPowerOfTwoImage ) {
 
 		var extension;
 
@@ -485,7 +486,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function uploadTexture( textureProperties, texture, slot ) {
+	export function uploadTexture( textureProperties, texture, slot ) {
 
 		var textureType;
 
@@ -697,7 +698,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 	// Render targets
 
 	// Setup storage for target texture and bind it to correct framebuffer
-	function setupFrameBufferTexture( framebuffer, renderTarget, attachment, textureTarget ) {
+	export function setupFrameBufferTexture( framebuffer, renderTarget, attachment, textureTarget ) {
 
 		var glFormat = utils.convert( renderTarget.texture.format );
 		var glType = utils.convert( renderTarget.texture.type );
@@ -710,7 +711,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 	}
 
 	// Setup storage for internal depth/stencil buffers and bind to correct framebuffer
-	function setupRenderBufferStorage( renderbuffer, renderTarget ) {
+	export function setupRenderBufferStorage( renderbuffer, renderTarget ) {
 
 		_gl.bindRenderbuffer( _gl.RENDERBUFFER, renderbuffer );
 
@@ -736,7 +737,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 	}
 
 	// Setup resources for a Depth Texture for a FBO (needs an extension)
-	function setupDepthTexture( framebuffer, renderTarget ) {
+	export function setupDepthTexture( framebuffer, renderTarget ) {
 
 		var isCube = ( renderTarget && renderTarget.isWebGLRenderTargetCube );
 		if ( isCube ) throw new Error( 'Depth Texture with cube render targets is not supported' );
@@ -781,7 +782,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 	}
 
 	// Setup GL resources for a non-texture depth buffer
-	function setupDepthRenderbuffer( renderTarget ) {
+	export function setupDepthRenderbuffer( renderTarget ) {
 
 		var renderTargetProperties = properties.get( renderTarget );
 
@@ -822,7 +823,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 	}
 
 	// Set up GL resources for the render target
-	function setupRenderTarget( renderTarget ) {
+	export function setupRenderTarget( renderTarget ) {
 
 		var renderTargetProperties = properties.get( renderTarget );
 		var textureProperties = properties.get( renderTarget.texture );
@@ -901,7 +902,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function updateRenderTargetMipmap( renderTarget ) {
+	export function updateRenderTargetMipmap( renderTarget ) {
 
 		var texture = renderTarget.texture;
 		var isTargetPowerOfTwo = isPowerOfTwo( renderTarget );
@@ -919,7 +920,7 @@ function WebGLTextures( _gl, extensions, state, properties, capabilities, utils,
 
 	}
 
-	function updateVideoTexture( texture ) {
+	export function updateVideoTexture( texture ) {
 
 		var id = texture.id;
 		var frame = info.render.frame;

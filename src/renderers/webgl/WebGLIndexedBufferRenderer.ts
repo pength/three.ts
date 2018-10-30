@@ -1,12 +1,13 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function WebGLIndexedBufferRenderer( gl, extensions, info, capabilities ) {
+export function WebGLIndexedBufferRenderer( gl, extensions, info, capabilities ) {
 
 	var mode;
 
-	function setMode( value ) {
+	export function setMode( value ) {
 
 		mode = value;
 
@@ -14,14 +15,14 @@ function WebGLIndexedBufferRenderer( gl, extensions, info, capabilities ) {
 
 	var type, bytesPerElement;
 
-	function setIndex( value ) {
+	export function setIndex( value ) {
 
 		type = value.type;
 		bytesPerElement = value.bytesPerElement;
 
 	}
 
-	function render( start, count ) {
+	export function render( start, count ) {
 
 		gl.drawElements( mode, count, type, start * bytesPerElement );
 
@@ -29,7 +30,7 @@ function WebGLIndexedBufferRenderer( gl, extensions, info, capabilities ) {
 
 	}
 
-	function renderInstances( geometry, start, count ) {
+	export function renderInstances( geometry, start, count ) {
 
 		var extension;
 

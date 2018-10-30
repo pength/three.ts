@@ -1,7 +1,6 @@
 /**
- * @author tschw
- * @author Mugen87 / https://github.com/Mugen87
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
  * Uniforms of a program.
  * Those form a tree structure with a special top-level container for the root,
@@ -49,9 +48,9 @@
  *
  */
 
-import { CubeTexture } from '../../textures/CubeTexture.js';
-import { Texture } from '../../textures/Texture.js';
-import { DataTexture3D } from '../../textures/DataTexture3D.js';
+import { CubeTexture } from '../../textures/CubeTexture';
+import { Texture } from '../../textures/Texture';
+import { DataTexture3D } from '../../textures/DataTexture3D';
 
 var emptyTexture = new Texture();
 var emptyTexture3d = new DataTexture3D();
@@ -59,7 +58,7 @@ var emptyCubeTexture = new CubeTexture();
 
 // --- Base for inner nodes (including the root) ---
 
-function UniformContainer() {
+export function UniformContainer() {
 
 	this.seq = [];
 	this.map = {};
@@ -81,7 +80,7 @@ var mat2array = new Float32Array( 4 );
 
 // Flattening for arrays of vectors and matrices
 
-function flatten( array, nBlocks, blockSize ) {
+export function flatten( array, nBlocks, blockSize ) {
 
 	var firstElem = array[ 0 ];
 
@@ -116,7 +115,7 @@ function flatten( array, nBlocks, blockSize ) {
 
 }
 
-function arraysEqual( a, b ) {
+export function arraysEqual( a, b ) {
 
 	if ( a.length !== b.length ) return false;
 
@@ -130,7 +129,7 @@ function arraysEqual( a, b ) {
 
 }
 
-function copyArray( a, b ) {
+export function copyArray( a, b ) {
 
 	for ( var i = 0, l = b.length; i < l; i ++ ) {
 
@@ -142,7 +141,7 @@ function copyArray( a, b ) {
 
 // Texture unit allocation
 
-function allocTexUnits( renderer, n ) {
+export function allocTexUnits( renderer, n ) {
 
 	var r = arrayCacheI32[ n ];
 
@@ -167,7 +166,7 @@ function allocTexUnits( renderer, n ) {
 
 // Single scalar
 
-function setValue1f( gl, v ) {
+export function setValue1f( gl, v ) {
 
 	var cache = this.cache;
 
@@ -179,7 +178,7 @@ function setValue1f( gl, v ) {
 
 }
 
-function setValue1i( gl, v ) {
+export function setValue1i( gl, v ) {
 
 	var cache = this.cache;
 
@@ -193,7 +192,7 @@ function setValue1i( gl, v ) {
 
 // Single float vector (from flat array or THREE.VectorN)
 
-function setValue2fv( gl, v ) {
+export function setValue2fv( gl, v ) {
 
 	var cache = this.cache;
 
@@ -220,7 +219,7 @@ function setValue2fv( gl, v ) {
 
 }
 
-function setValue3fv( gl, v ) {
+export function setValue3fv( gl, v ) {
 
 	var cache = this.cache;
 
@@ -260,7 +259,7 @@ function setValue3fv( gl, v ) {
 
 }
 
-function setValue4fv( gl, v ) {
+export function setValue4fv( gl, v ) {
 
 	var cache = this.cache;
 
@@ -291,7 +290,7 @@ function setValue4fv( gl, v ) {
 
 // Single matrix (from flat array or MatrixN)
 
-function setValue2fm( gl, v ) {
+export function setValue2fm( gl, v ) {
 
 	var cache = this.cache;
 	var elements = v.elements;
@@ -318,7 +317,7 @@ function setValue2fm( gl, v ) {
 
 }
 
-function setValue3fm( gl, v ) {
+export function setValue3fm( gl, v ) {
 
 	var cache = this.cache;
 	var elements = v.elements;
@@ -345,7 +344,7 @@ function setValue3fm( gl, v ) {
 
 }
 
-function setValue4fm( gl, v ) {
+export function setValue4fm( gl, v ) {
 
 	var cache = this.cache;
 	var elements = v.elements;
@@ -374,7 +373,7 @@ function setValue4fm( gl, v ) {
 
 // Single texture (2D / Cube)
 
-function setValueT1( gl, v, renderer ) {
+export function setValueT1( gl, v, renderer ) {
 
 	var cache = this.cache;
 	var unit = renderer.allocTextureUnit();
@@ -390,7 +389,7 @@ function setValueT1( gl, v, renderer ) {
 
 }
 
-function setValueT3D1( gl, v, renderer ) {
+export function setValueT3D1( gl, v, renderer ) {
 
 	var cache = this.cache;
 	var unit = renderer.allocTextureUnit();
@@ -406,7 +405,7 @@ function setValueT3D1( gl, v, renderer ) {
 
 }
 
-function setValueT6( gl, v, renderer ) {
+export function setValueT6( gl, v, renderer ) {
 
 	var cache = this.cache;
 	var unit = renderer.allocTextureUnit();
@@ -424,7 +423,7 @@ function setValueT6( gl, v, renderer ) {
 
 // Integer / Boolean vectors or arrays thereof (always flat arrays)
 
-function setValue2iv( gl, v ) {
+export function setValue2iv( gl, v ) {
 
 	var cache = this.cache;
 
@@ -436,7 +435,7 @@ function setValue2iv( gl, v ) {
 
 }
 
-function setValue3iv( gl, v ) {
+export function setValue3iv( gl, v ) {
 
 	var cache = this.cache;
 
@@ -448,7 +447,7 @@ function setValue3iv( gl, v ) {
 
 }
 
-function setValue4iv( gl, v ) {
+export function setValue4iv( gl, v ) {
 
 	var cache = this.cache;
 
@@ -462,7 +461,7 @@ function setValue4iv( gl, v ) {
 
 // Helper to pick the right setter for the singular case
 
-function getSingularSetter( type ) {
+export function getSingularSetter( type ) {
 
 	switch ( type ) {
 
@@ -490,7 +489,7 @@ function getSingularSetter( type ) {
 
 // Array of scalars
 
-function setValue1fv( gl, v ) {
+export function setValue1fv( gl, v ) {
 
 	var cache = this.cache;
 
@@ -501,7 +500,7 @@ function setValue1fv( gl, v ) {
 	copyArray( cache, v );
 
 }
-function setValue1iv( gl, v ) {
+export function setValue1iv( gl, v ) {
 
 	var cache = this.cache;
 
@@ -515,7 +514,7 @@ function setValue1iv( gl, v ) {
 
 // Array of vectors (flat or from THREE classes)
 
-function setValueV2a( gl, v ) {
+export function setValueV2a( gl, v ) {
 
 	var cache = this.cache;
 	var data = flatten( v, this.size, 2 );
@@ -528,7 +527,7 @@ function setValueV2a( gl, v ) {
 
 }
 
-function setValueV3a( gl, v ) {
+export function setValueV3a( gl, v ) {
 
 	var cache = this.cache;
 	var data = flatten( v, this.size, 3 );
@@ -541,7 +540,7 @@ function setValueV3a( gl, v ) {
 
 }
 
-function setValueV4a( gl, v ) {
+export function setValueV4a( gl, v ) {
 
 	var cache = this.cache;
 	var data = flatten( v, this.size, 4 );
@@ -556,7 +555,7 @@ function setValueV4a( gl, v ) {
 
 // Array of matrices (flat or from THREE clases)
 
-function setValueM2a( gl, v ) {
+export function setValueM2a( gl, v ) {
 
 	var cache = this.cache;
 	var data = flatten( v, this.size, 4 );
@@ -569,7 +568,7 @@ function setValueM2a( gl, v ) {
 
 }
 
-function setValueM3a( gl, v ) {
+export function setValueM3a( gl, v ) {
 
 	var cache = this.cache;
 	var data = flatten( v, this.size, 9 );
@@ -582,7 +581,7 @@ function setValueM3a( gl, v ) {
 
 }
 
-function setValueM4a( gl, v ) {
+export function setValueM4a( gl, v ) {
 
 	var cache = this.cache;
 	var data = flatten( v, this.size, 16 );
@@ -597,7 +596,7 @@ function setValueM4a( gl, v ) {
 
 // Array of textures (2D / Cube)
 
-function setValueT1a( gl, v, renderer ) {
+export function setValueT1a( gl, v, renderer ) {
 
 	var cache = this.cache;
 	var n = v.length;
@@ -619,7 +618,7 @@ function setValueT1a( gl, v, renderer ) {
 
 }
 
-function setValueT6a( gl, v, renderer ) {
+export function setValueT6a( gl, v, renderer ) {
 
 	var cache = this.cache;
 	var n = v.length;
@@ -643,7 +642,7 @@ function setValueT6a( gl, v, renderer ) {
 
 // Helper to pick the right setter for a pure (bottom-level) array
 
-function getPureArraySetter( type ) {
+export function getPureArraySetter( type ) {
 
 	switch ( type ) {
 
@@ -670,7 +669,7 @@ function getPureArraySetter( type ) {
 
 // --- Uniform Classes ---
 
-function SingleUniform( id, activeInfo, addr ) {
+export function SingleUniform( id, activeInfo, addr ) {
 
 	this.id = id;
 	this.addr = addr;
@@ -681,7 +680,7 @@ function SingleUniform( id, activeInfo, addr ) {
 
 }
 
-function PureArrayUniform( id, activeInfo, addr ) {
+export function PureArrayUniform( id, activeInfo, addr ) {
 
 	this.id = id;
 	this.addr = addr;
@@ -693,7 +692,7 @@ function PureArrayUniform( id, activeInfo, addr ) {
 
 }
 
-PureArrayUniform.prototype.updateCache = function ( data ) {
+PureArrayUniform.prototype.updateCache = export function ( data ) {
 
 	var cache = this.cache;
 
@@ -707,7 +706,7 @@ PureArrayUniform.prototype.updateCache = function ( data ) {
 
 };
 
-function StructuredUniform( id ) {
+export function StructuredUniform( id ) {
 
 	this.id = id;
 
@@ -715,7 +714,7 @@ function StructuredUniform( id ) {
 
 }
 
-StructuredUniform.prototype.setValue = function ( gl, value, renderer ) {
+StructuredUniform.prototype.setValue = export function ( gl, value, renderer ) {
 
 	var seq = this.seq;
 
@@ -743,14 +742,14 @@ var RePathPart = /([\w\d_]+)(\])?(\[|\.)?/g;
 // allow straightforward parsing of the hierarchy that WebGL encodes
 // in the uniform names.
 
-function addUniform( container, uniformObject ) {
+export function addUniform( container, uniformObject ) {
 
 	container.seq.push( uniformObject );
 	container.map[ uniformObject.id ] = uniformObject;
 
 }
 
-function parseUniform( activeInfo, addr, container ) {
+export function parseUniform( activeInfo, addr, container ) {
 
 	var path = activeInfo.name,
 		pathLength = path.length;
@@ -802,7 +801,7 @@ function parseUniform( activeInfo, addr, container ) {
 
 // Root Container
 
-function WebGLUniforms( gl, program, renderer ) {
+export function WebGLUniforms( gl, program, renderer ) {
 
 	UniformContainer.call( this );
 
@@ -821,7 +820,7 @@ function WebGLUniforms( gl, program, renderer ) {
 
 }
 
-WebGLUniforms.prototype.setValue = function ( gl, name, value ) {
+WebGLUniforms.prototype.setValue = export function ( gl, name, value ) {
 
 	var u = this.map[ name ];
 
@@ -829,7 +828,7 @@ WebGLUniforms.prototype.setValue = function ( gl, name, value ) {
 
 };
 
-WebGLUniforms.prototype.setOptional = function ( gl, object, name ) {
+WebGLUniforms.prototype.setOptional = export function ( gl, object, name ) {
 
 	var v = object[ name ];
 
@@ -840,7 +839,7 @@ WebGLUniforms.prototype.setOptional = function ( gl, object, name ) {
 
 // Static interface
 
-WebGLUniforms.upload = function ( gl, seq, values, renderer ) {
+WebGLUniforms.upload = export function ( gl, seq, values, renderer ) {
 
 	for ( var i = 0, n = seq.length; i !== n; ++ i ) {
 
@@ -858,7 +857,7 @@ WebGLUniforms.upload = function ( gl, seq, values, renderer ) {
 
 };
 
-WebGLUniforms.seqWithValue = function ( seq, values ) {
+WebGLUniforms.seqWithValue = export function ( seq, values ) {
 
 	var r = [];
 

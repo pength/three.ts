@@ -1,10 +1,10 @@
-import { Path } from './Path.js';
-import { _Math } from '../../math/Math.js';
+import { Path } from './Path';
+import { _Math } from '../../math/Math';
 
 /**
- * @author zz85 / http://www.lab4games.net/zz85/blog
- * Defines a 2d shape plane using paths.
- **/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
 
 // STEP 1 Create a path.
 // STEP 2 Turn path into shape.
@@ -12,7 +12,7 @@ import { _Math } from '../../math/Math.js';
 // STEP 3a - Extract points from each shape, turn to vertices
 // STEP 3b - Triangulate each shape, add faces.
 
-function Shape( points ) {
+export function Shape( points ) {
 
 	Path.call( this, points );
 
@@ -28,7 +28,7 @@ Shape.prototype = Object.assign( Object.create( Path.prototype ), {
 
 	constructor: Shape,
 
-	getPointsHoles: function ( divisions ) {
+	getPointsHoles( divisions ) {
 
 		var holesPts = [];
 
@@ -40,11 +40,11 @@ Shape.prototype = Object.assign( Object.create( Path.prototype ), {
 
 		return holesPts;
 
-	},
+	}
 
 	// get points of shape and holes (keypoints based on segments parameter)
 
-	extractPoints: function ( divisions ) {
+	extractPoints( divisions ) {
 
 		return {
 
@@ -53,9 +53,9 @@ Shape.prototype = Object.assign( Object.create( Path.prototype ), {
 
 		};
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		Path.prototype.copy.call( this, source );
 
@@ -71,9 +71,9 @@ Shape.prototype = Object.assign( Object.create( Path.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	toJSON: function () {
+	toJSON() {
 
 		var data = Path.prototype.toJSON.call( this );
 
@@ -89,9 +89,9 @@ Shape.prototype = Object.assign( Object.create( Path.prototype ), {
 
 		return data;
 
-	},
+	}
 
-	fromJSON: function ( json ) {
+	fromJSON( json ) {
 
 		Path.prototype.fromJSON.call( this, json );
 
@@ -109,7 +109,7 @@ Shape.prototype = Object.assign( Object.create( Path.prototype ), {
 
 	}
 
-} );
+}
 
 
 export { Shape };

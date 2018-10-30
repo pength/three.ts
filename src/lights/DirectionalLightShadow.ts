@@ -1,11 +1,12 @@
-import { LightShadow } from './LightShadow.js';
-import { OrthographicCamera } from '../cameras/OrthographicCamera.js';
+import { LightShadow } from './LightShadow';
+import { OrthographicCamera } from '../cameras/OrthographicCamera';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function DirectionalLightShadow( ) {
+export function DirectionalLightShadow( ) {
 
 	LightShadow.call( this, new OrthographicCamera( - 5, 5, 5, - 5, 0.5, 500 ) );
 
@@ -15,7 +16,7 @@ DirectionalLightShadow.prototype = Object.assign( Object.create( LightShadow.pro
 
 	constructor: DirectionalLightShadow
 
-} );
+}
 
 
 export { DirectionalLightShadow };

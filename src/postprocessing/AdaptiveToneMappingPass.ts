@@ -1,13 +1,9 @@
 /**
- * @author miibond
- * Generate a texture that represents the luminosity of the current scene, adapted over time
- * to simulate the optic nerve responding to the amount of light it is receiving.
- * Based on a GDC2007 presentation by Wolfgang Engel titled "Post-Processing Pipeline"
- *
- * Full-screen tone-mapping shader based on http://www.graphics.cornell.edu/~jaf/publications/sig02_paper.pdf
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.AdaptiveToneMappingPass = function ( adaptive, resolution ) {
+THREE.AdaptiveToneMappingPass = export function ( adaptive, resolution ) {
 
 	THREE.Pass.call( this );
 
@@ -34,7 +30,7 @@ THREE.AdaptiveToneMappingPass = function ( adaptive, resolution ) {
 		blending: THREE.NoBlending,
 		depthTest: false
 
-	} );
+	}
 
 	if ( THREE.LuminosityShader === undefined )
 		console.error( "THREE.AdaptiveToneMappingPass relies on THREE.LuminosityShader" );
@@ -45,19 +41,19 @@ THREE.AdaptiveToneMappingPass = function ( adaptive, resolution ) {
 		vertexShader: THREE.LuminosityShader.vertexShader,
 		fragmentShader: THREE.LuminosityShader.fragmentShader,
 		blending: THREE.NoBlending
-	} );
+	}
 
 	this.adaptLuminanceShader = {
 		defines: {
 			"MIP_LEVEL_1X1" : ( Math.log( this.resolution ) / Math.log( 2.0 ) ).toFixed( 1 )
-		},
+		}
 		uniforms: {
-			"lastLum": { value: null },
-			"currentLum": { value: null },
-			"minLuminance": { value: 0.01 },
-			"delta": { value: 0.016 },
+			"lastLum": { value: null }
+			"currentLum": { value: null }
+			"minLuminance": { value: 0.01 }
+			"delta": { value: 0.016 }
 			"tau": { value: 1.0 }
-		},
+		}
 		vertexShader: [
 			"varying vec2 vUv;",
 
@@ -102,9 +98,9 @@ THREE.AdaptiveToneMappingPass = function ( adaptive, resolution ) {
 		uniforms: THREE.UniformsUtils.clone( this.adaptLuminanceShader.uniforms ),
 		vertexShader: this.adaptLuminanceShader.vertexShader,
 		fragmentShader: this.adaptLuminanceShader.fragmentShader,
-		defines: Object.assign( {}, this.adaptLuminanceShader.defines ),
+		defines: Object.assign( {} this.adaptLuminanceShader.defines ),
 		blending: THREE.NoBlending
-	} );
+	}
 
 	if ( THREE.ToneMapShader === undefined )
 		console.error( "THREE.AdaptiveToneMappingPass relies on THREE.ToneMapShader" );
@@ -115,7 +111,7 @@ THREE.AdaptiveToneMappingPass = function ( adaptive, resolution ) {
 		vertexShader: THREE.ToneMapShader.vertexShader,
 		fragmentShader: THREE.ToneMapShader.fragmentShader,
 		blending: THREE.NoBlending
-	} );
+	}
 
 	this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
 	this.scene  = new THREE.Scene();
@@ -130,7 +126,7 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 
 	constructor: THREE.AdaptiveToneMappingPass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		if ( this.needsInit ) {
 
@@ -178,7 +174,7 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 
 		}
 
-	},
+	}
 
 	reset: function( renderer ) {
 
@@ -221,7 +217,7 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 
 		}
 		//Put something in the adaptive luminance texture so that the scene can render initially
-		this.quad.material = new THREE.MeshBasicMaterial( { color: 0x777777 } );
+		this.quad.material = new THREE.MeshBasicMaterial( { color: 0x777777 }
 		this.materialLuminance.needsUpdate = true;
 		this.materialAdaptiveLum.needsUpdate = true;
 		this.materialToneMap.needsUpdate = true;
@@ -229,7 +225,7 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 		// renderer.render( this.scene, this.camera, this.previousLuminanceRT );
 		// renderer.render( this.scene, this.camera, this.currentLuminanceRT );
 
-	},
+	}
 
 	setAdaptive: function( adaptive ) {
 
@@ -248,7 +244,7 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 		}
 		this.materialToneMap.needsUpdate = true;
 
-	},
+	}
 
 	setAdaptionRate: function( rate ) {
 
@@ -258,7 +254,7 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 
 		}
 
-	},
+	}
 
 	setMinLuminance: function( minLum ) {
 
@@ -269,7 +265,7 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 
 		}
 
-	},
+	}
 
 	setMaxLuminance: function( maxLum ) {
 
@@ -279,7 +275,7 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 
 		}
 
-	},
+	}
 
 	setAverageLuminance: function( avgLum ) {
 
@@ -289,7 +285,7 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 
 		}
 
-	},
+	}
 
 	setMiddleGrey: function( middleGrey ) {
 
@@ -299,7 +295,7 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 
 		}
 
-	},
+	}
 
 	dispose: function() {
 
@@ -341,4 +337,4 @@ THREE.AdaptiveToneMappingPass.prototype = Object.assign( Object.create( THREE.Pa
 
 	}
 
-} );
+}

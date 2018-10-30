@@ -1,10 +1,11 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Vector2 } from '../math/Vector2.js';
+import { Vector2 } from '../math/Vector2';
 
-function DirectGeometry() {
+export function DirectGeometry() {
 
 	this.vertices = [];
 	this.normals = [];
@@ -36,7 +37,7 @@ function DirectGeometry() {
 
 Object.assign( DirectGeometry.prototype, {
 
-	computeGroups: function ( geometry ) {
+	computeGroups( geometry ) {
 
 		var group;
 		var groups = [];
@@ -79,9 +80,9 @@ Object.assign( DirectGeometry.prototype, {
 
 		this.groups = groups;
 
-	},
+	}
 
-	fromGeometry: function ( geometry ) {
+	fromGeometry( geometry ) {
 
 		var faces = geometry.faces;
 		var vertices = geometry.vertices;
@@ -268,7 +269,7 @@ Object.assign( DirectGeometry.prototype, {
 
 	}
 
-} );
+}
 
 
 export { DirectGeometry };

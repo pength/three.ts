@@ -1,17 +1,15 @@
-import { Object3D } from '../core/Object3D.js';
-import { WebGLRenderTargetCube } from '../renderers/WebGLRenderTargetCube.js';
-import { LinearFilter, RGBFormat } from '../constants.js';
-import { Vector3 } from '../math/Vector3.js';
-import { PerspectiveCamera } from './PerspectiveCamera.js';
+import { Object3D } from '../core/Object3D';
+import { WebGLRenderTargetCube } from '../renderers/WebGLRenderTargetCube';
+import { LinearFilter, RGBFormat } from '../constants';
+import { Vector3 } from '../math/Vector3';
+import { PerspectiveCamera } from './PerspectiveCamera';
 
 /**
- * Camera for rendering cube maps
- *	- renders scene into axis-aligned cube
- *
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function CubeCamera( near, far, cubeResolution ) {
+export function CubeCamera( near, far, cubeResolution ) {
 
 	Object3D.call( this );
 
@@ -54,7 +52,7 @@ function CubeCamera( near, far, cubeResolution ) {
 	this.renderTarget = new WebGLRenderTargetCube( cubeResolution, cubeResolution, options );
 	this.renderTarget.texture.name = "CubeCamera";
 
-	this.update = function ( renderer, scene ) {
+	this.update = export function ( renderer, scene ) {
 
 		if ( this.parent === null ) this.updateMatrixWorld();
 
@@ -87,7 +85,7 @@ function CubeCamera( near, far, cubeResolution ) {
 
 	};
 
-	this.clear = function ( renderer, color, depth, stencil ) {
+	this.clear = export function ( renderer, color, depth, stencil ) {
 
 		var renderTarget = this.renderTarget;
 

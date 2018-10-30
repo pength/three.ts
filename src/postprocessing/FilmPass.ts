@@ -1,8 +1,9 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.FilmPass = function ( noiseIntensity, scanlinesIntensity, scanlinesCount, grayscale ) {
+THREE.FilmPass = export function ( noiseIntensity, scanlinesIntensity, scanlinesCount, grayscale ) {
 
 	THREE.Pass.call( this );
 
@@ -19,7 +20,7 @@ THREE.FilmPass = function ( noiseIntensity, scanlinesIntensity, scanlinesCount, 
 		vertexShader: shader.vertexShader,
 		fragmentShader: shader.fragmentShader
 
-	} );
+	}
 
 	if ( grayscale !== undefined )	this.uniforms.grayscale.value = grayscale;
 	if ( noiseIntensity !== undefined ) this.uniforms.nIntensity.value = noiseIntensity;
@@ -39,7 +40,7 @@ THREE.FilmPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 
 	constructor: THREE.FilmPass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		this.uniforms[ "tDiffuse" ].value = readBuffer.texture;
 		this.uniforms[ "time" ].value += delta;
@@ -58,4 +59,4 @@ THREE.FilmPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 
 	}
 
-} );
+}

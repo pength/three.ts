@@ -2,23 +2,18 @@ import {
 	InterpolateLinear,
 	InterpolateSmooth,
 	InterpolateDiscrete
-} from '../constants.js';
-import { CubicInterpolant } from '../math/interpolants/CubicInterpolant.js';
-import { LinearInterpolant } from '../math/interpolants/LinearInterpolant.js';
-import { DiscreteInterpolant } from '../math/interpolants/DiscreteInterpolant.js';
-import { AnimationUtils } from './AnimationUtils.js';
+} from '../constants';
+import { CubicInterpolant } from '../math/interpolants/CubicInterpolant';
+import { LinearInterpolant } from '../math/interpolants/LinearInterpolant';
+import { DiscreteInterpolant } from '../math/interpolants/DiscreteInterpolant';
+import { AnimationUtils } from './AnimationUtils';
 
 /**
- *
- * A timed sequence of keyframes for a specific property.
- *
- *
- * @author Ben Houston / http://clara.io/
- * @author David Sarno / http://lighthaus.us/
- * @author tschw
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function KeyframeTrack( name, times, values, interpolation ) {
+export function KeyframeTrack( name, times, values, interpolation ) {
 
 	if ( name === undefined ) throw new Error( 'THREE.KeyframeTrack: track name is undefined' );
 	if ( times === undefined || times.length === 0 ) throw new Error( 'THREE.KeyframeTrack: no keyframes in track named ' + name );
@@ -39,7 +34,7 @@ Object.assign( KeyframeTrack, {
 	// Serialization (in static context, because of constructor invocation
 	// and automatic invocation of .toJSON):
 
-	toJSON: function ( track ) {
+	toJSON( track ) {
 
 		var trackType = track.constructor;
 
@@ -77,7 +72,7 @@ Object.assign( KeyframeTrack, {
 
 	}
 
-} );
+}
 
 Object.assign( KeyframeTrack.prototype, {
 
@@ -89,25 +84,25 @@ Object.assign( KeyframeTrack.prototype, {
 
 	DefaultInterpolation: InterpolateLinear,
 
-	InterpolantFactoryMethodDiscrete: function ( result ) {
+	InterpolantFactoryMethodDiscrete( result ) {
 
 		return new DiscreteInterpolant( this.times, this.values, this.getValueSize(), result );
 
-	},
+	}
 
-	InterpolantFactoryMethodLinear: function ( result ) {
+	InterpolantFactoryMethodLinear( result ) {
 
 		return new LinearInterpolant( this.times, this.values, this.getValueSize(), result );
 
-	},
+	}
 
-	InterpolantFactoryMethodSmooth: function ( result ) {
+	InterpolantFactoryMethodSmooth( result ) {
 
 		return new CubicInterpolant( this.times, this.values, this.getValueSize(), result );
 
-	},
+	}
 
-	setInterpolation: function ( interpolation ) {
+	setInterpolation( interpolation ) {
 
 		var factoryMethod;
 
@@ -162,9 +157,9 @@ Object.assign( KeyframeTrack.prototype, {
 
 		return this;
 
-	},
+	}
 
-	getInterpolation: function () {
+	getInterpolation() {
 
 		switch ( this.createInterpolant ) {
 
@@ -182,16 +177,16 @@ Object.assign( KeyframeTrack.prototype, {
 
 		}
 
-	},
+	}
 
-	getValueSize: function () {
+	getValueSize() {
 
 		return this.values.length / this.times.length;
 
-	},
+	}
 
 	// move all keyframes either forwards or backwards in time
-	shift: function ( timeOffset ) {
+	shift( timeOffset ) {
 
 		if ( timeOffset !== 0.0 ) {
 
@@ -207,10 +202,10 @@ Object.assign( KeyframeTrack.prototype, {
 
 		return this;
 
-	},
+	}
 
 	// scale all keyframe times by a factor (useful for frame <-> seconds conversions)
-	scale: function ( timeScale ) {
+	scale( timeScale ) {
 
 		if ( timeScale !== 1.0 ) {
 
@@ -226,11 +221,11 @@ Object.assign( KeyframeTrack.prototype, {
 
 		return this;
 
-	},
+	}
 
 	// removes keyframes before and after animation without changing any values within the range [startTime, endTime].
 	// IMPORTANT: We do not shift around keys to the start of the track time, because for interpolated keys this will change their values
-	trim: function ( startTime, endTime ) {
+	trim( startTime, endTime ) {
 
 		var times = this.times,
 			nKeys = times.length,
@@ -264,10 +259,10 @@ Object.assign( KeyframeTrack.prototype, {
 
 		return this;
 
-	},
+	}
 
 	// ensure we do not get a GarbageInGarbageOut situation, make sure tracks are at least minimally viable
-	validate: function () {
+	validate() {
 
 		var valid = true;
 
@@ -341,11 +336,11 @@ Object.assign( KeyframeTrack.prototype, {
 
 		return valid;
 
-	},
+	}
 
 	// removes equivalent sequential keys as common in morph target sequences
 	// (0,0,0,0,1,1,1,0,0,0,0,0,0,0) --> (0,0,1,1,0,0)
-	optimize: function () {
+	optimize() {
 
 		var times = this.times,
 			values = this.values,
@@ -449,6 +444,6 @@ Object.assign( KeyframeTrack.prototype, {
 
 	}
 
-} );
+}
 
 export { KeyframeTrack };

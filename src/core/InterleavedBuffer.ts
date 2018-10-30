@@ -1,9 +1,10 @@
 
 /**
- * @author benaadams / https://twitter.com/ben_a_adams
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function InterleavedBuffer( array, stride ) {
+export function InterleavedBuffer( array, stride ) {
 
 	this.array = array;
 	this.stride = stride;
@@ -18,21 +19,21 @@ function InterleavedBuffer( array, stride ) {
 
 Object.defineProperty( InterleavedBuffer.prototype, 'needsUpdate', {
 
-	set: function ( value ) {
+	set( value ) {
 
 		if ( value === true ) this.version ++;
 
 	}
 
-} );
+}
 
 Object.assign( InterleavedBuffer.prototype, {
 
 	isInterleavedBuffer: true,
 
-	onUploadCallback: function () {},
+	onUploadCallback() {}
 
-	setArray: function ( array ) {
+	setArray( array ) {
 
 		if ( Array.isArray( array ) ) {
 
@@ -45,17 +46,17 @@ Object.assign( InterleavedBuffer.prototype, {
 
 		return this;
 
-	},
+	}
 
-	setDynamic: function ( value ) {
+	setDynamic( value ) {
 
 		this.dynamic = value;
 
 		return this;
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		this.array = new source.array.constructor( source.array );
 		this.count = source.count;
@@ -64,9 +65,9 @@ Object.assign( InterleavedBuffer.prototype, {
 
 		return this;
 
-	},
+	}
 
-	copyAt: function ( index1, attribute, index2 ) {
+	copyAt( index1, attribute, index2 ) {
 
 		index1 *= this.stride;
 		index2 *= attribute.stride;
@@ -79,9 +80,9 @@ Object.assign( InterleavedBuffer.prototype, {
 
 		return this;
 
-	},
+	}
 
-	set: function ( value, offset ) {
+	set( value, offset ) {
 
 		if ( offset === undefined ) offset = 0;
 
@@ -89,15 +90,15 @@ Object.assign( InterleavedBuffer.prototype, {
 
 		return this;
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor().copy( this );
 
-	},
+	}
 
-	onUpload: function ( callback ) {
+	onUpload( callback ) {
 
 		this.onUploadCallback = callback;
 
@@ -105,7 +106,7 @@ Object.assign( InterleavedBuffer.prototype, {
 
 	}
 
-} );
+}
 
 
 export { InterleavedBuffer };

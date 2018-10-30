@@ -1,19 +1,18 @@
 /**
- * @author alteredq / http://alteredqualia.com/
- * @author mrdoob / http://mrdoob.com/
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Vector3 } from '../math/Vector3.js';
-import { Color } from '../math/Color.js';
-import { Object3D } from '../core/Object3D.js';
-import { Mesh } from '../objects/Mesh.js';
-import { VertexColors } from '../constants.js';
-import { MeshBasicMaterial } from '../materials/MeshBasicMaterial.js';
-import { OctahedronBufferGeometry } from '../geometries/OctahedronGeometry.js';
-import { BufferAttribute } from '../core/BufferAttribute.js';
+import { Vector3 } from '../math/Vector3';
+import { Color } from '../math/Color';
+import { Object3D } from '../core/Object3D';
+import { Mesh } from '../objects/Mesh';
+import { VertexColors } from '../constants';
+import { MeshBasicMaterial } from '../materials/MeshBasicMaterial';
+import { OctahedronBufferGeometry } from '../geometries/OctahedronGeometry';
+import { BufferAttribute } from '../core/BufferAttribute';
 
-function HemisphereLightHelper( light, size, color ) {
+export function HemisphereLightHelper( light, size, color ) {
 
 	Object3D.call( this );
 
@@ -28,7 +27,7 @@ function HemisphereLightHelper( light, size, color ) {
 	var geometry = new OctahedronBufferGeometry( size );
 	geometry.rotateY( Math.PI * 0.5 );
 
-	this.material = new MeshBasicMaterial( { wireframe: true, fog: false } );
+	this.material = new MeshBasicMaterial( { wireframe: true, fog: false }
 	if ( this.color === undefined ) this.material.vertexColors = VertexColors;
 
 	var position = geometry.getAttribute( 'position' );
@@ -45,21 +44,21 @@ function HemisphereLightHelper( light, size, color ) {
 HemisphereLightHelper.prototype = Object.create( Object3D.prototype );
 HemisphereLightHelper.prototype.constructor = HemisphereLightHelper;
 
-HemisphereLightHelper.prototype.dispose = function () {
+HemisphereLightHelper.prototype.dispose = export function () {
 
 	this.children[ 0 ].geometry.dispose();
 	this.children[ 0 ].material.dispose();
 
 };
 
-HemisphereLightHelper.prototype.update = function () {
+HemisphereLightHelper.prototype.update = export function () {
 
 	var vector = new Vector3();
 
 	var color1 = new Color();
 	var color2 = new Color();
 
-	return function update() {
+	return export function update() {
 
 		var mesh = this.children[ 0 ];
 

@@ -1,13 +1,11 @@
 /**
- * @author tschw
- * @author Ben Houston / http://clara.io/
- * @author David Sarno / http://lighthaus.us/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
 var AnimationUtils = {
 
 	// same as Array.prototype.slice, but also works on typed arrays
-	arraySlice: function ( array, from, to ) {
+	arraySlice( array, from, to ) {
 
 		if ( AnimationUtils.isTypedArray( array ) ) {
 
@@ -19,10 +17,10 @@ var AnimationUtils = {
 
 		return array.slice( from, to );
 
-	},
+	}
 
 	// converts an array to a specific type
-	convertArray: function ( array, type, forceClone ) {
+	convertArray( array, type, forceClone ) {
 
 		if ( ! array || // let 'undefined' and 'null' pass
 				! forceClone && array.constructor === type ) return array;
@@ -35,19 +33,19 @@ var AnimationUtils = {
 
 		return Array.prototype.slice.call( array ); // create Array
 
-	},
+	}
 
-	isTypedArray: function ( object ) {
+	isTypedArray( object ) {
 
 		return ArrayBuffer.isView( object ) &&
 				! ( object instanceof DataView );
 
-	},
+	}
 
 	// returns an array by which times and values can be sorted
-	getKeyframeOrder: function ( times ) {
+	getKeyframeOrder( times ) {
 
-		function compareTime( i, j ) {
+		export function compareTime( i, j ) {
 
 			return times[ i ] - times[ j ];
 
@@ -61,10 +59,10 @@ var AnimationUtils = {
 
 		return result;
 
-	},
+	}
 
 	// uses the array previously returned by 'getKeyframeOrder' to sort data
-	sortedArray: function ( values, stride, order ) {
+	sortedArray( values, stride, order ) {
 
 		var nValues = values.length;
 		var result = new values.constructor( nValues );
@@ -83,10 +81,10 @@ var AnimationUtils = {
 
 		return result;
 
-	},
+	}
 
-	// function for parsing AOS keyframe formats
-	flattenJSON: function ( jsonKeys, times, values, valuePropertyName ) {
+	// export function for parsing AOS keyframe formats
+	flattenJSON( jsonKeys, times, values, valuePropertyName ) {
 
 		var i = 1, key = jsonKeys[ 0 ];
 

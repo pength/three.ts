@@ -1,11 +1,11 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
+import { Texture } from './Texture';
+import { CubeReflectionMapping } from '../constants';
 
-import { Texture } from './Texture.js';
-import { CubeReflectionMapping } from '../constants.js';
-
-function CubeTexture( images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding ) {
+export function CubeTexture( images, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding ) {
 
 	images = images !== undefined ? images : [];
 	mapping = mapping !== undefined ? mapping : CubeReflectionMapping;
@@ -23,19 +23,19 @@ CubeTexture.prototype.isCubeTexture = true;
 
 Object.defineProperty( CubeTexture.prototype, 'images', {
 
-	get: function () {
+	get() {
 
 		return this.image;
 
-	},
+	}
 
-	set: function ( value ) {
+	set( value ) {
 
 		this.image = value;
 
 	}
 
-} );
+}
 
 
 export { CubeTexture };

@@ -1,14 +1,13 @@
 /**
- * @author timothypratley / https://github.com/timothypratley
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-import { Geometry } from '../core/Geometry.js';
-import { PolyhedronBufferGeometry } from './PolyhedronGeometry.js';
+import { Geometry } from '../core/Geometry';
+import { PolyhedronBufferGeometry } from './PolyhedronGeometry';
 
 // IcosahedronGeometry
 
-function IcosahedronGeometry( radius, detail ) {
+export function IcosahedronGeometry( radius, detail ) {
 
 	Geometry.call( this );
 
@@ -29,7 +28,7 @@ IcosahedronGeometry.prototype.constructor = IcosahedronGeometry;
 
 // IcosahedronBufferGeometry
 
-function IcosahedronBufferGeometry( radius, detail ) {
+export function IcosahedronBufferGeometry( radius, detail ) {
 
 	var t = ( 1 + Math.sqrt( 5 ) ) / 2;
 

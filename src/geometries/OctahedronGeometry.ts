@@ -1,14 +1,14 @@
 /**
- * @author timothypratley / https://github.com/timothypratley
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { PolyhedronBufferGeometry } from './PolyhedronGeometry.js';
+import { Geometry } from '../core/Geometry';
+import { PolyhedronBufferGeometry } from './PolyhedronGeometry';
 
 // OctahedronGeometry
 
-function OctahedronGeometry( radius, detail ) {
+export function OctahedronGeometry( radius, detail ) {
 
 	Geometry.call( this );
 
@@ -29,7 +29,7 @@ OctahedronGeometry.prototype.constructor = OctahedronGeometry;
 
 // OctahedronBufferGeometry
 
-function OctahedronBufferGeometry( radius, detail ) {
+export function OctahedronBufferGeometry( radius, detail ) {
 
 	var vertices = [
 		1, 0, 0, 	- 1, 0, 0,	0, 1, 0,

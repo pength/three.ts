@@ -1,29 +1,25 @@
-import { EventDispatcher } from './EventDispatcher.js';
-import { Face3 } from './Face3.js';
-import { Matrix3 } from '../math/Matrix3.js';
-import { Sphere } from '../math/Sphere.js';
-import { Box3 } from '../math/Box3.js';
-import { Vector3 } from '../math/Vector3.js';
-import { Matrix4 } from '../math/Matrix4.js';
-import { Vector2 } from '../math/Vector2.js';
-import { Color } from '../math/Color.js';
-import { Object3D } from './Object3D.js';
-import { _Math } from '../math/Math.js';
+import { EventDispatcher } from './EventDispatcher';
+import { Face3 } from './Face3';
+import { Matrix3 } from '../math/Matrix3';
+import { Sphere } from '../math/Sphere';
+import { Box3 } from '../math/Box3';
+import { Vector3 } from '../math/Vector3';
+import { Matrix4 } from '../math/Matrix4';
+import { Vector2 } from '../math/Vector2';
+import { Color } from '../math/Color';
+import { Object3D } from './Object3D';
+import { _Math } from '../math/Math';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author kile / http://kile.stravaganza.org/
- * @author alteredq / http://alteredqualia.com/
- * @author mikael emtinger / http://gomo.se/
- * @author zz85 / http://www.lab4games.net/zz85/blog
- * @author bhouston / http://clara.io
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 var geometryId = 0; // Geometry uses even numbers as Id
 
-function Geometry() {
+export function Geometry() {
 
-	Object.defineProperty( this, 'id', { value: geometryId += 2 } );
+	Object.defineProperty( this, 'id', { value: geometryId += 2 }
 
 	this.uuid = _Math.generateUUID();
 
@@ -64,7 +60,7 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 	isGeometry: true,
 
-	applyMatrix: function ( matrix ) {
+	applyMatrix( matrix ) {
 
 		var normalMatrix = new Matrix3().getNormalMatrix( matrix );
 
@@ -105,15 +101,15 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		return this;
 
-	},
+	}
 
-	rotateX: function () {
+	rotateX() {
 
 		// rotate geometry around world x-axis
 
 		var m1 = new Matrix4();
 
-		return function rotateX( angle ) {
+		return export function rotateX( angle ) {
 
 			m1.makeRotationX( angle );
 
@@ -123,15 +119,15 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		};
 
-	}(),
+	}
 
-	rotateY: function () {
+	rotateY() {
 
 		// rotate geometry around world y-axis
 
 		var m1 = new Matrix4();
 
-		return function rotateY( angle ) {
+		return export function rotateY( angle ) {
 
 			m1.makeRotationY( angle );
 
@@ -141,15 +137,15 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		};
 
-	}(),
+	}
 
-	rotateZ: function () {
+	rotateZ() {
 
 		// rotate geometry around world z-axis
 
 		var m1 = new Matrix4();
 
-		return function rotateZ( angle ) {
+		return export function rotateZ( angle ) {
 
 			m1.makeRotationZ( angle );
 
@@ -159,15 +155,15 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		};
 
-	}(),
+	}
 
-	translate: function () {
+	translate() {
 
 		// translate geometry
 
 		var m1 = new Matrix4();
 
-		return function translate( x, y, z ) {
+		return export function translate( x, y, z ) {
 
 			m1.makeTranslation( x, y, z );
 
@@ -177,15 +173,15 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		};
 
-	}(),
+	}
 
-	scale: function () {
+	scale() {
 
 		// scale geometry
 
 		var m1 = new Matrix4();
 
-		return function scale( x, y, z ) {
+		return export function scale( x, y, z ) {
 
 			m1.makeScale( x, y, z );
 
@@ -195,13 +191,13 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		};
 
-	}(),
+	}
 
-	lookAt: function () {
+	lookAt() {
 
 		var obj = new Object3D();
 
-		return function lookAt( vector ) {
+		return export function lookAt( vector ) {
 
 			obj.lookAt( vector );
 
@@ -211,9 +207,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		};
 
-	}(),
+	}
 
-	fromBufferGeometry: function ( geometry ) {
+	fromBufferGeometry( geometry ) {
 
 		var scope = this;
 
@@ -262,7 +258,7 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		}
 
-		function addFace( a, b, c, materialIndex ) {
+		export function addFace( a, b, c, materialIndex ) {
 
 			var vertexNormals = normals !== undefined ? [ tempNormals[ a ].clone(), tempNormals[ b ].clone(), tempNormals[ c ].clone() ] : [];
 			var vertexColors = colors !== undefined ? [ scope.colors[ a ].clone(), scope.colors[ b ].clone(), scope.colors[ c ].clone() ] : [];
@@ -350,13 +346,13 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		return this;
 
-	},
+	}
 
-	center: function () {
+	center() {
 
 		var offset = new Vector3();
 
-		return function center() {
+		return export function center() {
 
 			this.computeBoundingBox();
 
@@ -368,9 +364,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		};
 
-	}(),
+	}
 
-	normalize: function () {
+	normalize() {
 
 		this.computeBoundingSphere();
 
@@ -391,9 +387,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		return this;
 
-	},
+	}
 
-	computeFaceNormals: function () {
+	computeFaceNormals() {
 
 		var cb = new Vector3(), ab = new Vector3();
 
@@ -415,9 +411,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		}
 
-	},
+	}
 
-	computeVertexNormals: function ( areaWeighted ) {
+	computeVertexNormals( areaWeighted ) {
 
 		if ( areaWeighted === undefined ) areaWeighted = true;
 
@@ -507,9 +503,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		}
 
-	},
+	}
 
-	computeFlatVertexNormals: function () {
+	computeFlatVertexNormals() {
 
 		var f, fl, face;
 
@@ -543,9 +539,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		}
 
-	},
+	}
 
-	computeMorphNormals: function () {
+	computeMorphNormals() {
 
 		var i, il, f, fl, face;
 
@@ -660,9 +656,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		}
 
-	},
+	}
 
-	computeBoundingBox: function () {
+	computeBoundingBox() {
 
 		if ( this.boundingBox === null ) {
 
@@ -672,9 +668,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		this.boundingBox.setFromPoints( this.vertices );
 
-	},
+	}
 
-	computeBoundingSphere: function () {
+	computeBoundingSphere() {
 
 		if ( this.boundingSphere === null ) {
 
@@ -684,9 +680,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		this.boundingSphere.setFromPoints( this.vertices );
 
-	},
+	}
 
-	merge: function ( geometry, matrix, materialIndexOffset ) {
+	merge( geometry, matrix, materialIndexOffset ) {
 
 		if ( ! ( geometry && geometry.isGeometry ) ) {
 
@@ -804,9 +800,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		}
 
-	},
+	}
 
-	mergeMesh: function ( mesh ) {
+	mergeMesh( mesh ) {
 
 		if ( ! ( mesh && mesh.isMesh ) ) {
 
@@ -819,7 +815,7 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		this.merge( mesh.geometry, mesh.matrix );
 
-	},
+	}
 
 	/*
 	 * Checks for duplicate vertices with hashmap.
@@ -827,7 +823,7 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 	 * and faces' vertices are updated.
 	 */
 
-	mergeVertices: function () {
+	mergeVertices() {
 
 		var verticesMap = {}; // Hashmap for looking up vertices by position coordinates (and making sure they are unique)
 		var unique = [], changes = [];
@@ -908,9 +904,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 		this.vertices = unique;
 		return diff;
 
-	},
+	}
 
-	setFromPoints: function ( points ) {
+	setFromPoints( points ) {
 
 		this.vertices = [];
 
@@ -923,9 +919,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		return this;
 
-	},
+	}
 
-	sortFacesByMaterialIndex: function () {
+	sortFacesByMaterialIndex() {
 
 		var faces = this.faces;
 		var length = faces.length;
@@ -940,7 +936,7 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		// sort faces
 
-		function materialIndexSort( a, b ) {
+		export function materialIndexSort( a, b ) {
 
 			return a.materialIndex - b.materialIndex;
 
@@ -970,9 +966,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 		if ( newUvs1 ) this.faceVertexUvs[ 0 ] = newUvs1;
 		if ( newUvs2 ) this.faceVertexUvs[ 1 ] = newUvs2;
 
-	},
+	}
 
-	toJSON: function () {
+	toJSON() {
 
 		var data = {
 			metadata: {
@@ -1096,13 +1092,13 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		}
 
-		function setBit( value, position, enabled ) {
+		export function setBit( value, position, enabled ) {
 
 			return enabled ? value | ( 1 << position ) : value & ( ~ ( 1 << position ) );
 
 		}
 
-		function getNormalIndex( normal ) {
+		export function getNormalIndex( normal ) {
 
 			var hash = normal.x.toString() + normal.y.toString() + normal.z.toString();
 
@@ -1119,7 +1115,7 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		}
 
-		function getColorIndex( color ) {
+		export function getColorIndex( color ) {
 
 			var hash = color.r.toString() + color.g.toString() + color.b.toString();
 
@@ -1136,7 +1132,7 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		}
 
-		function getUvIndex( uv ) {
+		export function getUvIndex( uv ) {
 
 			var hash = uv.x.toString() + uv.y.toString();
 
@@ -1163,9 +1159,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		return data;
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		/*
 		 // Handle primitives
@@ -1193,9 +1189,9 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		return new Geometry().copy( this );
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		var i, il, j, jl, k, kl;
 
@@ -1427,15 +1423,15 @@ Geometry.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		return this;
 
-	},
+	}
 
-	dispose: function () {
+	dispose() {
 
-		this.dispatchEvent( { type: 'dispose' } );
+		this.dispatchEvent( { type: 'dispose' }
 
 	}
 
-} );
+}
 
 
 export { Geometry };

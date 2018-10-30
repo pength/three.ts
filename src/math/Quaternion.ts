@@ -15,7 +15,7 @@ export class Quaternion {
 
 	public isQuaternion: boolean = true;
 
-	private onChangeCallback: Function = undefined;
+	private onChangeCallback= undefined;
 	constructor()
 	{
 

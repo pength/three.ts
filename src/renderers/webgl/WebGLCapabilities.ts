@@ -1,12 +1,13 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function WebGLCapabilities( gl, extensions, parameters ) {
+export function WebGLCapabilities( gl, extensions, parameters ) {
 
 	var maxAnisotropy;
 
-	function getMaxAnisotropy() {
+	export function getMaxAnisotropy() {
 
 		if ( maxAnisotropy !== undefined ) return maxAnisotropy;
 
@@ -26,7 +27,7 @@ function WebGLCapabilities( gl, extensions, parameters ) {
 
 	}
 
-	function getMaxPrecision( precision ) {
+	export function getMaxPrecision( precision ) {
 
 		if ( precision === 'highp' ) {
 

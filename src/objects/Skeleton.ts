@@ -1,13 +1,11 @@
-import { Matrix4 } from '../math/Matrix4.js';
+import { Matrix4 } from '../math/Matrix4';
 
 /**
- * @author mikael emtinger / http://gomo.se/
- * @author alteredq / http://alteredqualia.com/
- * @author michael guerrero / http://realitymeltdown.com
- * @author ikerr / http://verold.com
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Skeleton( bones, boneInverses ) {
+export function Skeleton( bones, boneInverses ) {
 
 	// copy the bone array
 
@@ -48,7 +46,7 @@ function Skeleton( bones, boneInverses ) {
 
 Object.assign( Skeleton.prototype, {
 
-	calculateInverses: function () {
+	calculateInverses() {
 
 		this.boneInverses = [];
 
@@ -66,9 +64,9 @@ Object.assign( Skeleton.prototype, {
 
 		}
 
-	},
+	}
 
-	pose: function () {
+	pose() {
 
 		var bone, i, il;
 
@@ -111,14 +109,14 @@ Object.assign( Skeleton.prototype, {
 
 		}
 
-	},
+	}
 
-	update: ( function () {
+	update: ( export function () {
 
 		var offsetMatrix = new Matrix4();
 		var identityMatrix = new Matrix4();
 
-		return function update() {
+		return export function update() {
 
 			var bones = this.bones;
 			var boneInverses = this.boneInverses;
@@ -148,13 +146,13 @@ Object.assign( Skeleton.prototype, {
 
 	} )(),
 
-	clone: function () {
+	clone() {
 
 		return new Skeleton( this.bones, this.boneInverses );
 
-	},
+	}
 
-	getBoneByName: function ( name ) {
+	getBoneByName( name ) {
 
 		for ( var i = 0, il = this.bones.length; i < il; i ++ ) {
 
@@ -172,7 +170,7 @@ Object.assign( Skeleton.prototype, {
 
 	}
 
-} );
+}
 
 
 export { Skeleton };

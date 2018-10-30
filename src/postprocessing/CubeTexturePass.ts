@@ -1,8 +1,9 @@
 /**
- * @author bhouston / http://clara.io/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.CubeTexturePass = function ( camera, envMap, opacity ) {
+THREE.CubeTexturePass = export function ( camera, envMap, opacity ) {
 
 	THREE.Pass.call( this );
 
@@ -36,7 +37,7 @@ THREE.CubeTexturePass.prototype = Object.assign( Object.create( THREE.Pass.proto
 
 	constructor: THREE.CubeTexturePass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		var oldAutoClear = renderer.autoClear;
 		renderer.autoClear = false;
@@ -54,4 +55,4 @@ THREE.CubeTexturePass.prototype = Object.assign( Object.create( THREE.Pass.proto
 
 	}
 
-} );
+}

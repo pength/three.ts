@@ -1,12 +1,11 @@
-import { EventDispatcher } from '../core/EventDispatcher.js';
-import { Texture } from '../textures/Texture.js';
-import { LinearFilter } from '../constants.js';
-import { Vector4 } from '../math/Vector4.js';
+import { EventDispatcher } from '../core/EventDispatcher';
+import { Texture } from '../textures/Texture';
+import { LinearFilter } from '../constants';
+import { Vector4 } from '../math/Vector4';
 
 /**
- * @author szimek / https://github.com/szimek/
- * @author alteredq / http://alteredqualia.com/
- * @author Marius Kintel / https://github.com/kintel
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 /*
@@ -14,7 +13,7 @@ import { Vector4 } from '../math/Vector4.js';
  * Texture parameters for an auto-generated target texture
  * depthBuffer/stencilBuffer: Booleans to indicate if we should generate these buffers
 */
-function WebGLRenderTarget( width, height, options ) {
+export function WebGLRenderTarget( width, height, options ) {
 
 	this.width = width;
 	this.height = height;
@@ -44,7 +43,7 @@ WebGLRenderTarget.prototype = Object.assign( Object.create( EventDispatcher.prot
 
 	isWebGLRenderTarget: true,
 
-	setSize: function ( width, height ) {
+	setSize( width, height ) {
 
 		if ( this.width !== width || this.height !== height ) {
 
@@ -58,15 +57,15 @@ WebGLRenderTarget.prototype = Object.assign( Object.create( EventDispatcher.prot
 		this.viewport.set( 0, 0, width, height );
 		this.scissor.set( 0, 0, width, height );
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor().copy( this );
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		this.width = source.width;
 		this.height = source.height;
@@ -81,15 +80,15 @@ WebGLRenderTarget.prototype = Object.assign( Object.create( EventDispatcher.prot
 
 		return this;
 
-	},
+	}
 
-	dispose: function () {
+	dispose() {
 
-		this.dispatchEvent( { type: 'dispose' } );
+		this.dispatchEvent( { type: 'dispose' }
 
 	}
 
-} );
+}
 
 
 export { WebGLRenderTarget };

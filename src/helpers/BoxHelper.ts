@@ -1,15 +1,15 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author Mugen87 / http://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Box3 } from '../math/Box3.js';
-import { LineSegments } from '../objects/LineSegments.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { BufferAttribute } from '../core/BufferAttribute.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
+import { Box3 } from '../math/Box3';
+import { LineSegments } from '../objects/LineSegments';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from '../core/BufferGeometry';
 
-function BoxHelper( object, color ) {
+export function BoxHelper( object, color ) {
 
 	this.object = object;
 
@@ -33,11 +33,11 @@ function BoxHelper( object, color ) {
 BoxHelper.prototype = Object.create( LineSegments.prototype );
 BoxHelper.prototype.constructor = BoxHelper;
 
-BoxHelper.prototype.update = ( function () {
+BoxHelper.prototype.update = ( export function () {
 
 	var box = new Box3();
 
-	return function update( object ) {
+	return export function update( object ) {
 
 		if ( object !== undefined ) {
 
@@ -92,7 +92,7 @@ BoxHelper.prototype.update = ( function () {
 
 } )();
 
-BoxHelper.prototype.setFromObject = function ( object ) {
+BoxHelper.prototype.setFromObject = export function ( object ) {
 
 	this.object = object;
 	this.update();

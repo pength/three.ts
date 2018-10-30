@@ -383,7 +383,7 @@ export class Box3 {
 
 		var triangleNormal = new Vector3();
 
-		function satForAxes(axes) {
+		export function satForAxes(axes) {
 
 			var i, j;
 
@@ -411,7 +411,7 @@ export class Box3 {
 
 		}
 
-		return function intersectsTriangle(triangle) {
+		return export function intersectsTriangle(triangle) {
 
 			if (this.isEmpty()) {
 

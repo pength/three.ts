@@ -1,15 +1,9 @@
-import { Vector3 } from '../../math/Vector3.js';
-import { Curve } from '../core/Curve.js';
+import { Vector3 } from '../../math/Vector3';
+import { Curve } from '../core/Curve';
 
 /**
- * @author zz85 https://github.com/zz85
- *
- * Centripetal CatmullRom Curve - which is useful for avoiding
- * cusps and self-intersections in non-uniform catmull rom curves.
- * http://www.cemyuksel.com/research/catmullrom_param/catmullrom.pdf
- *
- * curve.type accepts centripetal(default), chordal and catmullrom
- * curve.tension is used for catmullrom which defaults to 0.5
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 
@@ -19,11 +13,11 @@ Based on an optimized c++ solution in
  - http://ideone.com/NoEbVM
 
 This CubicPoly class could be used for reusing some variables and calculations,
-but for three.js curve use, it could be possible inlined and flatten into a single function call
+but for three.js curve use, it could be possible inlined and flatten into a single export function call
 which can be placed in CurveUtils.
 */
 
-function CubicPoly() {
+export function CubicPoly() {
 
 	var c0 = 0, c1 = 0, c2 = 0, c3 = 0;
 
@@ -35,7 +29,7 @@ function CubicPoly() {
 	 *  and
 	 *   p'(0) = t0, p'(1) = t1.
 	 */
-	function init( x0, x1, t0, t1 ) {
+	export function init( x0, x1, t0, t1 ) {
 
 		c0 = x0;
 		c1 = t0;
@@ -46,13 +40,13 @@ function CubicPoly() {
 
 	return {
 
-		initCatmullRom: function ( x0, x1, x2, x3, tension ) {
+		initCatmullRom( x0, x1, x2, x3, tension ) {
 
 			init( x1, x2, tension * ( x2 - x0 ), tension * ( x3 - x1 ) );
 
-		},
+		}
 
-		initNonuniformCatmullRom: function ( x0, x1, x2, x3, dt0, dt1, dt2 ) {
+		initNonuniformCatmullRom( x0, x1, x2, x3, dt0, dt1, dt2 ) {
 
 			// compute tangents when parameterized in [t1,t2]
 			var t1 = ( x1 - x0 ) / dt0 - ( x2 - x0 ) / ( dt0 + dt1 ) + ( x2 - x1 ) / dt1;
@@ -64,9 +58,9 @@ function CubicPoly() {
 
 			init( x1, x2, t1, t2 );
 
-		},
+		}
 
-		calc: function ( t ) {
+		calc( t ) {
 
 			var t2 = t * t;
 			var t3 = t2 * t;
@@ -83,7 +77,7 @@ function CubicPoly() {
 var tmp = new Vector3();
 var px = new CubicPoly(), py = new CubicPoly(), pz = new CubicPoly();
 
-function CatmullRomCurve3( points, closed, curveType, tension ) {
+export function CatmullRomCurve3( points, closed, curveType, tension ) {
 
 	Curve.call( this );
 
@@ -101,7 +95,7 @@ CatmullRomCurve3.prototype.constructor = CatmullRomCurve3;
 
 CatmullRomCurve3.prototype.isCatmullRomCurve3 = true;
 
-CatmullRomCurve3.prototype.getPoint = function ( t, optionalTarget ) {
+CatmullRomCurve3.prototype.getPoint = export function ( t, optionalTarget ) {
 
 	var point = optionalTarget || new Vector3();
 
@@ -187,7 +181,7 @@ CatmullRomCurve3.prototype.getPoint = function ( t, optionalTarget ) {
 
 };
 
-CatmullRomCurve3.prototype.copy = function ( source ) {
+CatmullRomCurve3.prototype.copy = export function ( source ) {
 
 	Curve.prototype.copy.call( this, source );
 
@@ -209,7 +203,7 @@ CatmullRomCurve3.prototype.copy = function ( source ) {
 
 };
 
-CatmullRomCurve3.prototype.toJSON = function () {
+CatmullRomCurve3.prototype.toJSON = export function () {
 
 	var data = Curve.prototype.toJSON.call( this );
 
@@ -230,7 +224,7 @@ CatmullRomCurve3.prototype.toJSON = function () {
 
 };
 
-CatmullRomCurve3.prototype.fromJSON = function ( json ) {
+CatmullRomCurve3.prototype.fromJSON = export function ( json ) {
 
 	Curve.prototype.fromJSON.call( this, json );
 

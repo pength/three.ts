@@ -1,8 +1,9 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.SavePass = function ( renderTarget ) {
+THREE.SavePass = export function ( renderTarget ) {
 
 	THREE.Pass.call( this );
 
@@ -21,13 +22,13 @@ THREE.SavePass = function ( renderTarget ) {
 		vertexShader: shader.vertexShader,
 		fragmentShader: shader.fragmentShader
 
-	} );
+	}
 
 	this.renderTarget = renderTarget;
 
 	if ( this.renderTarget === undefined ) {
 
-		this.renderTarget = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBFormat, stencilBuffer: false } );
+		this.renderTarget = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBFormat, stencilBuffer: false }
 		this.renderTarget.texture.name = "SavePass.rt";
 
 	}
@@ -47,7 +48,7 @@ THREE.SavePass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 
 	constructor: THREE.SavePass,
 
-	render: function ( renderer, writeBuffer, readBuffer ) {
+	render( renderer, writeBuffer, readBuffer ) {
 
 		if ( this.uniforms[ this.textureID ] ) {
 
@@ -61,4 +62,4 @@ THREE.SavePass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 
 	}
 
-} );
+}

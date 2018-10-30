@@ -1,18 +1,17 @@
 /**
- * @author benaadams / https://twitter.com/ben_a_adams
- * @author Mugen87 / https://github.com/Mugen87
- * @author hughes
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Vector3 } from '../math/Vector3.js';
-import { Vector2 } from '../math/Vector2.js';
+import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Vector3 } from '../math/Vector3';
+import { Vector2 } from '../math/Vector2';
 
 // CircleGeometry
 
-function CircleGeometry( radius, segments, thetaStart, thetaLength ) {
+export function CircleGeometry( radius, segments, thetaStart, thetaLength ) {
 
 	Geometry.call( this );
 
@@ -35,7 +34,7 @@ CircleGeometry.prototype.constructor = CircleGeometry;
 
 // CircleBufferGeometry
 
-function CircleBufferGeometry( radius, segments, thetaStart, thetaLength ) {
+export function CircleBufferGeometry( radius, segments, thetaStart, thetaLength ) {
 
 	BufferGeometry.call( this );
 

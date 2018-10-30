@@ -1,8 +1,7 @@
 /**
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
- * Temporal Anti-Aliasing Render Pass
- *
- * @author bhouston / http://clara.io/
  *
  * When there is no motion in the scene, the TAA render pass accumulates jittered camera samples across frames to create a high quality anti-aliased result.
  *
@@ -12,7 +11,7 @@
  *
  */
 
-THREE.TAARenderPass = function ( scene, camera, params ) {
+THREE.TAARenderPass = export function ( scene, camera, params ) {
 
 	if ( THREE.SSAARenderPass === undefined ) {
 
@@ -33,7 +32,7 @@ THREE.TAARenderPass.prototype = Object.assign( Object.create( THREE.SSAARenderPa
 
 	constructor: THREE.TAARenderPass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta ) {
+	render( renderer, writeBuffer, readBuffer, delta ) {
 
 		if ( ! this.accumulate ) {
 
@@ -128,4 +127,4 @@ THREE.TAARenderPass.prototype = Object.assign( Object.create( THREE.SSAARenderPa
 
 	}
 
-} );
+}

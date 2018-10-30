@@ -1,8 +1,9 @@
 /**
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function WebGLInfo( gl ) {
+export function WebGLInfo( gl ) {
 
 	var memory = {
 		geometries: 0,
@@ -17,7 +18,7 @@ function WebGLInfo( gl ) {
 		lines: 0
 	};
 
-	function update( count, mode, instanceCount ) {
+	export function update( count, mode, instanceCount ) {
 
 		instanceCount = instanceCount || 1;
 
@@ -58,7 +59,7 @@ function WebGLInfo( gl ) {
 
 	}
 
-	function reset() {
+	export function reset() {
 
 		render.frame ++;
 		render.calls = 0;

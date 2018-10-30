@@ -1,8 +1,8 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function Layers() {
+export function Layers() {
 
 	this.mask = 1 | 0;
 
@@ -10,37 +10,37 @@ function Layers() {
 
 Object.assign( Layers.prototype, {
 
-	set: function ( channel ) {
+	set( channel ) {
 
 		this.mask = 1 << channel | 0;
 
-	},
+	}
 
-	enable: function ( channel ) {
+	enable( channel ) {
 
 		this.mask |= 1 << channel | 0;
 
-	},
+	}
 
-	toggle: function ( channel ) {
+	toggle( channel ) {
 
 		this.mask ^= 1 << channel | 0;
 
-	},
+	}
 
-	disable: function ( channel ) {
+	disable( channel ) {
 
 		this.mask &= ~ ( 1 << channel | 0 );
 
-	},
+	}
 
-	test: function ( layers ) {
+	test( layers ) {
 
 		return ( this.mask & layers.mask ) !== 0;
 
 	}
 
-} );
+}
 
 
 export { Layers };

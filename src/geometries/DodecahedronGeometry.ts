@@ -1,14 +1,14 @@
 /**
- * @author Abe Pazos / https://hamoid.com
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { PolyhedronBufferGeometry } from './PolyhedronGeometry.js';
+import { Geometry } from '../core/Geometry';
+import { PolyhedronBufferGeometry } from './PolyhedronGeometry';
 
 // DodecahedronGeometry
 
-function DodecahedronGeometry( radius, detail ) {
+export function DodecahedronGeometry( radius, detail ) {
 
 	Geometry.call( this );
 
@@ -29,7 +29,7 @@ DodecahedronGeometry.prototype.constructor = DodecahedronGeometry;
 
 // DodecahedronBufferGeometry
 
-function DodecahedronBufferGeometry( radius, detail ) {
+export function DodecahedronBufferGeometry( radius, detail ) {
 
 	var t = ( 1 + Math.sqrt( 5 ) ) / 2;
 	var r = 1 / t;

@@ -1,12 +1,13 @@
-import { Matrix4 } from '../math/Matrix4.js';
-import { _Math } from '../math/Math.js';
-import { PerspectiveCamera } from './PerspectiveCamera.js';
+import { Matrix4 } from '../math/Matrix4';
+import { _Math } from '../math/Math';
+import { PerspectiveCamera } from './PerspectiveCamera';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function StereoCamera() {
+export function StereoCamera() {
 
 	this.type = 'StereoCamera';
 
@@ -26,14 +27,14 @@ function StereoCamera() {
 
 Object.assign( StereoCamera.prototype, {
 
-	update: ( function () {
+	update: ( export function () {
 
 		var instance, focus, fov, aspect, near, far, zoom, eyeSep;
 
 		var eyeRight = new Matrix4();
 		var eyeLeft = new Matrix4();
 
-		return function update( camera ) {
+		return export function update( camera ) {
 
 			var needsUpdate = instance !== this || focus !== camera.focus || fov !== camera.fov ||
 												aspect !== camera.aspect * this.aspect || near !== camera.near ||
@@ -92,7 +93,7 @@ Object.assign( StereoCamera.prototype, {
 
 	} )()
 
-} );
+}
 
 
 export { StereoCamera };

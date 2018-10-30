@@ -1,32 +1,21 @@
 /**
- * @author WestLangley / http://github.com/WestLangley
- * @author zz85 / http://github.com/zz85
- * @author bhouston / http://clara.io
- *
- * Creates an arrow for visualizing directions
- *
- * Parameters:
- *  dir - Vector3
- *  origin - Vector3
- *  length - Number
- *  color - color in hex value
- *  headLength - Number
- *  headWidth - Number
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Object3D } from '../core/Object3D.js';
-import { CylinderBufferGeometry } from '../geometries/CylinderGeometry.js';
-import { MeshBasicMaterial } from '../materials/MeshBasicMaterial.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { Mesh } from '../objects/Mesh.js';
-import { Line } from '../objects/Line.js';
-import { Vector3 } from '../math/Vector3.js';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Object3D } from '../core/Object3D';
+import { CylinderBufferGeometry } from '../geometries/CylinderGeometry';
+import { MeshBasicMaterial } from '../materials/MeshBasicMaterial';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { Mesh } from '../objects/Mesh';
+import { Line } from '../objects/Line';
+import { Vector3 } from '../math/Vector3';
 
 var lineGeometry, coneGeometry;
 
-function ArrowHelper( dir, origin, length, color, headLength, headWidth ) {
+export function ArrowHelper( dir, origin, length, color, headLength, headWidth ) {
 
 	// dir is assumed to be normalized
 
@@ -65,12 +54,12 @@ function ArrowHelper( dir, origin, length, color, headLength, headWidth ) {
 ArrowHelper.prototype = Object.create( Object3D.prototype );
 ArrowHelper.prototype.constructor = ArrowHelper;
 
-ArrowHelper.prototype.setDirection = ( function () {
+ArrowHelper.prototype.setDirection = ( export function () {
 
 	var axis = new Vector3();
 	var radians;
 
-	return function setDirection( dir ) {
+	return export function setDirection( dir ) {
 
 		// dir is assumed to be normalized
 
@@ -96,7 +85,7 @@ ArrowHelper.prototype.setDirection = ( function () {
 
 }() );
 
-ArrowHelper.prototype.setLength = function ( length, headLength, headWidth ) {
+ArrowHelper.prototype.setLength = export function ( length, headLength, headWidth ) {
 
 	if ( headLength === undefined ) headLength = 0.2 * length;
 	if ( headWidth === undefined ) headWidth = 0.2 * headLength;
@@ -110,7 +99,7 @@ ArrowHelper.prototype.setLength = function ( length, headLength, headWidth ) {
 
 };
 
-ArrowHelper.prototype.setColor = function ( color ) {
+ArrowHelper.prototype.setColor = export function ( color ) {
 
 	this.line.material.color.copy( color );
 	this.cone.material.color.copy( color );

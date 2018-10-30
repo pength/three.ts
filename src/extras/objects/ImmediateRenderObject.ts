@@ -1,15 +1,16 @@
-import { Object3D } from '../../core/Object3D.js';
+import { Object3D } from '../../core/Object3D';
 
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function ImmediateRenderObject( material ) {
+export function ImmediateRenderObject( material ) {
 
 	Object3D.call( this );
 
 	this.material = material;
-	this.render = function ( /* renderCallback */ ) {};
+	this.render = export function ( /* renderCallback */ ) {};
 
 }
 

@@ -1,10 +1,11 @@
-import { BufferAttribute } from './BufferAttribute.js';
+import { BufferAttribute } from './BufferAttribute';
 
 /**
- * @author benaadams / https://twitter.com/ben_a_adams
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function InstancedBufferAttribute( array, itemSize, normalized, meshPerAttribute ) {
+export function InstancedBufferAttribute( array, itemSize, normalized, meshPerAttribute ) {
 
 	if ( typeof ( normalized ) === 'number' ) {
 
@@ -28,7 +29,7 @@ InstancedBufferAttribute.prototype = Object.assign( Object.create( BufferAttribu
 
 	isInstancedBufferAttribute: true,
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		BufferAttribute.prototype.copy.call( this, source );
 
@@ -38,7 +39,7 @@ InstancedBufferAttribute.prototype = Object.assign( Object.create( BufferAttribu
 
 	}
 
-} );
+}
 
 
 

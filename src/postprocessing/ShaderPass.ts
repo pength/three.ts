@@ -1,8 +1,9 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.ShaderPass = function ( shader, textureID ) {
+THREE.ShaderPass = export function ( shader, textureID ) {
 
 	THREE.Pass.call( this );
 
@@ -20,12 +21,12 @@ THREE.ShaderPass = function ( shader, textureID ) {
 
 		this.material = new THREE.ShaderMaterial( {
 
-			defines: Object.assign( {}, shader.defines ),
+			defines: Object.assign( {} shader.defines ),
 			uniforms: this.uniforms,
 			vertexShader: shader.vertexShader,
 			fragmentShader: shader.fragmentShader
 
-		} );
+		}
 
 	}
 
@@ -64,4 +65,4 @@ THREE.ShaderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 
 	}
 
-} );
+}

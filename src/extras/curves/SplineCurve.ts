@@ -1,9 +1,12 @@
-import { Curve } from '../core/Curve.js';
-import { CatmullRom } from '../core/Interpolations.js';
-import { Vector2 } from '../../math/Vector2.js';
+import { Curve } from '../core/Curve';
+import { CatmullRom } from '../core/Interpolations';
+import { Vector2 } from '../../math/Vector2';
 
-
-function SplineCurve( points /* array of Vector2 */ ) {
+/**
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
+export function SplineCurve( points /* array of Vector2 */ ) {
 
 	Curve.call( this );
 
@@ -18,7 +21,7 @@ SplineCurve.prototype.constructor = SplineCurve;
 
 SplineCurve.prototype.isSplineCurve = true;
 
-SplineCurve.prototype.getPoint = function ( t, optionalTarget ) {
+SplineCurve.prototype.getPoint = export function ( t, optionalTarget ) {
 
 	var point = optionalTarget || new Vector2();
 
@@ -42,7 +45,7 @@ SplineCurve.prototype.getPoint = function ( t, optionalTarget ) {
 
 };
 
-SplineCurve.prototype.copy = function ( source ) {
+SplineCurve.prototype.copy = export function ( source ) {
 
 	Curve.prototype.copy.call( this, source );
 
@@ -60,7 +63,7 @@ SplineCurve.prototype.copy = function ( source ) {
 
 };
 
-SplineCurve.prototype.toJSON = function () {
+SplineCurve.prototype.toJSON = export function () {
 
 	var data = Curve.prototype.toJSON.call( this );
 
@@ -77,7 +80,7 @@ SplineCurve.prototype.toJSON = function () {
 
 };
 
-SplineCurve.prototype.fromJSON = function ( json ) {
+SplineCurve.prototype.fromJSON = export function ( json ) {
 
 	Curve.prototype.fromJSON.call( this, json );
 

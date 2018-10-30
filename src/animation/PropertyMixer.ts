@@ -1,16 +1,11 @@
-import { Quaternion } from '../math/Quaternion.js';
+import { Quaternion } from '../math/Quaternion';
 
 /**
- *
- * Buffered scene graph property that allows weighted accumulation.
- *
- *
- * @author Ben Houston / http://clara.io/
- * @author David Sarno / http://lighthaus.us/
- * @author tschw
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function PropertyMixer( binding, typeName, valueSize ) {
+export function PropertyMixer( binding, typeName, valueSize ) {
 
 	this.binding = binding;
 	this.valueSize = valueSize;
@@ -21,17 +16,17 @@ function PropertyMixer( binding, typeName, valueSize ) {
 	switch ( typeName ) {
 
 		case 'quaternion':
-			mixFunction = this._slerp;
+			mixexport function = this._slerp;
 			break;
 
 		case 'string':
 		case 'bool':
 			bufferType = Array;
-			mixFunction = this._select;
+			mixexport function = this._select;
 			break;
 
 		default:
-			mixFunction = this._lerp;
+			mixexport function = this._lerp;
 
 	}
 
@@ -59,7 +54,7 @@ function PropertyMixer( binding, typeName, valueSize ) {
 Object.assign( PropertyMixer.prototype, {
 
 	// accumulate data in the 'incoming' region into 'accu<i>'
-	accumulate: function ( accuIndex, weight ) {
+	accumulate( accuIndex, weight ) {
 
 		// note: happily accumulating nothing when weight = 0, the caller knows
 		// the weight and shouldn't have made the call in the first place
@@ -94,10 +89,10 @@ Object.assign( PropertyMixer.prototype, {
 
 		this.cumulativeWeight = currentWeight;
 
-	},
+	}
 
 	// apply the state of 'accu<i>' to the binding when accus differ
-	apply: function ( accuIndex ) {
+	apply( accuIndex ) {
 
 		var stride = this.valueSize,
 			buffer = this.buffer,
@@ -133,10 +128,10 @@ Object.assign( PropertyMixer.prototype, {
 
 		}
 
-	},
+	}
 
 	// remember the state of the bound property and copy it to both accus
-	saveOriginalState: function () {
+	saveOriginalState() {
 
 		var binding = this.binding;
 
@@ -156,20 +151,20 @@ Object.assign( PropertyMixer.prototype, {
 
 		this.cumulativeWeight = 0;
 
-	},
+	}
 
 	// apply the state previously taken via 'saveOriginalState' to the binding
-	restoreOriginalState: function () {
+	restoreOriginalState() {
 
 		var originalValueOffset = this.valueSize * 3;
 		this.binding.setValue( this.buffer, originalValueOffset );
 
-	},
+	}
 
 
 	// mix functions
 
-	_select: function ( buffer, dstOffset, srcOffset, t, stride ) {
+	_select( buffer, dstOffset, srcOffset, t, stride ) {
 
 		if ( t >= 0.5 ) {
 
@@ -181,15 +176,15 @@ Object.assign( PropertyMixer.prototype, {
 
 		}
 
-	},
+	}
 
-	_slerp: function ( buffer, dstOffset, srcOffset, t ) {
+	_slerp( buffer, dstOffset, srcOffset, t ) {
 
 		Quaternion.slerpFlat( buffer, dstOffset, buffer, dstOffset, buffer, srcOffset, t );
 
-	},
+	}
 
-	_lerp: function ( buffer, dstOffset, srcOffset, t, stride ) {
+	_lerp( buffer, dstOffset, srcOffset, t, stride ) {
 
 		var s = 1 - t;
 
@@ -203,7 +198,7 @@ Object.assign( PropertyMixer.prototype, {
 
 	}
 
-} );
+}
 
 
 export { PropertyMixer };

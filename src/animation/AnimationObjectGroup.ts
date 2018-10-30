@@ -1,38 +1,12 @@
-import { PropertyBinding } from './PropertyBinding.js';
-import { _Math } from '../math/Math.js';
+import { PropertyBinding } from './PropertyBinding';
+import { _Math } from '../math/Math';
 
 /**
- *
- * A group of objects that receives a shared animation state.
- *
- * Usage:
- *
- * 	-	Add objects you would otherwise pass as 'root' to the
- * 		constructor or the .clipAction method of AnimationMixer.
- *
- * 	-	Instead pass this object as 'root'.
- *
- * 	-	You can also add and remove objects later when the mixer
- * 		is running.
- *
- * Note:
- *
- *  	Objects of this class appear as one object to the mixer,
- *  	so cache control of the individual objects must be done
- *  	on the group.
- *
- * Limitation:
- *
- * 	- 	The animated properties must be compatible among the
- * 		all objects in the group.
- *
- *  -	A single property can either be controlled through a
- *  	target group or directly, but not both.
- *
- * @author tschw
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function AnimationObjectGroup() {
+export function AnimationObjectGroup() {
 
 	this.uuid = _Math.generateUUID();
 
@@ -65,13 +39,13 @@ function AnimationObjectGroup() {
 
 				return scope._objects.length;
 
-			},
+			}
 			get inUse() {
 
 				return this.total - scope.nCachedObjects_;
 
 			}
-		},
+		}
 		get bindingsPerObject() {
 
 			return scope._bindings.length;
@@ -86,7 +60,7 @@ Object.assign( AnimationObjectGroup.prototype, {
 
 	isAnimationObjectGroup: true,
 
-	add: function () {
+	add() {
 
 		var objects = this._objects,
 			nObjects = objects.length,
@@ -170,9 +144,9 @@ Object.assign( AnimationObjectGroup.prototype, {
 
 		this.nCachedObjects_ = nCachedObjects;
 
-	},
+	}
 
-	remove: function () {
+	remove() {
 
 		var objects = this._objects,
 			nCachedObjects = this.nCachedObjects_,
@@ -218,10 +192,10 @@ Object.assign( AnimationObjectGroup.prototype, {
 
 		this.nCachedObjects_ = nCachedObjects;
 
-	},
+	}
 
 	// remove & forget
-	uncache: function () {
+	uncache() {
 
 		var objects = this._objects,
 			nObjects = objects.length,
@@ -302,11 +276,11 @@ Object.assign( AnimationObjectGroup.prototype, {
 
 		this.nCachedObjects_ = nCachedObjects;
 
-	},
+	}
 
 	// Internal interface used by befriended PropertyBinding.Composite:
 
-	subscribe_: function ( path, parsedPath ) {
+	subscribe_( path, parsedPath ) {
 
 		// returns an array of bindings for the given path that is changed
 		// according to the contained objects in the group
@@ -341,9 +315,9 @@ Object.assign( AnimationObjectGroup.prototype, {
 
 		return bindingsForPath;
 
-	},
+	}
 
-	unsubscribe_: function ( path ) {
+	unsubscribe_( path ) {
 
 		// tells the group to forget about a property path and no longer
 		// update the array previously obtained with 'subscribe_'
@@ -375,7 +349,7 @@ Object.assign( AnimationObjectGroup.prototype, {
 
 	}
 
-} );
+}
 
 
 export { AnimationObjectGroup };

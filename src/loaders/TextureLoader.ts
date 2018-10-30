@@ -1,14 +1,15 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { RGBAFormat, RGBFormat } from '../constants.js';
-import { ImageLoader } from './ImageLoader.js';
-import { Texture } from '../textures/Texture.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
+import { RGBAFormat, RGBFormat } from '../constants';
+import { ImageLoader } from './ImageLoader';
+import { Texture } from '../textures/Texture';
+import { DefaultLoadingManager } from './LoadingManager';
 
 
-function TextureLoader( manager ) {
+export function TextureLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
@@ -18,7 +19,7 @@ Object.assign( TextureLoader.prototype, {
 
 	crossOrigin: 'anonymous',
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		var texture = new Texture();
 
@@ -26,7 +27,7 @@ Object.assign( TextureLoader.prototype, {
 		loader.setCrossOrigin( this.crossOrigin );
 		loader.setPath( this.path );
 
-		loader.load( url, function ( image ) {
+		loader.load( url, export function ( image ) {
 
 			texture.image = image;
 
@@ -42,27 +43,27 @@ Object.assign( TextureLoader.prototype, {
 
 			}
 
-		}, onProgress, onError );
+		} onProgress, onError );
 
 		return texture;
 
-	},
+	}
 
-	setCrossOrigin: function ( value ) {
+	setCrossOrigin( value ) {
 
 		this.crossOrigin = value;
 		return this;
 
-	},
+	}
 
-	setPath: function ( value ) {
+	setPath( value ) {
 
 		this.path = value;
 		return this;
 
 	}
 
-} );
+}
 
 
 export { TextureLoader };

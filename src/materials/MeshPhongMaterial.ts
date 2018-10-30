@@ -1,11 +1,11 @@
-import { MultiplyOperation, TangentSpaceNormalMap } from '../constants.js';
-import { Material } from './Material.js';
-import { Vector2 } from '../math/Vector2.js';
-import { Color } from '../math/Color.js';
+import { MultiplyOperation, TangentSpaceNormalMap } from '../constants';
+import { Material } from './Material';
+import { Vector2 } from '../math/Vector2';
+import { Color } from '../math/Color';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
  * parameters = {
  *  color: <hex>,
@@ -54,7 +54,7 @@ import { Color } from '../math/Color.js';
  * }
  */
 
-function MeshPhongMaterial( parameters ) {
+export function MeshPhongMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -114,7 +114,7 @@ MeshPhongMaterial.prototype.constructor = MeshPhongMaterial;
 
 MeshPhongMaterial.prototype.isMeshPhongMaterial = true;
 
-MeshPhongMaterial.prototype.copy = function ( source ) {
+MeshPhongMaterial.prototype.copy = export function ( source ) {
 
 	Material.prototype.copy.call( this, source );
 

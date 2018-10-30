@@ -1,15 +1,14 @@
-import { LinearFilter, LinearMipMapLinearFilter, ClampToEdgeWrapping } from '../constants.js';
-import { FileLoader } from './FileLoader.js';
-import { DataTexture } from '../textures/DataTexture.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
+import { LinearFilter, LinearMipMapLinearFilter, ClampToEdgeWrapping } from '../constants';
+import { FileLoader } from './FileLoader';
+import { DataTexture } from '../textures/DataTexture';
+import { DefaultLoadingManager } from './LoadingManager';
 
 /**
- * @author Nikos M. / https://github.com/foo123/
- *
- * Abstract Base class to load generic binary textures formats (rgbe, hdr, ...)
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function DataTextureLoader( manager ) {
+export function DataTextureLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
@@ -20,7 +19,7 @@ function DataTextureLoader( manager ) {
 
 Object.assign( DataTextureLoader.prototype, {
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		var scope = this;
 
@@ -29,7 +28,7 @@ Object.assign( DataTextureLoader.prototype, {
 		var loader = new FileLoader( this.manager );
 		loader.setResponseType( 'arraybuffer' );
 
-		loader.load( url, function ( buffer ) {
+		loader.load( url, export function ( buffer ) {
 
 			var texData = scope._parser( buffer );
 
@@ -82,14 +81,14 @@ Object.assign( DataTextureLoader.prototype, {
 
 			if ( onLoad ) onLoad( texture, texData );
 
-		}, onProgress, onError );
+		} onProgress, onError );
 
 
 		return texture;
 
 	}
 
-} );
+}
 
 
 export { DataTextureLoader };

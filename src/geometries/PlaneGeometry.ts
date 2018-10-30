@@ -1,15 +1,15 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
+import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
 
 // PlaneGeometry
 
-function PlaneGeometry( width, height, widthSegments, heightSegments ) {
+export function PlaneGeometry( width, height, widthSegments, heightSegments ) {
 
 	Geometry.call( this );
 
@@ -32,7 +32,7 @@ PlaneGeometry.prototype.constructor = PlaneGeometry;
 
 // PlaneBufferGeometry
 
-function PlaneBufferGeometry( width, height, widthSegments, heightSegments ) {
+export function PlaneBufferGeometry( width, height, widthSegments, heightSegments ) {
 
 	BufferGeometry.call( this );
 

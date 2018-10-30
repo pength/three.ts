@@ -1,8 +1,9 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.BloomPass = function ( strength, kernelSize, sigma, resolution ) {
+THREE.BloomPass = export function ( strength, kernelSize, sigma, resolution ) {
 
 	THREE.Pass.call( this );
 
@@ -39,7 +40,7 @@ THREE.BloomPass = function ( strength, kernelSize, sigma, resolution ) {
 		blending: THREE.AdditiveBlending,
 		transparent: true
 
-	} );
+	}
 
 	// convolution material
 
@@ -63,7 +64,7 @@ THREE.BloomPass = function ( strength, kernelSize, sigma, resolution ) {
 			"KERNEL_SIZE_INT": kernelSize.toFixed( 0 )
 		}
 
-	} );
+	}
 
 	this.needsSwap = false;
 
@@ -80,7 +81,7 @@ THREE.BloomPass.prototype = Object.assign( Object.create( THREE.Pass.prototype )
 
 	constructor: THREE.BloomPass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		if ( maskActive ) renderer.context.disable( renderer.context.STENCIL_TEST );
 
@@ -113,7 +114,7 @@ THREE.BloomPass.prototype = Object.assign( Object.create( THREE.Pass.prototype )
 
 	}
 
-} );
+}
 
 THREE.BloomPass.blurX = new THREE.Vector2( 0.001953125, 0.0 );
 THREE.BloomPass.blurY = new THREE.Vector2( 0.0, 0.001953125 );

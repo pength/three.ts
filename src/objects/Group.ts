@@ -1,10 +1,10 @@
-import { Object3D } from '../core/Object3D.js';
+import { Object3D } from '../core/Object3D';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function Group() {
+export function Group() {
 
 	Object3D.call( this );
 
@@ -18,7 +18,7 @@ Group.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	isGroup: true
 
-} );
+}
 
 
 export { Group };

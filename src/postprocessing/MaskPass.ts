@@ -1,8 +1,9 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.MaskPass = function ( scene, camera ) {
+THREE.MaskPass = export function ( scene, camera ) {
 
 	THREE.Pass.call( this );
 
@@ -20,7 +21,7 @@ THREE.MaskPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 
 	constructor: THREE.MaskPass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		var context = renderer.context;
 		var state = renderer.state;
@@ -73,10 +74,10 @@ THREE.MaskPass.prototype = Object.assign( Object.create( THREE.Pass.prototype ),
 
 	}
 
-} );
+}
 
 
-THREE.ClearMaskPass = function () {
+THREE.ClearMaskPass = export function () {
 
 	THREE.Pass.call( this );
 
@@ -88,10 +89,10 @@ THREE.ClearMaskPass.prototype = Object.create( THREE.Pass.prototype );
 
 Object.assign( THREE.ClearMaskPass.prototype, {
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		renderer.state.buffers.stencil.setTest( false );
 
 	}
 
-} );
+}

@@ -1,9 +1,8 @@
-import { Material } from './Material.js';
-import { Color } from '../math/Color.js';
-
+import { Material } from './Material';
+import { Color } from '../math/Color';
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
  * parameters = {
  *  color: <hex>,
@@ -17,7 +16,7 @@ import { Color } from '../math/Color.js';
  * }
  */
 
-function PointsMaterial( parameters ) {
+export function PointsMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -43,7 +42,7 @@ PointsMaterial.prototype.constructor = PointsMaterial;
 
 PointsMaterial.prototype.isPointsMaterial = true;
 
-PointsMaterial.prototype.copy = function ( source ) {
+PointsMaterial.prototype.copy = export function ( source ) {
 
 	Material.prototype.copy.call( this, source );
 

@@ -1,12 +1,11 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
- * @author szimek / https://github.com/szimek/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 var ImageUtils = {
 
-	getDataURL: function ( image ) {
+	getDataURL( image ) {
 
 		var canvas;
 

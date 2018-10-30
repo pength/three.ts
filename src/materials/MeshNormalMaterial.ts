@@ -1,10 +1,10 @@
-import { TangentSpaceNormalMap } from '../constants.js';
-import { Material } from './Material.js';
-import { Vector2 } from '../math/Vector2.js';
+import { TangentSpaceNormalMap } from '../constants';
+import { Material } from './Material';
+import { Vector2 } from '../math/Vector2';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author WestLangley / http://github.com/WestLangley
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
  * parameters = {
  *  opacity: <float>,
@@ -29,7 +29,7 @@ import { Vector2 } from '../math/Vector2.js';
  * }
  */
 
-function MeshNormalMaterial( parameters ) {
+export function MeshNormalMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -65,7 +65,7 @@ MeshNormalMaterial.prototype.constructor = MeshNormalMaterial;
 
 MeshNormalMaterial.prototype.isMeshNormalMaterial = true;
 
-MeshNormalMaterial.prototype.copy = function ( source ) {
+MeshNormalMaterial.prototype.copy = export function ( source ) {
 
 	Material.prototype.copy.call( this, source );
 

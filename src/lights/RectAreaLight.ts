@@ -1,10 +1,10 @@
-import { Light } from './Light.js';
+import { Light } from './Light';
 
 /**
- * @author abelnation / http://github.com/abelnation
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function RectAreaLight( color, intensity, width, height ) {
+export function RectAreaLight( color, intensity, width, height ) {
 
 	Light.call( this, color, intensity );
 
@@ -21,7 +21,7 @@ RectAreaLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	isRectAreaLight: true,
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		Light.prototype.copy.call( this, source );
 
@@ -30,9 +30,9 @@ RectAreaLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	toJSON: function ( meta ) {
+	toJSON( meta ) {
 
 		var data = Light.prototype.toJSON.call( this, meta );
 
@@ -43,6 +43,6 @@ RectAreaLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	}
 
-} );
+}
 
 export { RectAreaLight };

@@ -1,14 +1,11 @@
-import { MeshStandardMaterial } from './MeshStandardMaterial.js';
+import { MeshStandardMaterial } from './MeshStandardMaterial';
 
 /**
- * @author WestLangley / http://github.com/WestLangley
- *
- * parameters = {
- *  reflectivity: <float>
- * }
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function MeshPhysicalMaterial( parameters ) {
+export function MeshPhysicalMaterial( parameters ) {
 
 	MeshStandardMaterial.call( this );
 
@@ -30,7 +27,7 @@ MeshPhysicalMaterial.prototype.constructor = MeshPhysicalMaterial;
 
 MeshPhysicalMaterial.prototype.isMeshPhysicalMaterial = true;
 
-MeshPhysicalMaterial.prototype.copy = function ( source ) {
+MeshPhysicalMaterial.prototype.copy = export function ( source ) {
 
 	MeshStandardMaterial.prototype.copy.call( this, source );
 

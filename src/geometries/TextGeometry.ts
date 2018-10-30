@@ -1,28 +1,14 @@
 /**
- * @author zz85 / http://www.lab4games.net/zz85/blog
- * @author alteredq / http://alteredqualia.com/
- *
- * Text = 3D Text
- *
- * parameters = {
- *  font: <THREE.Font>, // font
- *
- *  size: <float>, // size of the text
- *  height: <float>, // thickness to extrude text
- *  curveSegments: <int>, // number of points on the curves
- *
- *  bevelEnabled: <bool>, // turn on bevel
- *  bevelThickness: <float>, // how deep into text bevel goes
- *  bevelSize: <float> // how far from text outline is bevel
- * }
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { ExtrudeBufferGeometry } from './ExtrudeGeometry.js';
+import { Geometry } from '../core/Geometry';
+import { ExtrudeBufferGeometry } from './ExtrudeGeometry';
 
 // TextGeometry
 
-function TextGeometry( text, parameters ) {
+export function TextGeometry( text, parameters ) {
 
 	Geometry.call( this );
 
@@ -43,7 +29,7 @@ TextGeometry.prototype.constructor = TextGeometry;
 
 // TextBufferGeometry
 
-function TextBufferGeometry( text, parameters ) {
+export function TextBufferGeometry( text, parameters ) {
 
 	parameters = parameters || {};
 

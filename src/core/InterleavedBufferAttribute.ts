@@ -1,9 +1,10 @@
 
 /**
- * @author benaadams / https://twitter.com/ben_a_adams
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function InterleavedBufferAttribute( interleavedBuffer, itemSize, offset, normalized ) {
+export function InterleavedBufferAttribute( interleavedBuffer, itemSize, offset, normalized ) {
 
 	this.data = interleavedBuffer;
 	this.itemSize = itemSize;
@@ -17,17 +18,17 @@ Object.defineProperties( InterleavedBufferAttribute.prototype, {
 
 	count: {
 
-		get: function () {
+		get() {
 
 			return this.data.count;
 
 		}
 
-	},
+	}
 
 	array: {
 
-		get: function () {
+		get() {
 
 			return this.data.array;
 
@@ -35,69 +36,69 @@ Object.defineProperties( InterleavedBufferAttribute.prototype, {
 
 	}
 
-} );
+}
 
 Object.assign( InterleavedBufferAttribute.prototype, {
 
 	isInterleavedBufferAttribute: true,
 
-	setX: function ( index, x ) {
+	setX( index, x ) {
 
 		this.data.array[ index * this.data.stride + this.offset ] = x;
 
 		return this;
 
-	},
+	}
 
-	setY: function ( index, y ) {
+	setY( index, y ) {
 
 		this.data.array[ index * this.data.stride + this.offset + 1 ] = y;
 
 		return this;
 
-	},
+	}
 
-	setZ: function ( index, z ) {
+	setZ( index, z ) {
 
 		this.data.array[ index * this.data.stride + this.offset + 2 ] = z;
 
 		return this;
 
-	},
+	}
 
-	setW: function ( index, w ) {
+	setW( index, w ) {
 
 		this.data.array[ index * this.data.stride + this.offset + 3 ] = w;
 
 		return this;
 
-	},
+	}
 
-	getX: function ( index ) {
+	getX( index ) {
 
 		return this.data.array[ index * this.data.stride + this.offset ];
 
-	},
+	}
 
-	getY: function ( index ) {
+	getY( index ) {
 
 		return this.data.array[ index * this.data.stride + this.offset + 1 ];
 
-	},
+	}
 
-	getZ: function ( index ) {
+	getZ( index ) {
 
 		return this.data.array[ index * this.data.stride + this.offset + 2 ];
 
-	},
+	}
 
-	getW: function ( index ) {
+	getW( index ) {
 
 		return this.data.array[ index * this.data.stride + this.offset + 3 ];
 
-	},
+	}
 
-	setXY: function ( index, x, y ) {
+	setXY( index, x, y ) {
 
 		index = index * this.data.stride + this.offset;
 
@@ -106,9 +107,9 @@ Object.assign( InterleavedBufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	setXYZ: function ( index, x, y, z ) {
+	setXYZ( index, x, y, z ) {
 
 		index = index * this.data.stride + this.offset;
 
@@ -118,9 +119,9 @@ Object.assign( InterleavedBufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	setXYZW: function ( index, x, y, z, w ) {
+	setXYZW( index, x, y, z, w ) {
 
 		index = index * this.data.stride + this.offset;
 
@@ -133,7 +134,7 @@ Object.assign( InterleavedBufferAttribute.prototype, {
 
 	}
 
-} );
+}
 
 
 export { InterleavedBufferAttribute };

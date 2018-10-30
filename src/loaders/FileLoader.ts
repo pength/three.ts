@@ -1,13 +1,14 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Cache } from './Cache.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
+import { Cache } from './Cache';
+import { DefaultLoadingManager } from './LoadingManager';
 
 var loading = {};
 
-function FileLoader( manager ) {
+export function FileLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
@@ -15,7 +16,7 @@ function FileLoader( manager ) {
 
 Object.assign( FileLoader.prototype, {
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		if ( url === undefined ) url = '';
 
@@ -31,13 +32,13 @@ Object.assign( FileLoader.prototype, {
 
 			scope.manager.itemStart( url );
 
-			setTimeout( function () {
+			setTimeout( export function () {
 
 				if ( onLoad ) onLoad( cached );
 
 				scope.manager.itemEnd( url );
 
-			}, 0 );
+			} 0 );
 
 			return cached;
 
@@ -53,7 +54,7 @@ Object.assign( FileLoader.prototype, {
 				onProgress: onProgress,
 				onError: onError
 
-			} );
+			}
 
 			return;
 
@@ -94,7 +95,7 @@ Object.assign( FileLoader.prototype, {
 
 						if ( responseType === 'blob' ) {
 
-							response = new Blob( [ view.buffer ], { type: mimeType } );
+							response = new Blob( [ view.buffer ], { type: mimeType }
 
 						} else {
 
@@ -126,25 +127,25 @@ Object.assign( FileLoader.prototype, {
 				}
 
 				// Wait for next browser tick like standard XMLHttpRequest event dispatching does
-				window.setTimeout( function () {
+				window.setTimeout( export function () {
 
 					if ( onLoad ) onLoad( response );
 
 					scope.manager.itemEnd( url );
 
-				}, 0 );
+				} 0 );
 
 			} catch ( error ) {
 
 				// Wait for next browser tick like standard XMLHttpRequest event dispatching does
-				window.setTimeout( function () {
+				window.setTimeout( export function () {
 
 					if ( onError ) onError( error );
 
 					scope.manager.itemEnd( url );
 					scope.manager.itemError( url );
 
-				}, 0 );
+				} 0 );
 
 			}
 
@@ -160,13 +161,13 @@ Object.assign( FileLoader.prototype, {
 				onProgress: onProgress,
 				onError: onError
 
-			} );
+			}
 
 			var request = new XMLHttpRequest();
 
 			request.open( 'GET', url, true );
 
-			request.addEventListener( 'load', function ( event ) {
+			request.addEventListener( 'load', export function ( event ) {
 
 				var response = this.response;
 
@@ -206,9 +207,9 @@ Object.assign( FileLoader.prototype, {
 
 				}
 
-			}, false );
+			} false );
 
-			request.addEventListener( 'progress', function ( event ) {
+			request.addEventListener( 'progress', export function ( event ) {
 
 				var callbacks = loading[ url ];
 
@@ -219,27 +220,9 @@ Object.assign( FileLoader.prototype, {
 
 				}
 
-			}, false );
+			} false );
 
-			request.addEventListener( 'error', function ( event ) {
-
-				var callbacks = loading[ url ];
-
-				delete loading[ url ];
-
-				for ( var i = 0, il = callbacks.length; i < il; i ++ ) {
-
-					var callback = callbacks[ i ];
-					if ( callback.onError ) callback.onError( event );
-
-				}
-
-				scope.manager.itemEnd( url );
-				scope.manager.itemError( url );
-
-			}, false );
-
-			request.addEventListener( 'abort', function ( event ) {
+			request.addEventListener( 'error', export function ( event ) {
 
 				var callbacks = loading[ url ];
 
@@ -255,7 +238,25 @@ Object.assign( FileLoader.prototype, {
 				scope.manager.itemEnd( url );
 				scope.manager.itemError( url );
 
-			}, false );
+			} false );
+
+			request.addEventListener( 'abort', export function ( event ) {
+
+				var callbacks = loading[ url ];
+
+				delete loading[ url ];
+
+				for ( var i = 0, il = callbacks.length; i < il; i ++ ) {
+
+					var callback = callbacks[ i ];
+					if ( callback.onError ) callback.onError( event );
+
+				}
+
+				scope.manager.itemEnd( url );
+				scope.manager.itemError( url );
+
+			} false );
 
 			if ( this.responseType !== undefined ) request.responseType = this.responseType;
 			if ( this.withCredentials !== undefined ) request.withCredentials = this.withCredentials;
@@ -276,44 +277,44 @@ Object.assign( FileLoader.prototype, {
 
 		return request;
 
-	},
+	}
 
-	setPath: function ( value ) {
+	setPath( value ) {
 
 		this.path = value;
 		return this;
 
-	},
+	}
 
-	setResponseType: function ( value ) {
+	setResponseType( value ) {
 
 		this.responseType = value;
 		return this;
 
-	},
+	}
 
-	setWithCredentials: function ( value ) {
+	setWithCredentials( value ) {
 
 		this.withCredentials = value;
 		return this;
 
-	},
+	}
 
-	setMimeType: function ( value ) {
+	setMimeType( value ) {
 
 		this.mimeType = value;
 		return this;
 
-	},
+	}
 
-	setRequestHeader: function ( value ) {
+	setRequestHeader( value ) {
 
 		this.requestHeader = value;
 		return this;
 
 	}
 
-} );
+}
 
 
 export { FileLoader };

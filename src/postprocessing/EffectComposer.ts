@@ -1,8 +1,9 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.EffectComposer = function ( renderer, renderTarget ) {
+THREE.EffectComposer = export function ( renderer, renderTarget ) {
 
 	this.renderer = renderer;
 
@@ -50,30 +51,30 @@ THREE.EffectComposer = function ( renderer, renderTarget ) {
 
 Object.assign( THREE.EffectComposer.prototype, {
 
-	swapBuffers: function () {
+	swapBuffers() {
 
 		var tmp = this.readBuffer;
 		this.readBuffer = this.writeBuffer;
 		this.writeBuffer = tmp;
 
-	},
+	}
 
-	addPass: function ( pass ) {
+	addPass( pass ) {
 
 		this.passes.push( pass );
 
 		var size = this.renderer.getDrawingBufferSize();
 		pass.setSize( size.width, size.height );
 
-	},
+	}
 
-	insertPass: function ( pass, index ) {
+	insertPass( pass, index ) {
 
 		this.passes.splice( index, 0, pass );
 
-	},
+	}
 
-	render: function ( delta ) {
+	render( delta ) {
 
 		var maskActive = false;
 
@@ -121,9 +122,9 @@ Object.assign( THREE.EffectComposer.prototype, {
 
 		}
 
-	},
+	}
 
-	reset: function ( renderTarget ) {
+	reset( renderTarget ) {
 
 		if ( renderTarget === undefined ) {
 
@@ -142,9 +143,9 @@ Object.assign( THREE.EffectComposer.prototype, {
 		this.writeBuffer = this.renderTarget1;
 		this.readBuffer = this.renderTarget2;
 
-	},
+	}
 
-	setSize: function ( width, height ) {
+	setSize( width, height ) {
 
 		this.renderTarget1.setSize( width, height );
 		this.renderTarget2.setSize( width, height );
@@ -157,10 +158,10 @@ Object.assign( THREE.EffectComposer.prototype, {
 
 	}
 
-} );
+}
 
 
-THREE.Pass = function () {
+THREE.Pass = export function () {
 
 	// if set to true, the pass is processed by the composer
 	this.enabled = true;
@@ -178,12 +179,12 @@ THREE.Pass = function () {
 
 Object.assign( THREE.Pass.prototype, {
 
-	setSize: function ( width, height ) {},
+	setSize( width, height ) {}
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		console.error( 'THREE.Pass: .render() must be implemented in derived pass.' );
 
 	}
 
-} );
+}

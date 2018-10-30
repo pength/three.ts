@@ -1,12 +1,13 @@
-import { Material } from './Material.js';
-import { UniformsUtils } from '../renderers/shaders/UniformsUtils.js';
+import { Material } from './Material';
+import { UniformsUtils } from '../renderers/shaders/UniformsUtils';
 
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
  * parameters = {
- *  defines: { "label" : "value" },
- *  uniforms: { "parameter1": { value: 1.0 }, "parameter2": { value2: 2 } },
+ *  defines: { "label" : "value" }
+ *  uniforms: { "parameter1": { value: 1.0 } "parameter2": { value2: 2 } }
  *
  *  fragmentShader: <string>,
  *  vertexShader: <string>,
@@ -22,7 +23,7 @@ import { UniformsUtils } from '../renderers/shaders/UniformsUtils.js';
  * }
  */
 
-function ShaderMaterial( parameters ) {
+export function ShaderMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -84,7 +85,7 @@ ShaderMaterial.prototype.constructor = ShaderMaterial;
 
 ShaderMaterial.prototype.isShaderMaterial = true;
 
-ShaderMaterial.prototype.copy = function ( source ) {
+ShaderMaterial.prototype.copy = export function ( source ) {
 
 	Material.prototype.copy.call( this, source );
 
@@ -93,7 +94,7 @@ ShaderMaterial.prototype.copy = function ( source ) {
 
 	this.uniforms = UniformsUtils.clone( source.uniforms );
 
-	this.defines = Object.assign( {}, source.defines );
+	this.defines = Object.assign( {} source.defines );
 
 	this.wireframe = source.wireframe;
 	this.wireframeLinewidth = source.wireframeLinewidth;
@@ -112,7 +113,7 @@ ShaderMaterial.prototype.copy = function ( source ) {
 
 };
 
-ShaderMaterial.prototype.toJSON = function ( meta ) {
+ShaderMaterial.prototype.toJSON = export function ( meta ) {
 
 	var data = Material.prototype.toJSON.call( this, meta );
 

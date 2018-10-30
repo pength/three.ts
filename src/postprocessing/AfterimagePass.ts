@@ -1,8 +1,9 @@
 /**
- * @author HypnosNova / https://www.threejs.org.cn/gallery/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.AfterimagePass = function ( damp ) {
+THREE.AfterimagePass = export function ( damp ) {
 
 	THREE.Pass.call( this );
 
@@ -21,7 +22,7 @@ THREE.AfterimagePass = function ( damp ) {
 		magFilter: THREE.NearestFilter,
 		format: THREE.RGBAFormat
 
-	} );
+	}
 
 	this.textureOld = new THREE.WebGLRenderTarget( window.innerWidth, window.innerHeight, {
 
@@ -29,7 +30,7 @@ THREE.AfterimagePass = function ( damp ) {
 		magFilter: THREE.NearestFilter,
 		format: THREE.RGBAFormat
 
-	} );
+	}
 
 	this.shaderMaterial = new THREE.ShaderMaterial( {
 
@@ -37,7 +38,7 @@ THREE.AfterimagePass = function ( damp ) {
 		vertexShader: this.shader.vertexShader,
 		fragmentShader: this.shader.fragmentShader
 
-	} );
+	}
 
 	this.sceneComp = new THREE.Scene();
 	this.scene = new THREE.Scene();
@@ -52,7 +53,7 @@ THREE.AfterimagePass = function ( damp ) {
 
 	var material = new THREE.MeshBasicMaterial( { 
 		map: this.textureComp.texture
-	} );
+	}
 
 	var quadScreen = new THREE.Mesh( geometry, material );
 	this.scene.add( quadScreen );
@@ -63,7 +64,7 @@ THREE.AfterimagePass.prototype = Object.assign( Object.create( THREE.Pass.protot
 
 	constructor: THREE.AfterimagePass,
 
-	render: function ( renderer, writeBuffer, readBuffer ) {
+	render( renderer, writeBuffer, readBuffer ) {
 
 		this.uniforms[ "tOld" ].value = this.textureOld.texture;
 		this.uniforms[ "tNew" ].value = readBuffer.texture;
@@ -85,4 +86,4 @@ THREE.AfterimagePass.prototype = Object.assign( Object.create( THREE.Pass.protot
 
 	}
 
-} );
+}

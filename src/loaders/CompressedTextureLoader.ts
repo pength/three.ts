@@ -1,15 +1,14 @@
-import { LinearFilter } from '../constants.js';
-import { FileLoader } from './FileLoader.js';
-import { CompressedTexture } from '../textures/CompressedTexture.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
+import { LinearFilter } from '../constants';
+import { FileLoader } from './FileLoader';
+import { CompressedTexture } from '../textures/CompressedTexture';
+import { DefaultLoadingManager } from './LoadingManager';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- *
- * Abstract Base class to block based textures loader (dds, pvr, ...)
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function CompressedTextureLoader( manager ) {
+export function CompressedTextureLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
@@ -20,7 +19,7 @@ function CompressedTextureLoader( manager ) {
 
 Object.assign( CompressedTextureLoader.prototype, {
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		var scope = this;
 
@@ -33,9 +32,9 @@ Object.assign( CompressedTextureLoader.prototype, {
 		loader.setPath( this.path );
 		loader.setResponseType( 'arraybuffer' );
 
-		function loadTexture( i ) {
+		export function loadTexture( i ) {
 
-			loader.load( url[ i ], function ( buffer ) {
+			loader.load( url[ i ], export function ( buffer ) {
 
 				var texDatas = scope._parser( buffer, true );
 
@@ -60,7 +59,7 @@ Object.assign( CompressedTextureLoader.prototype, {
 
 				}
 
-			}, onProgress, onError );
+			} onProgress, onError );
 
 		}
 
@@ -78,7 +77,7 @@ Object.assign( CompressedTextureLoader.prototype, {
 
 			// compressed cubemap texture stored in a single DDS file
 
-			loader.load( url, function ( buffer ) {
+			loader.load( url, export function ( buffer ) {
 
 				var texDatas = scope._parser( buffer, true );
 
@@ -120,22 +119,22 @@ Object.assign( CompressedTextureLoader.prototype, {
 
 				if ( onLoad ) onLoad( texture );
 
-			}, onProgress, onError );
+			} onProgress, onError );
 
 		}
 
 		return texture;
 
-	},
+	}
 
-	setPath: function ( value ) {
+	setPath( value ) {
 
 		this.path = value;
 		return this;
 
 	}
 
-} );
+}
 
 
 export { CompressedTextureLoader };

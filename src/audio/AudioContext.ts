@@ -1,12 +1,12 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
 var context;
 
 var AudioContext = {
 
-	getContext: function () {
+	getContext() {
 
 		if ( context === undefined ) {
 
@@ -16,9 +16,9 @@ var AudioContext = {
 
 		return context;
 
-	},
+	}
 
-	setContext: function ( value ) {
+	setContext( value ) {
 
 		context = value;
 

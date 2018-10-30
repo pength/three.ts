@@ -1,8 +1,11 @@
-import { Vector2 } from '../../math/Vector2.js';
-import { Curve } from '../core/Curve.js';
+import { Vector2 } from '../../math/Vector2';
+import { Curve } from '../core/Curve';
 
-
-function LineCurve( v1, v2 ) {
+/**
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
+export function LineCurve( v1, v2 ) {
 
 	Curve.call( this );
 
@@ -18,7 +21,7 @@ LineCurve.prototype.constructor = LineCurve;
 
 LineCurve.prototype.isLineCurve = true;
 
-LineCurve.prototype.getPoint = function ( t, optionalTarget ) {
+LineCurve.prototype.getPoint = export function ( t, optionalTarget ) {
 
 	var point = optionalTarget || new Vector2();
 
@@ -39,13 +42,13 @@ LineCurve.prototype.getPoint = function ( t, optionalTarget ) {
 
 // Line curve is linear, so we can overwrite default getPointAt
 
-LineCurve.prototype.getPointAt = function ( u, optionalTarget ) {
+LineCurve.prototype.getPointAt = export function ( u, optionalTarget ) {
 
 	return this.getPoint( u, optionalTarget );
 
 };
 
-LineCurve.prototype.getTangent = function ( /* t */ ) {
+LineCurve.prototype.getTangent = export function ( /* t */ ) {
 
 	var tangent = this.v2.clone().sub( this.v1 );
 
@@ -53,7 +56,7 @@ LineCurve.prototype.getTangent = function ( /* t */ ) {
 
 };
 
-LineCurve.prototype.copy = function ( source ) {
+LineCurve.prototype.copy = export function ( source ) {
 
 	Curve.prototype.copy.call( this, source );
 
@@ -64,7 +67,7 @@ LineCurve.prototype.copy = function ( source ) {
 
 };
 
-LineCurve.prototype.toJSON = function () {
+LineCurve.prototype.toJSON = export function () {
 
 	var data = Curve.prototype.toJSON.call( this );
 
@@ -75,7 +78,7 @@ LineCurve.prototype.toJSON = function () {
 
 };
 
-LineCurve.prototype.fromJSON = function ( json ) {
+LineCurve.prototype.fromJSON = export function ( json ) {
 
 	Curve.prototype.fromJSON.call( this, json );
 

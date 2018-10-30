@@ -1,16 +1,15 @@
 /**
- * @author abelnation / http://github.com/abelnation
- * @author Mugen87 / http://github.com/Mugen87
- * @author WestLangley / http://github.com/WestLangley
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Object3D } from '../core/Object3D.js';
-import { Line } from '../objects/Line.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { BufferAttribute } from '../core/BufferAttribute.js';
+import { Object3D } from '../core/Object3D';
+import { Line } from '../objects/Line';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { BufferAttribute } from '../core/BufferAttribute';
 
-function RectAreaLightHelper( light, color ) {
+export function RectAreaLightHelper( light, color ) {
 
 	Object3D.call( this );
 
@@ -22,7 +21,7 @@ function RectAreaLightHelper( light, color ) {
 
 	this.color = color;
 
-	var material = new LineBasicMaterial( { fog: false } );
+	var material = new LineBasicMaterial( { fog: false }
 
 	var geometry = new BufferGeometry();
 
@@ -39,14 +38,14 @@ function RectAreaLightHelper( light, color ) {
 RectAreaLightHelper.prototype = Object.create( Object3D.prototype );
 RectAreaLightHelper.prototype.constructor = RectAreaLightHelper;
 
-RectAreaLightHelper.prototype.dispose = function () {
+RectAreaLightHelper.prototype.dispose = export function () {
 
 	this.children[ 0 ].geometry.dispose();
 	this.children[ 0 ].material.dispose();
 
 };
 
-RectAreaLightHelper.prototype.update = function () {
+RectAreaLightHelper.prototype.update = export function () {
 
 	// calculate new dimensions of the helper
 

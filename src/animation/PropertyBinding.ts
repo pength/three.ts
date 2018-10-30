@@ -1,17 +1,12 @@
 /**
- *
- * A reference to a real property in the scene graph.
- *
- *
- * @author Ben Houston / http://clara.io/
- * @author David Sarno / http://lighthaus.us/
- * @author tschw
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 // Characters [].:/ are reserved for track binding syntax.
 var RESERVED_CHARS_RE = '\\[\\]\\.:\\/';
 
-function Composite( targetGroup, path, optionalParsedPath ) {
+export function Composite( targetGroup, path, optionalParsedPath ) {
 
 	var parsedPath = optionalParsedPath || PropertyBinding.parseTrackName( path );
 
@@ -22,7 +17,7 @@ function Composite( targetGroup, path, optionalParsedPath ) {
 
 Object.assign( Composite.prototype, {
 
-	getValue: function ( array, offset ) {
+	getValue( array, offset ) {
 
 		this.bind(); // bind all binding
 
@@ -32,9 +27,9 @@ Object.assign( Composite.prototype, {
 		// and only call .getValue on the first
 		if ( binding !== undefined ) binding.getValue( array, offset );
 
-	},
+	}
 
-	setValue: function ( array, offset ) {
+	setValue( array, offset ) {
 
 		var bindings = this._bindings;
 
@@ -45,9 +40,9 @@ Object.assign( Composite.prototype, {
 
 		}
 
-	},
+	}
 
-	bind: function () {
+	bind() {
 
 		var bindings = this._bindings;
 
@@ -58,9 +53,9 @@ Object.assign( Composite.prototype, {
 
 		}
 
-	},
+	}
 
-	unbind: function () {
+	unbind() {
 
 		var bindings = this._bindings;
 
@@ -73,10 +68,10 @@ Object.assign( Composite.prototype, {
 
 	}
 
-} );
+}
 
 
-function PropertyBinding( rootNode, path, parsedPath ) {
+export function PropertyBinding( rootNode, path, parsedPath ) {
 
 	this.path = path;
 	this.parsedPath = parsedPath || PropertyBinding.parseTrackName( path );
@@ -91,7 +86,7 @@ Object.assign( PropertyBinding, {
 
 	Composite: Composite,
 
-	create: function ( root, path, parsedPath ) {
+	create( root, path, parsedPath ) {
 
 		if ( ! ( root && root.isAnimationObjectGroup ) ) {
 
@@ -103,7 +98,7 @@ Object.assign( PropertyBinding, {
 
 		}
 
-	},
+	}
 
 	/**
 	 * Replaces spaces with underscores and removes unsupported characters from
@@ -112,11 +107,11 @@ Object.assign( PropertyBinding, {
 	 * @param  {string} name Node name to be sanitized.
 	 * @return {string}
 	 */
-	sanitizeNodeName: ( function () {
+	sanitizeNodeName: ( export function () {
 
 		var reservedRe = new RegExp( '[' + RESERVED_CHARS_RE + ']', 'g' );
 
-		return function sanitizeNodeName( name ) {
+		return export function sanitizeNodeName( name ) {
 
 			return name.replace( /\s/g, '_' ).replace( reservedRe, '' );
 
@@ -124,7 +119,7 @@ Object.assign( PropertyBinding, {
 
 	}() ),
 
-	parseTrackName: function () {
+	parseTrackName() {
 
 		// Attempts to allow node names from any language. ES5's `\w` regexp matches
 		// only latin characters, and the unicode \p{L} is not yet supported. So
@@ -158,7 +153,7 @@ Object.assign( PropertyBinding, {
 
 		var supportedObjectNames = [ 'material', 'materials', 'bones' ];
 
-		return function parseTrackName( trackName ) {
+		return export function parseTrackName( trackName ) {
 
 			var matches = trackRe.exec( trackName );
 
@@ -206,9 +201,9 @@ Object.assign( PropertyBinding, {
 
 		};
 
-	}(),
+	}
 
-	findNode: function ( root, nodeName ) {
+	findNode( root, nodeName ) {
 
 		if ( ! nodeName || nodeName === "" || nodeName === "root" || nodeName === "." || nodeName === - 1 || nodeName === root.name || nodeName === root.uuid ) {
 
@@ -232,7 +227,7 @@ Object.assign( PropertyBinding, {
 		// search into node subtree.
 		if ( root.children ) {
 
-			var searchNodeSubtree = function ( children ) {
+			var searchNodeSubtree = export function ( children ) {
 
 				for ( var i = 0; i < children.length; i ++ ) {
 
@@ -268,36 +263,36 @@ Object.assign( PropertyBinding, {
 
 	}
 
-} );
+}
 
 Object.assign( PropertyBinding.prototype, { // prototype, continued
 
 	// these are used to "bind" a nonexistent property
-	_getValue_unavailable: function () {},
-	_setValue_unavailable: function () {},
+	_getValue_unavailable() {}
+	_setValue_unavailable() {}
 
 	BindingType: {
 		Direct: 0,
 		EntireArray: 1,
 		ArrayElement: 2,
 		HasFromToArray: 3
-	},
+	}
 
 	Versioning: {
 		None: 0,
 		NeedsUpdate: 1,
 		MatrixWorldNeedsUpdate: 2
-	},
+	}
 
 	GetterByBindingType: [
 
-		function getValue_direct( buffer, offset ) {
+		export function getValue_direct( buffer, offset ) {
 
 			buffer[ offset ] = this.node[ this.propertyName ];
 
-		},
+		}
 
-		function getValue_array( buffer, offset ) {
+		export function getValue_array( buffer, offset ) {
 
 			var source = this.resolvedProperty;
 
@@ -307,15 +302,15 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 
 			}
 
-		},
+		}
 
-		function getValue_arrayElement( buffer, offset ) {
+		export function getValue_arrayElement( buffer, offset ) {
 
 			buffer[ offset ] = this.resolvedProperty[ this.propertyIndex ];
 
-		},
+		}
 
-		function getValue_toArray( buffer, offset ) {
+		export function getValue_toArray( buffer, offset ) {
 
 			this.resolvedProperty.toArray( buffer, offset );
 
@@ -328,20 +323,20 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 		[
 			// Direct
 
-			function setValue_direct( buffer, offset ) {
+			export function setValue_direct( buffer, offset ) {
 
 				this.targetObject[ this.propertyName ] = buffer[ offset ];
 
-			},
+			}
 
-			function setValue_direct_setNeedsUpdate( buffer, offset ) {
+			export function setValue_direct_setNeedsUpdate( buffer, offset ) {
 
 				this.targetObject[ this.propertyName ] = buffer[ offset ];
 				this.targetObject.needsUpdate = true;
 
-			},
+			}
 
-			function setValue_direct_setMatrixWorldNeedsUpdate( buffer, offset ) {
+			export function setValue_direct_setMatrixWorldNeedsUpdate( buffer, offset ) {
 
 				this.targetObject[ this.propertyName ] = buffer[ offset ];
 				this.targetObject.matrixWorldNeedsUpdate = true;
@@ -352,7 +347,7 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 
 			// EntireArray
 
-			function setValue_array( buffer, offset ) {
+			export function setValue_array( buffer, offset ) {
 
 				var dest = this.resolvedProperty;
 
@@ -362,9 +357,9 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 
 				}
 
-			},
+			}
 
-			function setValue_array_setNeedsUpdate( buffer, offset ) {
+			export function setValue_array_setNeedsUpdate( buffer, offset ) {
 
 				var dest = this.resolvedProperty;
 
@@ -376,9 +371,9 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 
 				this.targetObject.needsUpdate = true;
 
-			},
+			}
 
-			function setValue_array_setMatrixWorldNeedsUpdate( buffer, offset ) {
+			export function setValue_array_setMatrixWorldNeedsUpdate( buffer, offset ) {
 
 				var dest = this.resolvedProperty;
 
@@ -396,20 +391,20 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 
 			// ArrayElement
 
-			function setValue_arrayElement( buffer, offset ) {
+			export function setValue_arrayElement( buffer, offset ) {
 
 				this.resolvedProperty[ this.propertyIndex ] = buffer[ offset ];
 
-			},
+			}
 
-			function setValue_arrayElement_setNeedsUpdate( buffer, offset ) {
+			export function setValue_arrayElement_setNeedsUpdate( buffer, offset ) {
 
 				this.resolvedProperty[ this.propertyIndex ] = buffer[ offset ];
 				this.targetObject.needsUpdate = true;
 
-			},
+			}
 
-			function setValue_arrayElement_setMatrixWorldNeedsUpdate( buffer, offset ) {
+			export function setValue_arrayElement_setMatrixWorldNeedsUpdate( buffer, offset ) {
 
 				this.resolvedProperty[ this.propertyIndex ] = buffer[ offset ];
 				this.targetObject.matrixWorldNeedsUpdate = true;
@@ -420,20 +415,20 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 
 			// HasToFromArray
 
-			function setValue_fromArray( buffer, offset ) {
+			export function setValue_fromArray( buffer, offset ) {
 
 				this.resolvedProperty.fromArray( buffer, offset );
 
-			},
+			}
 
-			function setValue_fromArray_setNeedsUpdate( buffer, offset ) {
+			export function setValue_fromArray_setNeedsUpdate( buffer, offset ) {
 
 				this.resolvedProperty.fromArray( buffer, offset );
 				this.targetObject.needsUpdate = true;
 
-			},
+			}
 
-			function setValue_fromArray_setMatrixWorldNeedsUpdate( buffer, offset ) {
+			export function setValue_fromArray_setMatrixWorldNeedsUpdate( buffer, offset ) {
 
 				this.resolvedProperty.fromArray( buffer, offset );
 				this.targetObject.matrixWorldNeedsUpdate = true;
@@ -444,7 +439,7 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 
 	],
 
-	getValue: function getValue_unbound( targetArray, offset ) {
+	getValuegetValue_unbound( targetArray, offset ) {
 
 		this.bind();
 		this.getValue( targetArray, offset );
@@ -455,17 +450,17 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 		// the bound state. When the property is not found, the methods
 		// become no-ops.
 
-	},
+	}
 
-	setValue: function getValue_unbound( sourceArray, offset ) {
+	setValuegetValue_unbound( sourceArray, offset ) {
 
 		this.bind();
 		this.setValue( sourceArray, offset );
 
-	},
+	}
 
 	// create getter / setter pair for a property in the scene graph
-	bind: function () {
+	bind() {
 
 		var targetObject = this.node,
 			parsedPath = this.parsedPath,
@@ -699,9 +694,9 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 		this.getValue = this.GetterByBindingType[ bindingType ];
 		this.setValue = this.SetterByBindingTypeAndVersioning[ bindingType ][ versioning ];
 
-	},
+	}
 
-	unbind: function () {
+	unbind() {
 
 		this.node = null;
 
@@ -712,7 +707,7 @@ Object.assign( PropertyBinding.prototype, { // prototype, continued
 
 	}
 
-} );
+}
 
 //!\ DECLARE ALIAS AFTER assign prototype !
 Object.assign( PropertyBinding.prototype, {
@@ -721,6 +716,6 @@ Object.assign( PropertyBinding.prototype, {
 	_getValue_unbound: PropertyBinding.prototype.getValue,
 	_setValue_unbound: PropertyBinding.prototype.setValue,
 
-} );
+}
 
 export { PropertyBinding };

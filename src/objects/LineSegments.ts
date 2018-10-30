@@ -1,12 +1,13 @@
-import { Line } from './Line.js';
-import { Vector3 } from '../math/Vector3.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
+import { Line } from './Line';
+import { Vector3 } from '../math/Vector3';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function LineSegments( geometry, material ) {
+export function LineSegments( geometry, material ) {
 
 	Line.call( this, geometry, material );
 
@@ -20,12 +21,12 @@ LineSegments.prototype = Object.assign( Object.create( Line.prototype ), {
 
 	isLineSegments: true,
 
-	computeLineDistances: ( function () {
+	computeLineDistances: ( export function () {
 
 		var start = new Vector3();
 		var end = new Vector3();
 
-		return function computeLineDistances() {
+		return export function computeLineDistances() {
 
 			var geometry = this.geometry;
 
@@ -79,7 +80,7 @@ LineSegments.prototype = Object.assign( Object.create( Line.prototype ), {
 
 	}() )
 
-} );
+}
 
 
 export { LineSegments };

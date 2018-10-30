@@ -1,10 +1,11 @@
 /**
- * @author Don McCurdy / https://www.donmccurdy.com
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 var LoaderUtils = {
 
-	decodeText: function ( array ) {
+	decodeText( array ) {
 
 		if ( typeof TextDecoder !== 'undefined' ) {
 
@@ -27,9 +28,9 @@ var LoaderUtils = {
 		// Merges multi-byte utf-8 characters.
 		return decodeURIComponent( escape( s ) );
 
-	},
+	}
 
-	extractUrlBase: function ( url ) {
+	extractUrlBase( url ) {
 
 		var index = url.lastIndexOf( '/' );
 

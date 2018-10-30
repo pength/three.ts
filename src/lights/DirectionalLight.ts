@@ -1,13 +1,12 @@
-import { Light } from './Light.js';
-import { DirectionalLightShadow } from './DirectionalLightShadow.js';
-import { Object3D } from '../core/Object3D.js';
-
+import { Light } from './Light';
+import { DirectionalLightShadow } from './DirectionalLightShadow';
+import { Object3D } from '../core/Object3D';
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function DirectionalLight( color, intensity ) {
+export function DirectionalLight( color, intensity ) {
 
 	Light.call( this, color, intensity );
 
@@ -28,7 +27,7 @@ DirectionalLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	isDirectionalLight: true,
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		Light.prototype.copy.call( this, source );
 
@@ -40,7 +39,7 @@ DirectionalLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	}
 
-} );
+}
 
 
 export { DirectionalLight };

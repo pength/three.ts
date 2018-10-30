@@ -1,10 +1,11 @@
-import { Material } from './Material.js';
-import { MultiplyOperation } from '../constants.js';
-import { Color } from '../math/Color.js';
+import { Material } from './Material';
+import { MultiplyOperation } from '../constants';
+import { Color } from '../math/Color';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ *
  *
  * parameters = {
  *  color: <hex>,
@@ -40,7 +41,7 @@ import { Color } from '../math/Color.js';
  * }
  */
 
-function MeshLambertMaterial( parameters ) {
+export function MeshLambertMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -87,7 +88,7 @@ MeshLambertMaterial.prototype.constructor = MeshLambertMaterial;
 
 MeshLambertMaterial.prototype.isMeshLambertMaterial = true;
 
-MeshLambertMaterial.prototype.copy = function ( source ) {
+MeshLambertMaterial.prototype.copy = export function ( source ) {
 
 	Material.prototype.copy.call( this, source );
 

@@ -1,10 +1,10 @@
-import { Light } from './Light.js';
-
+import { Light } from './Light';
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function AmbientLight( color, intensity ) {
+export function AmbientLight( color, intensity ) {
 
 	Light.call( this, color, intensity );
 
@@ -20,7 +20,7 @@ AmbientLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	isAmbientLight: true
 
-} );
+}
 
 
 export { AmbientLight };

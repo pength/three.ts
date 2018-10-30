@@ -1,14 +1,15 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 var Cache = {
 
 	enabled: false,
 
-	files: {},
+	files: {}
 
-	add: function ( key, file ) {
+	add( key, file ) {
 
 		if ( this.enabled === false ) return;
 
@@ -16,9 +17,9 @@ var Cache = {
 
 		this.files[ key ] = file;
 
-	},
+	}
 
-	get: function ( key ) {
+	get( key ) {
 
 		if ( this.enabled === false ) return;
 
@@ -26,15 +27,15 @@ var Cache = {
 
 		return this.files[ key ];
 
-	},
+	}
 
-	remove: function ( key ) {
+	remove( key ) {
 
 		delete this.files[ key ];
 
-	},
+	}
 
-	clear: function () {
+	clear() {
 
 		this.files = {};
 

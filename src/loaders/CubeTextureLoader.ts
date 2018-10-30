@@ -1,13 +1,13 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
+import { ImageLoader } from './ImageLoader';
+import { CubeTexture } from '../textures/CubeTexture';
+import { DefaultLoadingManager } from './LoadingManager';
 
-import { ImageLoader } from './ImageLoader.js';
-import { CubeTexture } from '../textures/CubeTexture.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
 
-
-function CubeTextureLoader( manager ) {
+export function CubeTextureLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
@@ -17,7 +17,7 @@ Object.assign( CubeTextureLoader.prototype, {
 
 	crossOrigin: 'anonymous',
 
-	load: function ( urls, onLoad, onProgress, onError ) {
+	load( urls, onLoad, onProgress, onError ) {
 
 		var texture = new CubeTexture();
 
@@ -27,9 +27,9 @@ Object.assign( CubeTextureLoader.prototype, {
 
 		var loaded = 0;
 
-		function loadTexture( i ) {
+		export function loadTexture( i ) {
 
-			loader.load( urls[ i ], function ( image ) {
+			loader.load( urls[ i ], export function ( image ) {
 
 				texture.images[ i ] = image;
 
@@ -43,7 +43,7 @@ Object.assign( CubeTextureLoader.prototype, {
 
 				}
 
-			}, undefined, onError );
+			} undefined, onError );
 
 		}
 
@@ -55,23 +55,23 @@ Object.assign( CubeTextureLoader.prototype, {
 
 		return texture;
 
-	},
+	}
 
-	setCrossOrigin: function ( value ) {
+	setCrossOrigin( value ) {
 
 		this.crossOrigin = value;
 		return this;
 
-	},
+	}
 
-	setPath: function ( value ) {
+	setPath( value ) {
 
 		this.path = value;
 		return this;
 
 	}
 
-} );
+}
 
 
 export { CubeTextureLoader };

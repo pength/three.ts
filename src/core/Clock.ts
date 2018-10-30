@@ -1,8 +1,9 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Clock( autoStart ) {
+export function Clock( autoStart ) {
 
 	this.autoStart = ( autoStart !== undefined ) ? autoStart : true;
 
@@ -16,7 +17,7 @@ function Clock( autoStart ) {
 
 Object.assign( Clock.prototype, {
 
-	start: function () {
+	start() {
 
 		this.startTime = ( typeof performance === 'undefined' ? Date : performance ).now(); // see #10732
 
@@ -24,24 +25,24 @@ Object.assign( Clock.prototype, {
 		this.elapsedTime = 0;
 		this.running = true;
 
-	},
+	}
 
-	stop: function () {
+	stop() {
 
 		this.getElapsedTime();
 		this.running = false;
 		this.autoStart = false;
 
-	},
+	}
 
-	getElapsedTime: function () {
+	getElapsedTime() {
 
 		this.getDelta();
 		return this.elapsedTime;
 
-	},
+	}
 
-	getDelta: function () {
+	getDelta() {
 
 		var diff = 0;
 
@@ -67,7 +68,7 @@ Object.assign( Clock.prototype, {
 
 	}
 
-} );
+}
 
 
 export { Clock };

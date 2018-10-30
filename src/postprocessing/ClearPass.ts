@@ -1,8 +1,9 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.ClearPass = function ( clearColor, clearAlpha ) {
+THREE.ClearPass = export function ( clearColor, clearAlpha ) {
 
 	THREE.Pass.call( this );
 
@@ -17,7 +18,7 @@ THREE.ClearPass.prototype = Object.assign( Object.create( THREE.Pass.prototype )
 
 	constructor: THREE.ClearPass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		var oldClearColor, oldClearAlpha;
 
@@ -41,4 +42,4 @@ THREE.ClearPass.prototype = Object.assign( Object.create( THREE.Pass.prototype )
 
 	}
 
-} );
+}

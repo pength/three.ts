@@ -1,13 +1,14 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Vector3 } from '../math/Vector3.js';
-import { Quaternion } from '../math/Quaternion.js';
-import { Object3D } from '../core/Object3D.js';
-import { AudioContext } from './AudioContext.js';
+import { Vector3 } from '../math/Vector3';
+import { Quaternion } from '../math/Quaternion';
+import { Object3D } from '../core/Object3D';
+import { AudioContext } from './AudioContext';
 
-function AudioListener() {
+export function AudioListener() {
 
 	Object3D.call( this );
 
@@ -26,13 +27,13 @@ AudioListener.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: AudioListener,
 
-	getInput: function () {
+	getInput() {
 
 		return this.gain;
 
-	},
+	}
 
-	removeFilter: function ( ) {
+	removeFilter( ) {
 
 		if ( this.filter !== null ) {
 
@@ -45,15 +46,15 @@ AudioListener.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	getFilter: function () {
+	getFilter() {
 
 		return this.filter;
 
-	},
+	}
 
-	setFilter: function ( value ) {
+	setFilter( value ) {
 
 		if ( this.filter !== null ) {
 
@@ -72,23 +73,23 @@ AudioListener.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	getMasterVolume: function () {
+	getMasterVolume() {
 
 		return this.gain.gain.value;
 
-	},
+	}
 
-	setMasterVolume: function ( value ) {
+	setMasterVolume( value ) {
 
 		this.gain.gain.setTargetAtTime( value, this.context.currentTime, 0.01 );
 
 		return this;
 
-	},
+	}
 
-	updateMatrixWorld: ( function () {
+	updateMatrixWorld: ( export function () {
 
 		var position = new Vector3();
 		var quaternion = new Quaternion();
@@ -96,7 +97,7 @@ AudioListener.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		var orientation = new Vector3();
 
-		return function updateMatrixWorld( force ) {
+		return export function updateMatrixWorld( force ) {
 
 			Object3D.prototype.updateMatrixWorld.call( this, force );
 
@@ -130,6 +131,6 @@ AudioListener.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	} )()
 
-} );
+}
 
 export { AudioListener };

@@ -1,12 +1,13 @@
-import { Light } from './Light.js';
-import { Color } from '../math/Color.js';
-import { Object3D } from '../core/Object3D.js';
+import { Light } from './Light';
+import { Color } from '../math/Color';
+import { Object3D } from '../core/Object3D';
 
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function HemisphereLight( skyColor, groundColor, intensity ) {
+export function HemisphereLight( skyColor, groundColor, intensity ) {
 
 	Light.call( this, skyColor, intensity );
 
@@ -27,7 +28,7 @@ HemisphereLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	isHemisphereLight: true,
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		Light.prototype.copy.call( this, source );
 
@@ -37,7 +38,7 @@ HemisphereLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	}
 
-} );
+}
 
 
 export { HemisphereLight };

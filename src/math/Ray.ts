@@ -1,4 +1,4 @@
-import { Vector3 } from './Vector3.js';
+import { Vector3 } from './Vector3';
 
 /**
  * Converted from three.js/Ray.js, If you want to see the js code source file, please go to https://threejs.org/
@@ -15,31 +15,31 @@ init( origin, direction ) {
 
 Object.assign( Ray.prototype, {
 
-	set: function ( origin, direction ) {
+	set( origin, direction ) {
 
 		this.origin.copy( origin );
 		this.direction.copy( direction );
 
 		return this;
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor().copy( this );
 
-	},
+	}
 
-	copy: function ( ray ) {
+	copy( ray ) {
 
 		this.origin.copy( ray.origin );
 		this.direction.copy( ray.direction );
 
 		return this;
 
-	},
+	}
 
-	at: function ( t, target ) {
+	at( t, target ) {
 
 		if ( target === undefined ) {
 
@@ -50,21 +50,21 @@ Object.assign( Ray.prototype, {
 
 		return target.copy( this.direction ).multiplyScalar( t ).add( this.origin );
 
-	},
+	}
 
-	lookAt: function ( v ) {
+	lookAt( v ) {
 
 		this.direction.copy( v ).sub( this.origin ).normalize();
 
 		return this;
 
-	},
+	}
 
-	recast: function () {
+	recast() {
 
 		var v1 = new Vector3();
 
-		return function recast( t ) {
+		return export function recast( t ) {
 
 			this.origin.copy( this.at( t, v1 ) );
 
@@ -72,9 +72,9 @@ Object.assign( Ray.prototype, {
 
 		};
 
-	}(),
+	}
 
-	closestPointToPoint: function ( point, target ) {
+	closestPointToPoint( point, target ) {
 
 		if ( target === undefined ) {
 
@@ -95,19 +95,19 @@ Object.assign( Ray.prototype, {
 
 		return target.copy( this.direction ).multiplyScalar( directionDistance ).add( this.origin );
 
-	},
+	}
 
-	distanceToPoint: function ( point ) {
+	distanceToPoint( point ) {
 
 		return Math.sqrt( this.distanceSqToPoint( point ) );
 
-	},
+	}
 
-	distanceSqToPoint: function () {
+	distanceSqToPoint() {
 
 		var v1 = new Vector3();
 
-		return function distanceSqToPoint( point ) {
+		return export function distanceSqToPoint( point ) {
 
 			var directionDistance = v1.subVectors( point, this.origin ).dot( this.direction );
 
@@ -125,15 +125,15 @@ Object.assign( Ray.prototype, {
 
 		};
 
-	}(),
+	}
 
-	distanceSqToSegment: function () {
+	distanceSqToSegment() {
 
 		var segCenter = new Vector3();
 		var segDir = new Vector3();
 		var diff = new Vector3();
 
-		return function distanceSqToSegment( v0, v1, optionalPointOnRay, optionalPointOnSegment ) {
+		return export function distanceSqToSegment( v0, v1, optionalPointOnRay, optionalPointOnSegment ) {
 
 			// from http://www.geometrictools.com/GTEngine/Include/Mathematics/GteDistRaySegment.h
 			// It returns the min distance between the ray and the segment
@@ -252,13 +252,13 @@ Object.assign( Ray.prototype, {
 
 		};
 
-	}(),
+	}
 
-	intersectSphere: function () {
+	intersectSphere() {
 
 		var v1 = new Vector3();
 
-		return function intersectSphere( sphere, target ) {
+		return export function intersectSphere( sphere, target ) {
 
 			v1.subVectors( sphere.center, this.origin );
 			var tca = v1.dot( this.direction );
@@ -288,15 +288,15 @@ Object.assign( Ray.prototype, {
 
 		};
 
-	}(),
+	}
 
-	intersectsSphere: function ( sphere ) {
+	intersectsSphere( sphere ) {
 
 		return this.distanceSqToPoint( sphere.center ) <= ( sphere.radius * sphere.radius );
 
-	},
+	}
 
-	distanceToPlane: function ( plane ) {
+	distanceToPlane( plane ) {
 
 		var denominator = plane.normal.dot( this.direction );
 
@@ -321,9 +321,9 @@ Object.assign( Ray.prototype, {
 
 		return t >= 0 ? t : null;
 
-	},
+	}
 
-	intersectPlane: function ( plane, target ) {
+	intersectPlane( plane, target ) {
 
 		var t = this.distanceToPlane( plane );
 
@@ -335,9 +335,9 @@ Object.assign( Ray.prototype, {
 
 		return this.at( t, target );
 
-	},
+	}
 
-	intersectsPlane: function ( plane ) {
+	intersectsPlane( plane ) {
 
 		// check if the ray lies on the plane first
 
@@ -361,9 +361,9 @@ Object.assign( Ray.prototype, {
 
 		return false;
 
-	},
+	}
 
-	intersectBox: function ( box, target ) {
+	intersectBox( box, target ) {
 
 		var tmin, tmax, tymin, tymax, tzmin, tzmax;
 
@@ -430,13 +430,13 @@ Object.assign( Ray.prototype, {
 
 		return this.at( tmin >= 0 ? tmin : tmax, target );
 
-	},
+	}
 
-	intersectsBox: ( function () {
+	intersectsBox: ( export function () {
 
 		var v = new Vector3();
 
-		return function intersectsBox( box ) {
+		return export function intersectsBox( box ) {
 
 			return this.intersectBox( box, v ) !== null;
 
@@ -444,7 +444,7 @@ Object.assign( Ray.prototype, {
 
 	} )(),
 
-	intersectTriangle: function () {
+	intersectTriangle() {
 
 		// Compute the offset origin, edges, and normal.
 		var diff = new Vector3();
@@ -452,7 +452,7 @@ Object.assign( Ray.prototype, {
 		var edge2 = new Vector3();
 		var normal = new Vector3();
 
-		return function intersectTriangle( a, b, c, backfaceCulling, target ) {
+		return export function intersectTriangle( a, b, c, backfaceCulling, target ) {
 
 			// from http://www.geometrictools.com/GTEngine/Include/Mathematics/GteIntrRay3Triangle3.h
 
@@ -525,18 +525,18 @@ Object.assign( Ray.prototype, {
 
 		};
 
-	}(),
+	}
 
-	applyMatrix4: function ( matrix4 ) {
+	applyMatrix4( matrix4 ) {
 
 		this.origin.applyMatrix4( matrix4 );
 		this.direction.transformDirection( matrix4 );
 
 		return this;
 
-	},
+	}
 
-	equals: function ( ray ) {
+	equals( ray ) {
 
 		return ray.origin.equals( this.origin ) && ray.direction.equals( this.direction );
 

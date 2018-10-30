@@ -1,30 +1,28 @@
-import { Vector3 } from '../math/Vector3.js';
-import { Vector2 } from '../math/Vector2.js';
-import { Sphere } from '../math/Sphere.js';
-import { Ray } from '../math/Ray.js';
-import { Matrix4 } from '../math/Matrix4.js';
-import { Object3D } from '../core/Object3D.js';
-import { Triangle } from '../math/Triangle.js';
-import { Face3 } from '../core/Face3.js';
-import { DoubleSide, BackSide, TrianglesDrawMode } from '../constants.js';
-import { MeshBasicMaterial } from '../materials/MeshBasicMaterial.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
+import { Vector3 } from '../math/Vector3';
+import { Vector2 } from '../math/Vector2';
+import { Sphere } from '../math/Sphere';
+import { Ray } from '../math/Ray';
+import { Matrix4 } from '../math/Matrix4';
+import { Object3D } from '../core/Object3D';
+import { Triangle } from '../math/Triangle';
+import { Face3 } from '../core/Face3';
+import { DoubleSide, BackSide, TrianglesDrawMode } from '../constants';
+import { MeshBasicMaterial } from '../materials/MeshBasicMaterial';
+import { BufferGeometry } from '../core/BufferGeometry';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
- * @author mikael emtinger / http://gomo.se/
- * @author jonobr1 / http://jonobr1.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Mesh( geometry, material ) {
+export function Mesh( geometry, material ) {
 
 	Object3D.call( this );
 
 	this.type = 'Mesh';
 
 	this.geometry = geometry !== undefined ? geometry : new BufferGeometry();
-	this.material = material !== undefined ? material : new MeshBasicMaterial( { color: Math.random() * 0xffffff } );
+	this.material = material !== undefined ? material : new MeshBasicMaterial( { color: Math.random() * 0xffffff }
 
 	this.drawMode = TrianglesDrawMode;
 
@@ -38,13 +36,13 @@ Mesh.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	isMesh: true,
 
-	setDrawMode: function ( value ) {
+	setDrawMode( value ) {
 
 		this.drawMode = value;
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		Object3D.prototype.copy.call( this, source );
 
@@ -58,15 +56,15 @@ Mesh.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		if ( source.morphTargetDictionary !== undefined ) {
 
-			this.morphTargetDictionary = Object.assign( {}, source.morphTargetDictionary );
+			this.morphTargetDictionary = Object.assign( {} source.morphTargetDictionary );
 
 		}
 
 		return this;
 
-	},
+	}
 
-	updateMorphTargets: function () {
+	updateMorphTargets() {
 
 		var geometry = this.geometry;
 		var m, ml, name;
@@ -120,9 +118,9 @@ Mesh.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		}
 
-	},
+	}
 
-	raycast: ( function () {
+	raycast: ( export function () {
 
 		var inverseMatrix = new Matrix4();
 		var ray = new Ray();
@@ -143,7 +141,7 @@ Mesh.prototype = Object.assign( Object.create( Object3D.prototype ), {
 		var intersectionPoint = new Vector3();
 		var intersectionPointWorld = new Vector3();
 
-		function checkIntersection( object, material, raycaster, ray, pA, pB, pC, point ) {
+		export function checkIntersection( object, material, raycaster, ray, pA, pB, pC, point ) {
 
 			var intersect;
 
@@ -174,7 +172,7 @@ Mesh.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		}
 
-		function checkBufferGeometryIntersection( object, material, raycaster, ray, position, uv, a, b, c ) {
+		export function checkBufferGeometryIntersection( object, material, raycaster, ray, position, uv, a, b, c ) {
 
 			vA.fromBufferAttribute( position, a );
 			vB.fromBufferAttribute( position, b );
@@ -205,7 +203,7 @@ Mesh.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		}
 
-		return function raycast( raycaster, intersects ) {
+		return export function raycast( raycaster, intersects ) {
 
 			var geometry = this.geometry;
 			var material = this.material;
@@ -450,13 +448,13 @@ Mesh.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	}() ),
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor( this.geometry, this.material ).copy( this );
 
 	}
 
-} );
+}
 
 
 export { Mesh };

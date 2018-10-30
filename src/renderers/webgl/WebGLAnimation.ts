@@ -1,14 +1,14 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function WebGLAnimation() {
+export function WebGLAnimation() {
 
 	var context = null;
 	var isAnimating = false;
 	var animationLoop = null;
 
-	function onAnimationFrame( time, frame ) {
+	export function onAnimationFrame( time, frame ) {
 
 		if ( isAnimating === false ) return;
 
@@ -20,7 +20,7 @@ function WebGLAnimation() {
 
 	return {
 
-		start: function () {
+		start() {
 
 			if ( isAnimating === true ) return;
 			if ( animationLoop === null ) return;
@@ -29,21 +29,21 @@ function WebGLAnimation() {
 
 			isAnimating = true;
 
-		},
+		}
 
-		stop: function () {
+		stop() {
 
 			isAnimating = false;
 
-		},
+		}
 
-		setAnimationLoop: function ( callback ) {
+		setAnimationLoop( callback ) {
 
 			animationLoop = callback;
 
-		},
+		}
 
-		setContext: function ( value ) {
+		setContext( value ) {
 
 			context = value;
 

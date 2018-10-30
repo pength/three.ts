@@ -1,10 +1,11 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Texture } from './Texture.js';
+import { Texture } from './Texture';
 
-function VideoTexture( video, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy ) {
+export function VideoTexture( video, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy ) {
 
 	Texture.call( this, video, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy );
 
@@ -18,7 +19,7 @@ VideoTexture.prototype = Object.assign( Object.create( Texture.prototype ), {
 
 	isVideoTexture: true,
 
-	update: function () {
+	update() {
 
 		var video = this.image;
 
@@ -30,7 +31,7 @@ VideoTexture.prototype = Object.assign( Object.create( Texture.prototype ), {
 
 	}
 
-} );
+}
 
 
 export { VideoTexture };

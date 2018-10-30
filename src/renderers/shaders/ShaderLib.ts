@@ -1,13 +1,12 @@
-import { ShaderChunk } from './ShaderChunk.js';
-import { UniformsUtils } from './UniformsUtils.js';
-import { Vector3 } from '../../math/Vector3.js';
-import { UniformsLib } from './UniformsLib.js';
-import { Color } from '../../math/Color.js';
+import { ShaderChunk } from './ShaderChunk';
+import { UniformsUtils } from './UniformsUtils';
+import { Vector3 } from '../../math/Vector3';
+import { UniformsLib } from './UniformsLib';
+import { Color } from '../../math/Color';
 
 /**
- * @author alteredq / http://alteredqualia.com/
- * @author mrdoob / http://mrdoob.com/
- * @author mikael emtinger / http://gomo.se/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 var ShaderLib = {
@@ -26,7 +25,7 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.meshbasic_vert,
 		fragmentShader: ShaderChunk.meshbasic_frag
 
-	},
+	}
 
 	lambert: {
 
@@ -47,7 +46,7 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.meshlambert_vert,
 		fragmentShader: ShaderChunk.meshlambert_frag
 
-	},
+	}
 
 	phong: {
 
@@ -65,8 +64,8 @@ var ShaderLib = {
 			UniformsLib.fog,
 			UniformsLib.lights,
 			{
-				emissive: { value: new Color( 0x000000 ) },
-				specular: { value: new Color( 0x111111 ) },
+				emissive: { value: new Color( 0x000000 ) }
+				specular: { value: new Color( 0x111111 ) }
 				shininess: { value: 30 }
 			}
 		] ),
@@ -74,7 +73,7 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.meshphong_vert,
 		fragmentShader: ShaderChunk.meshphong_frag
 
-	},
+	}
 
 	standard: {
 
@@ -92,9 +91,9 @@ var ShaderLib = {
 			UniformsLib.fog,
 			UniformsLib.lights,
 			{
-				emissive: { value: new Color( 0x000000 ) },
-				roughness: { value: 0.5 },
-				metalness: { value: 0.5 },
+				emissive: { value: new Color( 0x000000 ) }
+				roughness: { value: 0.5 }
+				metalness: { value: 0.5 }
 				envMapIntensity: { value: 1 } // temporary
 			}
 		] ),
@@ -102,7 +101,7 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.meshphysical_vert,
 		fragmentShader: ShaderChunk.meshphysical_frag
 
-	},
+	}
 
 	matcap: {
 
@@ -120,7 +119,7 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.meshmatcap_vert,
 		fragmentShader: ShaderChunk.meshmatcap_frag
 
-	},
+	}
 
 	points: {
 
@@ -132,7 +131,7 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.points_vert,
 		fragmentShader: ShaderChunk.points_frag
 
-	},
+	}
 
 	dashed: {
 
@@ -140,8 +139,8 @@ var ShaderLib = {
 			UniformsLib.common,
 			UniformsLib.fog,
 			{
-				scale: { value: 1 },
-				dashSize: { value: 1 },
+				scale: { value: 1 }
+				dashSize: { value: 1 }
 				totalSize: { value: 2 }
 			}
 		] ),
@@ -149,7 +148,7 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.linedashed_vert,
 		fragmentShader: ShaderChunk.linedashed_frag
 
-	},
+	}
 
 	depth: {
 
@@ -161,7 +160,7 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.depth_vert,
 		fragmentShader: ShaderChunk.depth_frag
 
-	},
+	}
 
 	normal: {
 
@@ -178,7 +177,7 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.normal_vert,
 		fragmentShader: ShaderChunk.normal_frag
 
-	},
+	}
 
 	sprite: {
 
@@ -190,18 +189,18 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.sprite_vert,
 		fragmentShader: ShaderChunk.sprite_frag
 
-	},
+	}
 
 	background: {
 
 		uniforms: {
-			t2D: { value: null },
-		},
+			t2D: { value: null }
+		}
 
 		vertexShader: ShaderChunk.background_vert,
 		fragmentShader: ShaderChunk.background_frag
 
-	},
+	}
 	/* -------------------------------------------------------------------------
 	//	Cube map shader
 	 ------------------------------------------------------------------------- */
@@ -209,26 +208,26 @@ var ShaderLib = {
 	cube: {
 
 		uniforms: {
-			tCube: { value: null },
-			tFlip: { value: - 1 },
+			tCube: { value: null }
+			tFlip: { value: - 1 }
 			opacity: { value: 1.0 }
-		},
+		}
 
 		vertexShader: ShaderChunk.cube_vert,
 		fragmentShader: ShaderChunk.cube_frag
 
-	},
+	}
 
 	equirect: {
 
 		uniforms: {
-			tEquirect: { value: null },
-		},
+			tEquirect: { value: null }
+		}
 
 		vertexShader: ShaderChunk.equirect_vert,
 		fragmentShader: ShaderChunk.equirect_frag
 
-	},
+	}
 
 	distanceRGBA: {
 
@@ -236,8 +235,8 @@ var ShaderLib = {
 			UniformsLib.common,
 			UniformsLib.displacementmap,
 			{
-				referencePosition: { value: new Vector3() },
-				nearDistance: { value: 1 },
+				referencePosition: { value: new Vector3() }
+				nearDistance: { value: 1 }
 				farDistance: { value: 1000 }
 			}
 		] ),
@@ -245,7 +244,7 @@ var ShaderLib = {
 		vertexShader: ShaderChunk.distanceRGBA_vert,
 		fragmentShader: ShaderChunk.distanceRGBA_frag
 
-	},
+	}
 
 	shadow: {
 
@@ -253,9 +252,9 @@ var ShaderLib = {
 			UniformsLib.lights,
 			UniformsLib.fog,
 			{
-				color: { value: new Color( 0x00000 ) },
+				color: { value: new Color( 0x00000 ) }
 				opacity: { value: 1.0 }
-			},
+			}
 		] ),
 
 		vertexShader: ShaderChunk.shadow_vert,
@@ -270,7 +269,7 @@ ShaderLib.physical = {
 	uniforms: UniformsUtils.merge( [
 		ShaderLib.standard.uniforms,
 		{
-			clearCoat: { value: 0 },
+			clearCoat: { value: 0 }
 			clearCoatRoughness: { value: 0 }
 		}
 	] ),

@@ -1,15 +1,15 @@
-import { Sphere } from '../math/Sphere.js';
-import { Vector3 } from '../math/Vector3.js';
-import { BufferAttribute } from '../core/BufferAttribute.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { FileLoader } from './FileLoader.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
+import { Sphere } from '../math/Sphere';
+import { Vector3 } from '../math/Vector3';
+import { BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { FileLoader } from './FileLoader';
+import { DefaultLoadingManager } from './LoadingManager';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function BufferGeometryLoader( manager ) {
+export function BufferGeometryLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
@@ -17,20 +17,20 @@ function BufferGeometryLoader( manager ) {
 
 Object.assign( BufferGeometryLoader.prototype, {
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		var scope = this;
 
 		var loader = new FileLoader( scope.manager );
-		loader.load( url, function ( text ) {
+		loader.load( url, export function ( text ) {
 
 			onLoad( scope.parse( JSON.parse( text ) ) );
 
-		}, onProgress, onError );
+		} onProgress, onError );
 
-	},
+	}
 
-	parse: function ( json ) {
+	parse( json ) {
 
 		var geometry = new BufferGeometry();
 
@@ -88,7 +88,7 @@ Object.assign( BufferGeometryLoader.prototype, {
 
 	}
 
-} );
+}
 
 var TYPED_ARRAYS = {
 	Int8Array: Int8Array,

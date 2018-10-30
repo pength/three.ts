@@ -1,14 +1,15 @@
 /**
- * @author zz85 / http://www.lab4games.net/zz85/blog
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Earcut } from './Earcut.js';
+import { Earcut } from './Earcut';
 
 var ShapeUtils = {
 
 	// calculate area of the contour polygon
 
-	area: function ( contour ) {
+	area( contour ) {
 
 		var n = contour.length;
 		var a = 0.0;
@@ -21,15 +22,15 @@ var ShapeUtils = {
 
 		return a * 0.5;
 
-	},
+	}
 
-	isClockWise: function ( pts ) {
+	isClockWise( pts ) {
 
 		return ShapeUtils.area( pts ) < 0;
 
-	},
+	}
 
-	triangulateShape: function ( contour, holes ) {
+	triangulateShape( contour, holes ) {
 
 		var vertices = []; // flat array of vertices like [ x0,y0, x1,y1, x2,y2, ... ]
 		var holeIndices = []; // array of hole indices
@@ -70,7 +71,7 @@ var ShapeUtils = {
 
 };
 
-function removeDupEndPts( points ) {
+export function removeDupEndPts( points ) {
 
 	var l = points.length;
 
@@ -82,7 +83,7 @@ function removeDupEndPts( points ) {
 
 }
 
-function addContour( vertices, contour ) {
+export function addContour( vertices, contour ) {
 
 	for ( var i = 0; i < contour.length; i ++ ) {
 

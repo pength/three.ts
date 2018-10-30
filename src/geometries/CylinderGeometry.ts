@@ -1,17 +1,17 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Vector3 } from '../math/Vector3.js';
-import { Vector2 } from '../math/Vector2.js';
+import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Vector3 } from '../math/Vector3';
+import { Vector2 } from '../math/Vector2';
 
 // CylinderGeometry
 
-function CylinderGeometry( radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
+export function CylinderGeometry( radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
 
 	Geometry.call( this );
 
@@ -38,7 +38,7 @@ CylinderGeometry.prototype.constructor = CylinderGeometry;
 
 // CylinderBufferGeometry
 
-function CylinderBufferGeometry( radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
+export function CylinderBufferGeometry( radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
 
 	BufferGeometry.call( this );
 
@@ -100,7 +100,7 @@ function CylinderBufferGeometry( radiusTop, radiusBottom, height, radialSegments
 	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
 	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
-	function generateTorso() {
+	export function generateTorso() {
 
 		var x, y;
 		var normal = new Vector3();
@@ -196,7 +196,7 @@ function CylinderBufferGeometry( radiusTop, radiusBottom, height, radialSegments
 
 	}
 
-	function generateCap( top ) {
+	export function generateCap( top ) {
 
 		var x, centerIndexStart, centerIndexEnd;
 

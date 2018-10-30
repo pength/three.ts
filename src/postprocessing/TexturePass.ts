@@ -1,8 +1,8 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-THREE.TexturePass = function ( map, opacity ) {
+THREE.TexturePass = export function ( map, opacity ) {
 
 	THREE.Pass.call( this );
 
@@ -24,7 +24,7 @@ THREE.TexturePass = function ( map, opacity ) {
 		depthTest: false,
 		depthWrite: false
 
-	} );
+	}
 
 	this.needsSwap = false;
 
@@ -41,7 +41,7 @@ THREE.TexturePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 
 	constructor: THREE.TexturePass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		var oldAutoClear = renderer.autoClear;
 		renderer.autoClear = false;
@@ -57,4 +57,4 @@ THREE.TexturePass.prototype = Object.assign( Object.create( THREE.Pass.prototype
 		renderer.autoClear = oldAutoClear;
 	}
 
-} );
+}

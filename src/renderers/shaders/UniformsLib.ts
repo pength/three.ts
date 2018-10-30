@@ -1,196 +1,196 @@
-import { Color } from '../../math/Color.js';
-import { Vector2 } from '../../math/Vector2.js';
-import { Matrix3 } from '../../math/Matrix3.js';
-
+import { Color } from '../../math/Color';
+import { Vector2 } from '../../math/Vector2';
+import { Matrix3 } from '../../math/Matrix3';
 /**
- * Uniforms library for shared webgl shaders
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 var UniformsLib = {
 
 	common: {
 
-		diffuse: { value: new Color( 0xeeeeee ) },
-		opacity: { value: 1.0 },
+		diffuse: { value: new Color( 0xeeeeee ) }
+		opacity: { value: 1.0 }
 
-		map: { value: null },
-		uvTransform: { value: new Matrix3() },
+		map: { value: null }
+		uvTransform: { value: new Matrix3() }
 
-		alphaMap: { value: null },
+		alphaMap: { value: null }
 
-	},
+	}
 
 	specularmap: {
 
-		specularMap: { value: null },
+		specularMap: { value: null }
 
-	},
+	}
 
 	envmap: {
 
-		envMap: { value: null },
-		flipEnvMap: { value: - 1 },
-		reflectivity: { value: 1.0 },
-		refractionRatio: { value: 0.98 },
+		envMap: { value: null }
+		flipEnvMap: { value: - 1 }
+		reflectivity: { value: 1.0 }
+		refractionRatio: { value: 0.98 }
 		maxMipLevel: { value: 0 }
 
-	},
+	}
 
 	aomap: {
 
-		aoMap: { value: null },
+		aoMap: { value: null }
 		aoMapIntensity: { value: 1 }
 
-	},
+	}
 
 	lightmap: {
 
-		lightMap: { value: null },
+		lightMap: { value: null }
 		lightMapIntensity: { value: 1 }
 
-	},
+	}
 
 	emissivemap: {
 
 		emissiveMap: { value: null }
 
-	},
+	}
 
 	bumpmap: {
 
-		bumpMap: { value: null },
+		bumpMap: { value: null }
 		bumpScale: { value: 1 }
 
-	},
+	}
 
 	normalmap: {
 
-		normalMap: { value: null },
+		normalMap: { value: null }
 		normalScale: { value: new Vector2( 1, 1 ) }
 
-	},
+	}
 
 	displacementmap: {
 
-		displacementMap: { value: null },
-		displacementScale: { value: 1 },
+		displacementMap: { value: null }
+		displacementScale: { value: 1 }
 		displacementBias: { value: 0 }
 
-	},
+	}
 
 	roughnessmap: {
 
 		roughnessMap: { value: null }
 
-	},
+	}
 
 	metalnessmap: {
 
 		metalnessMap: { value: null }
 
-	},
+	}
 
 	gradientmap: {
 
 		gradientMap: { value: null }
 
-	},
+	}
 
 	fog: {
 
-		fogDensity: { value: 0.00025 },
-		fogNear: { value: 1 },
-		fogFar: { value: 2000 },
+		fogDensity: { value: 0.00025 }
+		fogNear: { value: 1 }
+		fogFar: { value: 2000 }
 		fogColor: { value: new Color( 0xffffff ) }
 
-	},
+	}
 
 	lights: {
 
-		ambientLightColor: { value: [] },
+		ambientLightColor: { value: [] }
 
 		directionalLights: { value: [], properties: {
-			direction: {},
-			color: {},
+			direction: {}
+			color: {}
 
-			shadow: {},
-			shadowBias: {},
-			shadowRadius: {},
+			shadow: {}
+			shadowBias: {}
+			shadowRadius: {}
 			shadowMapSize: {}
-		} },
+		} }
 
-		directionalShadowMap: { value: [] },
-		directionalShadowMatrix: { value: [] },
+		directionalShadowMap: { value: [] }
+		directionalShadowMatrix: { value: [] }
 
 		spotLights: { value: [], properties: {
-			color: {},
-			position: {},
-			direction: {},
-			distance: {},
-			coneCos: {},
-			penumbraCos: {},
-			decay: {},
+			color: {}
+			position: {}
+			direction: {}
+			distance: {}
+			coneCos: {}
+			penumbraCos: {}
+			decay: {}
 
-			shadow: {},
-			shadowBias: {},
-			shadowRadius: {},
+			shadow: {}
+			shadowBias: {}
+			shadowRadius: {}
 			shadowMapSize: {}
-		} },
+		} }
 
-		spotShadowMap: { value: [] },
-		spotShadowMatrix: { value: [] },
+		spotShadowMap: { value: [] }
+		spotShadowMatrix: { value: [] }
 
 		pointLights: { value: [], properties: {
-			color: {},
-			position: {},
-			decay: {},
-			distance: {},
+			color: {}
+			position: {}
+			decay: {}
+			distance: {}
 
-			shadow: {},
-			shadowBias: {},
-			shadowRadius: {},
-			shadowMapSize: {},
-			shadowCameraNear: {},
+			shadow: {}
+			shadowBias: {}
+			shadowRadius: {}
+			shadowMapSize: {}
+			shadowCameraNear: {}
 			shadowCameraFar: {}
-		} },
+		} }
 
-		pointShadowMap: { value: [] },
-		pointShadowMatrix: { value: [] },
+		pointShadowMap: { value: [] }
+		pointShadowMatrix: { value: [] }
 
 		hemisphereLights: { value: [], properties: {
-			direction: {},
-			skyColor: {},
+			direction: {}
+			skyColor: {}
 			groundColor: {}
-		} },
+		} }
 
 		// TODO (abelnation): RectAreaLight BRDF data needs to be moved from example to main src
 		rectAreaLights: { value: [], properties: {
-			color: {},
-			position: {},
-			width: {},
+			color: {}
+			position: {}
+			width: {}
 			height: {}
 		} }
 
-	},
+	}
 
 	points: {
 
-		diffuse: { value: new Color( 0xeeeeee ) },
-		opacity: { value: 1.0 },
-		size: { value: 1.0 },
-		scale: { value: 1.0 },
-		map: { value: null },
+		diffuse: { value: new Color( 0xeeeeee ) }
+		opacity: { value: 1.0 }
+		size: { value: 1.0 }
+		scale: { value: 1.0 }
+		map: { value: null }
 		uvTransform: { value: new Matrix3() }
 
-	},
+	}
 
 	sprite: {
 
-		diffuse: { value: new Color( 0xeeeeee ) },
-		opacity: { value: 1.0 },
-		center: { value: new Vector2( 0.5, 0.5 ) },
-		rotation: { value: 0.0 },
-		map: { value: null },
+		diffuse: { value: new Color( 0xeeeeee ) }
+		opacity: { value: 1.0 }
+		center: { value: new Vector2( 0.5, 0.5 ) }
+		rotation: { value: 0.0 }
+		map: { value: null }
 		uvTransform: { value: new Matrix3() }
 
 	}

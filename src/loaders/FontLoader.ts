@@ -1,12 +1,12 @@
-import { Font } from '../extras/core/Font.js';
-import { FileLoader } from './FileLoader.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
-
+import { Font } from '../extras/core/Font';
+import { FileLoader } from './FileLoader';
+import { DefaultLoadingManager } from './LoadingManager';
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function FontLoader( manager ) {
+export function FontLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
@@ -14,13 +14,13 @@ function FontLoader( manager ) {
 
 Object.assign( FontLoader.prototype, {
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		var scope = this;
 
 		var loader = new FileLoader( this.manager );
 		loader.setPath( this.path );
-		loader.load( url, function ( text ) {
+		loader.load( url, export function ( text ) {
 
 			var json;
 
@@ -39,24 +39,24 @@ Object.assign( FontLoader.prototype, {
 
 			if ( onLoad ) onLoad( font );
 
-		}, onProgress, onError );
+		} onProgress, onError );
 
-	},
+	}
 
-	parse: function ( json ) {
+	parse( json ) {
 
 		return new Font( json );
 
-	},
+	}
 
-	setPath: function ( value ) {
+	setPath( value ) {
 
 		this.path = value;
 		return this;
 
 	}
 
-} );
+}
 
 
 export { FontLoader };

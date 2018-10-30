@@ -1,19 +1,17 @@
 /**
- * @author clockworkgeek / https://github.com/clockworkgeek
- * @author timothypratley / https://github.com/timothypratley
- * @author WestLangley / http://github.com/WestLangley
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Vector3 } from '../math/Vector3.js';
-import { Vector2 } from '../math/Vector2.js';
+import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Vector3 } from '../math/Vector3';
+import { Vector2 } from '../math/Vector2';
 
 // PolyhedronGeometry
 
-function PolyhedronGeometry( vertices, indices, radius, detail ) {
+export function PolyhedronGeometry( vertices, indices, radius, detail ) {
 
 	Geometry.call( this );
 
@@ -36,7 +34,7 @@ PolyhedronGeometry.prototype.constructor = PolyhedronGeometry;
 
 // PolyhedronBufferGeometry
 
-function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
+export function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	BufferGeometry.call( this );
 
@@ -87,7 +85,7 @@ function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	// helper functions
 
-	function subdivide( detail ) {
+	export function subdivide( detail ) {
 
 		var a = new Vector3();
 		var b = new Vector3();
@@ -111,7 +109,7 @@ function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	}
 
-	function subdivideFace( a, b, c, detail ) {
+	export function subdivideFace( a, b, c, detail ) {
 
 		var cols = Math.pow( 2, detail );
 
@@ -176,7 +174,7 @@ function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	}
 
-	function appplyRadius( radius ) {
+	export function appplyRadius( radius ) {
 
 		var vertex = new Vector3();
 
@@ -198,7 +196,7 @@ function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	}
 
-	function generateUVs() {
+	export function generateUVs() {
 
 		var vertex = new Vector3();
 
@@ -220,7 +218,7 @@ function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	}
 
-	function correctSeam() {
+	export function correctSeam() {
 
 		// handle case when face straddles the seam, see #3269
 
@@ -249,13 +247,13 @@ function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	}
 
-	function pushVertex( vertex ) {
+	export function pushVertex( vertex ) {
 
 		vertexBuffer.push( vertex.x, vertex.y, vertex.z );
 
 	}
 
-	function getVertexByIndex( index, vertex ) {
+	export function getVertexByIndex( index, vertex ) {
 
 		var stride = index * 3;
 
@@ -265,7 +263,7 @@ function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	}
 
-	function correctUVs() {
+	export function correctUVs() {
 
 		var a = new Vector3();
 		var b = new Vector3();
@@ -299,7 +297,7 @@ function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	}
 
-	function correctUV( uv, stride, vector, azimuth ) {
+	export function correctUV( uv, stride, vector, azimuth ) {
 
 		if ( ( azimuth < 0 ) && ( uv.x === 1 ) ) {
 
@@ -317,7 +315,7 @@ function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	// Angle around the Y axis, counter-clockwise when looking from above.
 
-	function azimuth( vector ) {
+	export function azimuth( vector ) {
 
 		return Math.atan2( vector.z, - vector.x );
 
@@ -326,7 +324,7 @@ function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
 	// Angle above the XZ plane.
 
-	function inclination( vector ) {
+	export function inclination( vector ) {
 
 		return Math.atan2( - vector.y, Math.sqrt( ( vector.x * vector.x ) + ( vector.z * vector.z ) ) );
 

@@ -1,13 +1,14 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { NotEqualDepth, GreaterDepth, GreaterEqualDepth, EqualDepth, LessEqualDepth, LessDepth, AlwaysDepth, NeverDepth, CullFaceFront, CullFaceBack, CullFaceNone, CustomBlending, MultiplyBlending, SubtractiveBlending, AdditiveBlending, NoBlending, NormalBlending, AddEquation, DoubleSide, BackSide } from '../../constants.js';
-import { Vector4 } from '../../math/Vector4.js';
+import { NotEqualDepth, GreaterDepth, GreaterEqualDepth, EqualDepth, LessEqualDepth, LessDepth, AlwaysDepth, NeverDepth, CullFaceFront, CullFaceBack, CullFaceNone, CustomBlending, MultiplyBlending, SubtractiveBlending, AdditiveBlending, NoBlending, NormalBlending, AddEquation, DoubleSide, BackSide } from '../../constants';
+import { Vector4 } from '../../math/Vector4';
 
-function WebGLState( gl, extensions, utils, capabilities ) {
+export function WebGLState( gl, extensions, utils, capabilities ) {
 
-	function ColorBuffer() {
+	export function ColorBuffer() {
 
 		var locked = false;
 
@@ -17,7 +18,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 		return {
 
-			setMask: function ( colorMask ) {
+			setMask( colorMask ) {
 
 				if ( currentColorMask !== colorMask && ! locked ) {
 
@@ -26,15 +27,15 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			setLocked: function ( lock ) {
+			setLocked( lock ) {
 
 				locked = lock;
 
-			},
+			}
 
-			setClear: function ( r, g, b, a, premultipliedAlpha ) {
+			setClear( r, g, b, a, premultipliedAlpha ) {
 
 				if ( premultipliedAlpha === true ) {
 
@@ -51,9 +52,9 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			reset: function () {
+			reset() {
 
 				locked = false;
 
@@ -66,7 +67,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function DepthBuffer() {
+	export function DepthBuffer() {
 
 		var locked = false;
 
@@ -76,7 +77,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 		return {
 
-			setTest: function ( depthTest ) {
+			setTest( depthTest ) {
 
 				if ( depthTest ) {
 
@@ -88,9 +89,9 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			setMask: function ( depthMask ) {
+			setMask( depthMask ) {
 
 				if ( currentDepthMask !== depthMask && ! locked ) {
 
@@ -99,9 +100,9 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			setFunc: function ( depthFunc ) {
+			setFunc( depthFunc ) {
 
 				if ( currentDepthFunc !== depthFunc ) {
 
@@ -165,15 +166,15 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			setLocked: function ( lock ) {
+			setLocked( lock ) {
 
 				locked = lock;
 
-			},
+			}
 
-			setClear: function ( depth ) {
+			setClear( depth ) {
 
 				if ( currentDepthClear !== depth ) {
 
@@ -182,9 +183,9 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			reset: function () {
+			reset() {
 
 				locked = false;
 
@@ -198,7 +199,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function StencilBuffer() {
+	export function StencilBuffer() {
 
 		var locked = false;
 
@@ -213,7 +214,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 		return {
 
-			setTest: function ( stencilTest ) {
+			setTest( stencilTest ) {
 
 				if ( stencilTest ) {
 
@@ -225,9 +226,9 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			setMask: function ( stencilMask ) {
+			setMask( stencilMask ) {
 
 				if ( currentStencilMask !== stencilMask && ! locked ) {
 
@@ -236,9 +237,9 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			setFunc: function ( stencilFunc, stencilRef, stencilMask ) {
+			setFunc( stencilFunc, stencilRef, stencilMask ) {
 
 				if ( currentStencilFunc !== stencilFunc ||
 				     currentStencilRef 	!== stencilRef 	||
@@ -252,9 +253,9 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			setOp: function ( stencilFail, stencilZFail, stencilZPass ) {
+			setOp( stencilFail, stencilZFail, stencilZPass ) {
 
 				if ( currentStencilFail	 !== stencilFail 	||
 				     currentStencilZFail !== stencilZFail ||
@@ -268,15 +269,15 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			setLocked: function ( lock ) {
+			setLocked( lock ) {
 
 				locked = lock;
 
-			},
+			}
 
-			setClear: function ( stencil ) {
+			setClear( stencil ) {
 
 				if ( currentStencilClear !== stencil ) {
 
@@ -285,9 +286,9 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 				}
 
-			},
+			}
 
-			reset: function () {
+			reset() {
 
 				locked = false;
 
@@ -365,7 +366,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 	var currentScissor = new Vector4();
 	var currentViewport = new Vector4();
 
-	function createTexture( type, target, count ) {
+	export function createTexture( type, target, count ) {
 
 		var data = new Uint8Array( 4 ); // 4 is required to match default unpack alignment of 4.
 		var texture = gl.createTexture();
@@ -405,7 +406,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	//
 
-	function initAttributes() {
+	export function initAttributes() {
 
 		for ( var i = 0, l = newAttributes.length; i < l; i ++ ) {
 
@@ -415,13 +416,13 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function enableAttribute( attribute ) {
+	export function enableAttribute( attribute ) {
 
 		enableAttributeAndDivisor( attribute, 0 );
 
 	}
 
-	function enableAttributeAndDivisor( attribute, meshPerAttribute ) {
+	export function enableAttributeAndDivisor( attribute, meshPerAttribute ) {
 
 		newAttributes[ attribute ] = 1;
 
@@ -443,7 +444,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function disableUnusedAttributes() {
+	export function disableUnusedAttributes() {
 
 		for ( var i = 0, l = enabledAttributes.length; i !== l; ++ i ) {
 
@@ -458,7 +459,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function enable( id ) {
+	export function enable( id ) {
 
 		if ( enabledCapabilities[ id ] !== true ) {
 
@@ -469,7 +470,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function disable( id ) {
+	export function disable( id ) {
 
 		if ( enabledCapabilities[ id ] !== false ) {
 
@@ -480,7 +481,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function getCompressedTextureFormats() {
+	export function getCompressedTextureFormats() {
 
 		if ( compressedTextureFormats === null ) {
 
@@ -507,7 +508,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function useProgram( program ) {
+	export function useProgram( program ) {
 
 		if ( currentProgram !== program ) {
 
@@ -523,7 +524,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function setBlending( blending, blendEquation, blendSrc, blendDst, blendEquationAlpha, blendSrcAlpha, blendDstAlpha, premultipliedAlpha ) {
+	export function setBlending( blending, blendEquation, blendSrc, blendDst, blendEquationAlpha, blendSrcAlpha, blendDstAlpha, premultipliedAlpha ) {
 
 		if ( blending === NoBlending ) {
 
@@ -657,7 +658,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function setMaterial( material, frontFaceCW ) {
+	export function setMaterial( material, frontFaceCW ) {
 
 		material.side === DoubleSide
 			? disable( gl.CULL_FACE )
@@ -683,7 +684,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	//
 
-	function setFlipSided( flipSided ) {
+	export function setFlipSided( flipSided ) {
 
 		if ( currentFlipSided !== flipSided ) {
 
@@ -703,7 +704,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function setCullFace( cullFace ) {
+	export function setCullFace( cullFace ) {
 
 		if ( cullFace !== CullFaceNone ) {
 
@@ -737,7 +738,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function setLineWidth( width ) {
+	export function setLineWidth( width ) {
 
 		if ( width !== currentLineWidth ) {
 
@@ -749,7 +750,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function setPolygonOffset( polygonOffset, factor, units ) {
+	export function setPolygonOffset( polygonOffset, factor, units ) {
 
 		if ( polygonOffset ) {
 
@@ -772,7 +773,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function setScissorTest( scissorTest ) {
+	export function setScissorTest( scissorTest ) {
 
 		if ( scissorTest ) {
 
@@ -788,7 +789,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	// texture
 
-	function activeTexture( webglSlot ) {
+	export function activeTexture( webglSlot ) {
 
 		if ( webglSlot === undefined ) webglSlot = gl.TEXTURE0 + maxTextures - 1;
 
@@ -801,7 +802,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function bindTexture( webglType, webglTexture ) {
+	export function bindTexture( webglType, webglTexture ) {
 
 		if ( currentTextureSlot === null ) {
 
@@ -829,7 +830,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function compressedTexImage2D() {
+	export function compressedTexImage2D() {
 
 		try {
 
@@ -843,7 +844,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function texImage2D() {
+	export function texImage2D() {
 
 		try {
 
@@ -857,7 +858,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function texImage3D() {
+	export function texImage3D() {
 
 		try {
 
@@ -873,7 +874,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	//
 
-	function scissor( scissor ) {
+	export function scissor( scissor ) {
 
 		if ( currentScissor.equals( scissor ) === false ) {
 
@@ -884,7 +885,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	}
 
-	function viewport( viewport ) {
+	export function viewport( viewport ) {
 
 		if ( currentViewport.equals( viewport ) === false ) {
 
@@ -897,7 +898,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 
 	//
 
-	function reset() {
+	export function reset() {
 
 		for ( var i = 0; i < enabledAttributes.length; i ++ ) {
 
@@ -936,7 +937,7 @@ function WebGLState( gl, extensions, utils, capabilities ) {
 			color: colorBuffer,
 			depth: depthBuffer,
 			stencil: stencilBuffer
-		},
+		}
 
 		initAttributes: initAttributes,
 		enableAttribute: enableAttribute,

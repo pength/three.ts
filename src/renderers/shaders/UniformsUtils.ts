@@ -1,10 +1,10 @@
 /**
- * Uniform Utilities
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
 var UniformsUtils = {
 
-	merge: function ( uniforms ) {
+	merge( uniforms ) {
 
 		var merged = {};
 
@@ -22,9 +22,9 @@ var UniformsUtils = {
 
 		return merged;
 
-	},
+	}
 
-	clone: function ( uniforms_src ) {
+	clone( uniforms_src ) {
 
 		var uniforms_dst = {};
 

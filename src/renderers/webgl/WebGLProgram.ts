@@ -1,15 +1,16 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { WebGLUniforms } from './WebGLUniforms.js';
-import { WebGLShader } from './WebGLShader.js';
-import { ShaderChunk } from '../shaders/ShaderChunk.js';
-import { NoToneMapping, AddOperation, MixOperation, MultiplyOperation, EquirectangularRefractionMapping, CubeRefractionMapping, SphericalReflectionMapping, EquirectangularReflectionMapping, CubeUVRefractionMapping, CubeUVReflectionMapping, CubeReflectionMapping, PCFSoftShadowMap, PCFShadowMap, CineonToneMapping, Uncharted2ToneMapping, ReinhardToneMapping, LinearToneMapping, GammaEncoding, RGBDEncoding, RGBM16Encoding, RGBM7Encoding, RGBEEncoding, sRGBEncoding, LinearEncoding } from '../../constants.js';
+import { WebGLUniforms } from './WebGLUniforms';
+import { WebGLShader } from './WebGLShader';
+import { ShaderChunk } from '../shaders/ShaderChunk';
+import { NoToneMapping, AddOperation, MixOperation, MultiplyOperation, EquirectangularRefractionMapping, CubeRefractionMapping, SphericalReflectionMapping, EquirectangularReflectionMapping, CubeUVRefractionMapping, CubeUVReflectionMapping, CubeReflectionMapping, PCFSoftShadowMap, PCFShadowMap, CineonToneMapping, Uncharted2ToneMapping, ReinhardToneMapping, LinearToneMapping, GammaEncoding, RGBDEncoding, RGBM16Encoding, RGBM7Encoding, RGBEEncoding, sRGBEncoding, LinearEncoding } from '../../constants';
 
 var programIdCount = 0;
 
-function getEncodingComponents( encoding ) {
+export function getEncodingComponents( encoding ) {
 
 	switch ( encoding ) {
 
@@ -34,21 +35,21 @@ function getEncodingComponents( encoding ) {
 
 }
 
-function getTexelDecodingFunction( functionName, encoding ) {
+export function getTexelDecodingFunction( functionName, encoding ) {
 
 	var components = getEncodingComponents( encoding );
 	return 'vec4 ' + functionName + '( vec4 value ) { return ' + components[ 0 ] + 'ToLinear' + components[ 1 ] + '; }';
 
 }
 
-function getTexelEncodingFunction( functionName, encoding ) {
+export function getTexelEncodingFunction( functionName, encoding ) {
 
 	var components = getEncodingComponents( encoding );
 	return 'vec4 ' + functionName + '( vec4 value ) { return LinearTo' + components[ 0 ] + components[ 1 ] + '; }';
 
 }
 
-function getToneMappingFunction( functionName, toneMapping ) {
+export function getToneMappingFunction( functionName, toneMapping ) {
 
 	var toneMappingName;
 
@@ -79,7 +80,7 @@ function getToneMappingFunction( functionName, toneMapping ) {
 
 }
 
-function generateExtensions( extensions, parameters, rendererExtensions ) {
+export function generateExtensions( extensions, parameters, rendererExtensions ) {
 
 	extensions = extensions || {};
 
@@ -94,7 +95,7 @@ function generateExtensions( extensions, parameters, rendererExtensions ) {
 
 }
 
-function generateDefines( defines ) {
+export function generateDefines( defines ) {
 
 	var chunks = [];
 
@@ -112,7 +113,7 @@ function generateDefines( defines ) {
 
 }
 
-function fetchAttributeLocations( gl, program ) {
+export function fetchAttributeLocations( gl, program ) {
 
 	var attributes = {};
 
@@ -133,13 +134,13 @@ function fetchAttributeLocations( gl, program ) {
 
 }
 
-function filterEmptyLine( string ) {
+export function filterEmptyLine( string ) {
 
 	return string !== '';
 
 }
 
-function replaceLightNums( string, parameters ) {
+export function replaceLightNums( string, parameters ) {
 
 	return string
 		.replace( /NUM_DIR_LIGHTS/g, parameters.numDirLights )
@@ -150,7 +151,7 @@ function replaceLightNums( string, parameters ) {
 
 }
 
-function replaceClippingPlaneNums( string, parameters ) {
+export function replaceClippingPlaneNums( string, parameters ) {
 
 	return string
 		.replace( /NUM_CLIPPING_PLANES/g, parameters.numClippingPlanes )
@@ -158,11 +159,11 @@ function replaceClippingPlaneNums( string, parameters ) {
 
 }
 
-function parseIncludes( string ) {
+export function parseIncludes( string ) {
 
 	var pattern = /^[ \t]*#include +<([\w\d./]+)>/gm;
 
-	function replace( match, include ) {
+	export function replace( match, include ) {
 
 		var replace = ShaderChunk[ include ];
 
@@ -180,11 +181,11 @@ function parseIncludes( string ) {
 
 }
 
-function unrollLoops( string ) {
+export function unrollLoops( string ) {
 
 	var pattern = /#pragma unroll_loop[\s]+?for \( int i \= (\d+)\; i < (\d+)\; i \+\+ \) \{([\s\S]+?)(?=\})\}/g;
 
-	function replace( match, start, end, snippet ) {
+	export function replace( match, start, end, snippet ) {
 
 		var unroll = '';
 
@@ -202,7 +203,7 @@ function unrollLoops( string ) {
 
 }
 
-function WebGLProgram( renderer, extensions, code, material, shader, parameters, capabilities ) {
+export function WebGLProgram( renderer, extensions, code, material, shader, parameters, capabilities ) {
 
 	var gl = renderer.context;
 
@@ -486,13 +487,13 @@ function WebGLProgram( renderer, extensions, code, material, shader, parameters,
 			'uniform vec3 cameraPosition;',
 
 			( parameters.toneMapping !== NoToneMapping ) ? '#define TONE_MAPPING' : '',
-			( parameters.toneMapping !== NoToneMapping ) ? ShaderChunk[ 'tonemapping_pars_fragment' ] : '', // this code is required here because it is used by the toneMapping() function defined below
+			( parameters.toneMapping !== NoToneMapping ) ? ShaderChunk[ 'tonemapping_pars_fragment' ] : '', // this code is required here because it is used by the toneMapping() export function defined below
 			( parameters.toneMapping !== NoToneMapping ) ? getToneMappingFunction( 'toneMapping', parameters.toneMapping ) : '',
 
 			parameters.dithering ? '#define DITHERING' : '',
 
 			( parameters.outputEncoding || parameters.mapEncoding || parameters.matcapEncoding || parameters.envMapEncoding || parameters.emissiveMapEncoding ) ?
-				ShaderChunk[ 'encodings_pars_fragment' ] : '', // this code is required here because it is used by the various encoding/decoding function defined below
+				ShaderChunk[ 'encodings_pars_fragment' ] : '', // this code is required here because it is used by the various encoding/decoding export function defined below
 			parameters.mapEncoding ? getTexelDecodingFunction( 'mapTexelToLinear', parameters.mapEncoding ) : '',
 			parameters.matcapEncoding ? getTexelDecodingFunction( 'matcapTexelToLinear', parameters.matcapEncoding ) : '',
 			parameters.envMapEncoding ? getTexelDecodingFunction( 'envMapTexelToLinear', parameters.envMapEncoding ) : '',
@@ -629,7 +630,7 @@ function WebGLProgram( renderer, extensions, code, material, shader, parameters,
 				log: vertexLog,
 				prefix: prefixVertex
 
-			},
+			}
 
 			fragmentShader: {
 
@@ -651,7 +652,7 @@ function WebGLProgram( renderer, extensions, code, material, shader, parameters,
 
 	var cachedUniforms;
 
-	this.getUniforms = function () {
+	this.getUniforms = export function () {
 
 		if ( cachedUniforms === undefined ) {
 
@@ -667,7 +668,7 @@ function WebGLProgram( renderer, extensions, code, material, shader, parameters,
 
 	var cachedAttributes;
 
-	this.getAttributes = function () {
+	this.getAttributes = export function () {
 
 		if ( cachedAttributes === undefined ) {
 
@@ -681,7 +682,7 @@ function WebGLProgram( renderer, extensions, code, material, shader, parameters,
 
 	// free resource
 
-	this.destroy = function () {
+	this.destroy = export function () {
 
 		gl.deleteProgram( program );
 		this.program = undefined;
@@ -693,16 +694,16 @@ function WebGLProgram( renderer, extensions, code, material, shader, parameters,
 	Object.defineProperties( this, {
 
 		uniforms: {
-			get: function () {
+			get() {
 
 				console.warn( 'THREE.WebGLProgram: .uniforms is now .getUniforms().' );
 				return this.getUniforms();
 
 			}
-		},
+		}
 
 		attributes: {
-			get: function () {
+			get() {
 
 				console.warn( 'THREE.WebGLProgram: .attributes is now .getAttributes().' );
 				return this.getAttributes();
@@ -710,7 +711,7 @@ function WebGLProgram( renderer, extensions, code, material, shader, parameters,
 			}
 		}
 
-	} );
+	}
 
 
 	//

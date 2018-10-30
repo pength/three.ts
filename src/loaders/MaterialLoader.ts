@@ -1,17 +1,18 @@
-import { Color } from '../math/Color.js';
-import { Vector2 } from '../math/Vector2.js';
-import { Vector3 } from '../math/Vector3.js';
-import { Vector4 } from '../math/Vector4.js';
-import { Matrix4 } from '../math/Matrix4.js';
-import { FileLoader } from './FileLoader.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
-import * as Materials from '../materials/Materials.js';
+import { Color } from '../math/Color';
+import { Vector2 } from '../math/Vector2';
+import { Vector3 } from '../math/Vector3';
+import { Vector4 } from '../math/Vector4';
+import { Matrix4 } from '../math/Matrix4';
+import { FileLoader } from './FileLoader';
+import { DefaultLoadingManager } from './LoadingManager';
+import * as Materials from '../materials/Materials';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function MaterialLoader( manager ) {
+export function MaterialLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 	this.textures = {};
@@ -20,30 +21,30 @@ function MaterialLoader( manager ) {
 
 Object.assign( MaterialLoader.prototype, {
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		var scope = this;
 
 		var loader = new FileLoader( scope.manager );
-		loader.load( url, function ( text ) {
+		loader.load( url, export function ( text ) {
 
 			onLoad( scope.parse( JSON.parse( text ) ) );
 
-		}, onProgress, onError );
+		} onProgress, onError );
 
-	},
+	}
 
-	setTextures: function ( value ) {
+	setTextures( value ) {
 
 		this.textures = value;
 
-	},
+	}
 
-	parse: function ( json ) {
+	parse( json ) {
 
 		var textures = this.textures;
 
-		function getTexture( name ) {
+		export function getTexture( name ) {
 
 			if ( textures[ name ] === undefined ) {
 
@@ -182,7 +183,7 @@ Object.assign( MaterialLoader.prototype, {
 
 			if ( Array.isArray( normalScale ) === false ) {
 
-				// Blender exporter used to export a scalar. See #7459
+				// Blender exporter used to export function a scalar. See #7459
 
 				normalScale = [ normalScale, normalScale ];
 
@@ -221,7 +222,7 @@ Object.assign( MaterialLoader.prototype, {
 
 	}
 
-} );
+}
 
 
 export { MaterialLoader };

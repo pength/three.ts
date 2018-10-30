@@ -14,29 +14,29 @@ import {
 
 	MirroredRepeatWrapping,
 	RepeatWrapping
-} from '../constants.js';
-import { _Math } from '../math/Math.js';
-import { MaterialLoader } from './MaterialLoader.js';
-import { TextureLoader } from './TextureLoader.js';
-import { Color } from '../math/Color.js';
+} from '../constants';
+import { _Math } from '../math/Math';
+import { MaterialLoader } from './MaterialLoader';
+import { TextureLoader } from './TextureLoader';
+import { Color } from '../math/Color';
 
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function Loader() {}
+export function Loader() {}
 
 Loader.Handlers = {
 
 	handlers: [],
 
-	add: function ( regex, loader ) {
+	add( regex, loader ) {
 
 		this.handlers.push( regex, loader );
 
-	},
+	}
 
-	get: function ( file ) {
+	get( file ) {
 
 		var handlers = this.handlers;
 
@@ -63,13 +63,13 @@ Object.assign( Loader.prototype, {
 
 	crossOrigin: 'anonymous',
 
-	onLoadStart: function () {},
+	onLoadStart() {}
 
-	onLoadProgress: function () {},
+	onLoadProgress() {}
 
-	onLoadComplete: function () {},
+	onLoadComplete() {}
 
-	initMaterials: function ( materials, texturePath, crossOrigin ) {
+	initMaterials( materials, texturePath, crossOrigin ) {
 
 		var array = [];
 
@@ -81,9 +81,9 @@ Object.assign( Loader.prototype, {
 
 		return array;
 
-	},
+	}
 
-	createMaterial: ( function () {
+	createMaterial: ( export function () {
 
 		var BlendingMode = {
 			NoBlending: NoBlending,
@@ -98,13 +98,13 @@ Object.assign( Loader.prototype, {
 		var textureLoader = new TextureLoader();
 		var materialLoader = new MaterialLoader();
 
-		return function createMaterial( m, texturePath, crossOrigin ) {
+		return export function createMaterial( m, texturePath, crossOrigin ) {
 
 			// convert from old material format
 
 			var textures = {};
 
-			function loadTexture( path, repeat, offset, wrap, anisotropy ) {
+			export function loadTexture( path, repeat, offset, wrap, anisotropy ) {
 
 				var fullPath = texturePath + path;
 				var loader = Loader.Handlers.get( fullPath );
@@ -337,6 +337,6 @@ Object.assign( Loader.prototype, {
 
 	} )()
 
-} );
+}
 
 export { Loader };

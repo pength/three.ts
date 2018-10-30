@@ -1,10 +1,11 @@
-import { WebGLRenderTarget } from './WebGLRenderTarget.js';
+import { WebGLRenderTarget } from './WebGLRenderTarget';
 
 /**
- * @author alteredq / http://alteredqualia.com
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function WebGLRenderTargetCube( width, height, options ) {
+export function WebGLRenderTargetCube( width, height, options ) {
 
 	WebGLRenderTarget.call( this, width, height, options );
 

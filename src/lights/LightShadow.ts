@@ -1,11 +1,12 @@
-import { Matrix4 } from '../math/Matrix4.js';
-import { Vector2 } from '../math/Vector2.js';
+import { Matrix4 } from '../math/Matrix4';
+import { Vector2 } from '../math/Vector2';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function LightShadow( camera ) {
+export function LightShadow( camera ) {
 
 	this.camera = camera;
 
@@ -21,7 +22,7 @@ function LightShadow( camera ) {
 
 Object.assign( LightShadow.prototype, {
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		this.camera = source.camera.clone();
 
@@ -32,15 +33,15 @@ Object.assign( LightShadow.prototype, {
 
 		return this;
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor().copy( this );
 
-	},
+	}
 
-	toJSON: function () {
+	toJSON() {
 
 		var object = {};
 
@@ -55,7 +56,7 @@ Object.assign( LightShadow.prototype, {
 
 	}
 
-} );
+}
 
 
 export { LightShadow };

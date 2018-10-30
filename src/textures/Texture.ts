@@ -1,22 +1,21 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
- * @author szimek / https://github.com/szimek/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { EventDispatcher } from '../core/EventDispatcher.js';
-import { UVMapping } from '../constants.js';
-import { MirroredRepeatWrapping, ClampToEdgeWrapping, RepeatWrapping, LinearEncoding, UnsignedByteType, RGBAFormat, LinearMipMapLinearFilter, LinearFilter } from '../constants.js';
-import { _Math } from '../math/Math.js';
-import { Vector2 } from '../math/Vector2.js';
-import { Matrix3 } from '../math/Matrix3.js';
-import { ImageUtils } from '../extras/ImageUtils.js';
+import { EventDispatcher } from '../core/EventDispatcher';
+import { UVMapping } from '../constants';
+import { MirroredRepeatWrapping, ClampToEdgeWrapping, RepeatWrapping, LinearEncoding, UnsignedByteType, RGBAFormat, LinearMipMapLinearFilter, LinearFilter } from '../constants';
+import { _Math } from '../math/Math';
+import { Vector2 } from '../math/Vector2';
+import { Matrix3 } from '../math/Matrix3';
+import { ImageUtils } from '../extras/ImageUtils';
 
 var textureId = 0;
 
-function Texture( image, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding ) {
+export function Texture( image, mapping, wrapS, wrapT, magFilter, minFilter, format, type, anisotropy, encoding ) {
 
-	Object.defineProperty( this, 'id', { value: textureId ++ } );
+	Object.defineProperty( this, 'id', { value: textureId ++ }
 
 	this.uuid = _Math.generateUUID();
 
@@ -71,19 +70,19 @@ Texture.prototype = Object.assign( Object.create( EventDispatcher.prototype ), {
 
 	isTexture: true,
 
-	updateMatrix: function () {
+	updateMatrix() {
 
 		this.matrix.setUvTransform( this.offset.x, this.offset.y, this.repeat.x, this.repeat.y, this.rotation, this.center.x, this.center.y );
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor().copy( this );
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		this.name = source.name;
 
@@ -119,9 +118,9 @@ Texture.prototype = Object.assign( Object.create( EventDispatcher.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	toJSON: function ( meta ) {
+	toJSON( meta ) {
 
 		var isRootObject = ( meta === undefined || typeof meta === 'string' );
 
@@ -137,7 +136,7 @@ Texture.prototype = Object.assign( Object.create( EventDispatcher.prototype ), {
 				version: 4.5,
 				type: 'Texture',
 				generator: 'Texture.toJSON'
-			},
+			}
 
 			uuid: this.uuid,
 			name: this.name,
@@ -215,15 +214,15 @@ Texture.prototype = Object.assign( Object.create( EventDispatcher.prototype ), {
 
 		return output;
 
-	},
+	}
 
-	dispose: function () {
+	dispose() {
 
-		this.dispatchEvent( { type: 'dispose' } );
+		this.dispatchEvent( { type: 'dispose' }
 
-	},
+	}
 
-	transformUv: function ( uv ) {
+	transformUv( uv ) {
 
 		if ( this.mapping !== UVMapping ) return uv;
 
@@ -301,17 +300,17 @@ Texture.prototype = Object.assign( Object.create( EventDispatcher.prototype ), {
 
 	}
 
-} );
+}
 
 Object.defineProperty( Texture.prototype, "needsUpdate", {
 
-	set: function ( value ) {
+	set( value ) {
 
 		if ( value === true ) this.version ++;
 
 	}
 
-} );
+}
 
 
 export { Texture };

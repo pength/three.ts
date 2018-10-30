@@ -1,13 +1,13 @@
 /**
- * @author abelnation / http://github.com/abelnation
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-import { CylinderGeometry } from './CylinderGeometry.js';
-import { CylinderBufferGeometry } from './CylinderGeometry.js';
+import { CylinderGeometry } from './CylinderGeometry';
+import { CylinderBufferGeometry } from './CylinderGeometry';
 
 // ConeGeometry
 
-function ConeGeometry( radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
+export function ConeGeometry( radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
 
 	CylinderGeometry.call( this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength );
 
@@ -30,7 +30,7 @@ ConeGeometry.prototype.constructor = ConeGeometry;
 
 // ConeBufferGeometry
 
-function ConeBufferGeometry( radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
+export function ConeBufferGeometry( radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
 
 	CylinderBufferGeometry.call( this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength );
 

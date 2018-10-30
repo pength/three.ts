@@ -1,14 +1,11 @@
-import { MeshPhongMaterial } from './MeshPhongMaterial.js';
+import { MeshPhongMaterial } from './MeshPhongMaterial';
 
 /**
- * @author takahirox / http://github.com/takahirox
- *
- * parameters = {
- *  gradientMap: new THREE.Texture( <Image> )
- * }
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function MeshToonMaterial( parameters ) {
+export function MeshToonMaterial( parameters ) {
 
 	MeshPhongMaterial.call( this );
 
@@ -27,7 +24,7 @@ MeshToonMaterial.prototype.constructor = MeshToonMaterial;
 
 MeshToonMaterial.prototype.isMeshToonMaterial = true;
 
-MeshToonMaterial.prototype.copy = function ( source ) {
+MeshToonMaterial.prototype.copy = export function ( source ) {
 
 	MeshPhongMaterial.prototype.copy.call( this, source );
 

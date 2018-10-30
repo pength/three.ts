@@ -1,16 +1,9 @@
 /**
-*
-* Supersample Anti-Aliasing Render Pass
-*
-* @author bhouston / http://clara.io/
-*
-* This manual approach to SSAA re-renders the scene ones for each sample with camera jitter and accumulates the results.
-*
-* References: https://en.wikipedia.org/wiki/Supersampling
-*
-*/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
 
-THREE.SSAARenderPass = function ( scene, camera, clearColor, clearAlpha ) {
+THREE.SSAARenderPass = export function ( scene, camera, clearColor, clearAlpha ) {
 
 	THREE.Pass.call( this );
 
@@ -38,7 +31,7 @@ THREE.SSAARenderPass = function ( scene, camera, clearColor, clearAlpha ) {
 		blending: THREE.AdditiveBlending,
 		depthTest: false,
 		depthWrite: false
-	} );
+	}
 
 	this.camera2 = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
 	this.scene2	= new THREE.Scene();
@@ -52,7 +45,7 @@ THREE.SSAARenderPass.prototype = Object.assign( Object.create( THREE.Pass.protot
 
 	constructor: THREE.SSAARenderPass,
 
-	dispose: function () {
+	dispose() {
 
 		if ( this.sampleRenderTarget ) {
 
@@ -61,19 +54,19 @@ THREE.SSAARenderPass.prototype = Object.assign( Object.create( THREE.Pass.protot
 
 		}
 
-	},
+	}
 
-	setSize: function ( width, height ) {
+	setSize( width, height ) {
 
 		if ( this.sampleRenderTarget )	this.sampleRenderTarget.setSize( width, height );
 
-	},
+	}
 
-	render: function ( renderer, writeBuffer, readBuffer ) {
+	render( renderer, writeBuffer, readBuffer ) {
 
 		if ( ! this.sampleRenderTarget ) {
 
-			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat } );
+			this.sampleRenderTarget = new THREE.WebGLRenderTarget( readBuffer.width, readBuffer.height, { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat }
 			this.sampleRenderTarget.texture.name = "SSAARenderPass.sample";
 
 		}
@@ -139,7 +132,7 @@ THREE.SSAARenderPass.prototype = Object.assign( Object.create( THREE.Pass.protot
 
 	}
 
-} );
+}
 
 
 // These jitter vectors are specified in integers because it is easier.

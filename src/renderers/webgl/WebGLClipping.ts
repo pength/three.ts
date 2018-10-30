@@ -1,11 +1,11 @@
 /**
- * @author tschw
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
+import { Matrix3 } from '../../math/Matrix3';
+import { Plane } from '../../math/Plane';
 
-import { Matrix3 } from '../../math/Matrix3.js';
-import { Plane } from '../../math/Plane.js';
-
-function WebGLClipping() {
+export function WebGLClipping() {
 
 	var scope = this,
 
@@ -23,7 +23,7 @@ function WebGLClipping() {
 	this.numPlanes = 0;
 	this.numIntersection = 0;
 
-	this.init = function ( planes, enableLocalClipping, camera ) {
+	this.init = export function ( planes, enableLocalClipping, camera ) {
 
 		var enabled =
 			planes.length !== 0 ||
@@ -42,21 +42,21 @@ function WebGLClipping() {
 
 	};
 
-	this.beginShadows = function () {
+	this.beginShadows = export function () {
 
 		renderingShadows = true;
 		projectPlanes( null );
 
 	};
 
-	this.endShadows = function () {
+	this.endShadows = export function () {
 
 		renderingShadows = false;
 		resetGlobalState();
 
 	};
 
-	this.setState = function ( planes, clipIntersection, clipShadows, camera, cache, fromCache ) {
+	this.setState = export function ( planes, clipIntersection, clipShadows, camera, cache, fromCache ) {
 
 		if ( ! localClippingEnabled || planes === null || planes.length === 0 || renderingShadows && ! clipShadows ) {
 
@@ -100,7 +100,7 @@ function WebGLClipping() {
 
 	};
 
-	function resetGlobalState() {
+	export function resetGlobalState() {
 
 		if ( uniform.value !== globalState ) {
 
@@ -114,7 +114,7 @@ function WebGLClipping() {
 
 	}
 
-	function projectPlanes( planes, camera, dstOffset, skipTransform ) {
+	export function projectPlanes( planes, camera, dstOffset, skipTransform ) {
 
 		var nPlanes = planes !== null ? planes.length : 0,
 			dstArray = null;

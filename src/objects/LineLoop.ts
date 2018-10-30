@@ -1,10 +1,10 @@
-import { Line } from './Line.js';
+import { Line } from './Line';
 
 /**
- * @author mgreter / http://github.com/mgreter
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function LineLoop( geometry, material ) {
+export function LineLoop( geometry, material ) {
 
 	Line.call( this, geometry, material );
 
@@ -18,7 +18,7 @@ LineLoop.prototype = Object.assign( Object.create( Line.prototype ), {
 
 	isLineLoop: true,
 
-} );
+}
 
 
 export { LineLoop };

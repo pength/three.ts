@@ -1,17 +1,16 @@
 /**
- * @author alteredq / http://alteredqualia.com/
- * @author mrdoob / http://mrdoob.com/
- * @author WestLangley / http://github.com/WestLangley
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Vector3 } from '../math/Vector3.js';
-import { Object3D } from '../core/Object3D.js';
-import { LineSegments } from '../objects/LineSegments.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
+import { Vector3 } from '../math/Vector3';
+import { Object3D } from '../core/Object3D';
+import { LineSegments } from '../objects/LineSegments';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from '../core/BufferGeometry';
 
-function SpotLightHelper( light, color ) {
+export function SpotLightHelper( light, color ) {
 
 	Object3D.call( this );
 
@@ -47,7 +46,7 @@ function SpotLightHelper( light, color ) {
 
 	geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
 
-	var material = new LineBasicMaterial( { fog: false } );
+	var material = new LineBasicMaterial( { fog: false }
 
 	this.cone = new LineSegments( geometry, material );
 	this.add( this.cone );
@@ -59,19 +58,19 @@ function SpotLightHelper( light, color ) {
 SpotLightHelper.prototype = Object.create( Object3D.prototype );
 SpotLightHelper.prototype.constructor = SpotLightHelper;
 
-SpotLightHelper.prototype.dispose = function () {
+SpotLightHelper.prototype.dispose = export function () {
 
 	this.cone.geometry.dispose();
 	this.cone.material.dispose();
 
 };
 
-SpotLightHelper.prototype.update = function () {
+SpotLightHelper.prototype.update = export function () {
 
 	var vector = new Vector3();
 	var vector2 = new Vector3();
 
-	return function update() {
+	return export function update() {
 
 		this.light.updateMatrixWorld();
 

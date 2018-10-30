@@ -1,16 +1,16 @@
 /**
- * @author jonobr1 / http://jonobr1.com
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { ShapeUtils } from '../extras/ShapeUtils.js';
+import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { ShapeUtils } from '../extras/ShapeUtils';
 
 // ShapeGeometry
 
-function ShapeGeometry( shapes, curveSegments ) {
+export function ShapeGeometry( shapes, curveSegments ) {
 
 	Geometry.call( this );
 
@@ -37,7 +37,7 @@ function ShapeGeometry( shapes, curveSegments ) {
 ShapeGeometry.prototype = Object.create( Geometry.prototype );
 ShapeGeometry.prototype.constructor = ShapeGeometry;
 
-ShapeGeometry.prototype.toJSON = function () {
+ShapeGeometry.prototype.toJSON = export function () {
 
 	var data = Geometry.prototype.toJSON.call( this );
 
@@ -49,7 +49,7 @@ ShapeGeometry.prototype.toJSON = function () {
 
 // ShapeBufferGeometry
 
-function ShapeBufferGeometry( shapes, curveSegments ) {
+export function ShapeBufferGeometry( shapes, curveSegments ) {
 
 	BufferGeometry.call( this );
 
@@ -105,7 +105,7 @@ function ShapeBufferGeometry( shapes, curveSegments ) {
 
 	// helper functions
 
-	function addShape( shape ) {
+	export function addShape( shape ) {
 
 		var i, l, shapeHole;
 
@@ -182,7 +182,7 @@ function ShapeBufferGeometry( shapes, curveSegments ) {
 ShapeBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
 ShapeBufferGeometry.prototype.constructor = ShapeBufferGeometry;
 
-ShapeBufferGeometry.prototype.toJSON = function () {
+ShapeBufferGeometry.prototype.toJSON = export function () {
 
 	var data = BufferGeometry.prototype.toJSON.call( this );
 
@@ -194,7 +194,7 @@ ShapeBufferGeometry.prototype.toJSON = function () {
 
 //
 
-function toJSON( shapes, data ) {
+export function toJSON( shapes, data ) {
 
 	data.shapes = [];
 

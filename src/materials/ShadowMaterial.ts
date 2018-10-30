@@ -1,15 +1,16 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
  * parameters = {
  *  color: <THREE.Color>
  * }
  */
 
-import { Material } from './Material.js';
-import { Color } from '../math/Color.js';
+import { Material } from './Material';
+import { Color } from '../math/Color';
 
-function ShadowMaterial( parameters ) {
+export function ShadowMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -27,7 +28,7 @@ ShadowMaterial.prototype.constructor = ShadowMaterial;
 
 ShadowMaterial.prototype.isShadowMaterial = true;
 
-ShadowMaterial.prototype.copy = function ( source ) {
+ShadowMaterial.prototype.copy = export function ( source ) {
 
 	Material.prototype.copy.call( this, source );
 

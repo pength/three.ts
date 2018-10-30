@@ -1,19 +1,19 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
+import { Color } from '../../math/Color';
+import { Matrix4 } from '../../math/Matrix4';
+import { Vector2 } from '../../math/Vector2';
+import { Vector3 } from '../../math/Vector3';
 
-import { Color } from '../../math/Color.js';
-import { Matrix4 } from '../../math/Matrix4.js';
-import { Vector2 } from '../../math/Vector2.js';
-import { Vector3 } from '../../math/Vector3.js';
-
-function UniformsCache() {
+export function UniformsCache() {
 
 	var lights = {};
 
 	return {
 
-		get: function ( light ) {
+		get( light ) {
 
 			if ( lights[ light.id ] !== undefined ) {
 
@@ -102,7 +102,7 @@ function UniformsCache() {
 
 var count = 0;
 
-function WebGLLights() {
+export function WebGLLights() {
 
 	var cache = new UniformsCache();
 
@@ -118,7 +118,7 @@ function WebGLLights() {
 			rectAreaLength: - 1,
 			hemiLength: - 1,
 			shadowsLength: - 1
-		},
+		}
 
 		ambient: [ 0, 0, 0 ],
 		directional: [],
@@ -139,7 +139,7 @@ function WebGLLights() {
 	var matrix4 = new Matrix4();
 	var matrix42 = new Matrix4();
 
-	function setup( lights, shadows, camera ) {
+	export function setup( lights, shadows, camera ) {
 
 		var r = 0, g = 0, b = 0;
 

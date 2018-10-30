@@ -1,13 +1,13 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
+import { Vector3 } from '../math/Vector3';
+import { Quaternion } from '../math/Quaternion';
+import { Audio } from './Audio';
+import { Object3D } from '../core/Object3D';
 
-import { Vector3 } from '../math/Vector3.js';
-import { Quaternion } from '../math/Quaternion.js';
-import { Audio } from './Audio.js';
-import { Object3D } from '../core/Object3D.js';
-
-function PositionalAudio( listener ) {
+export function PositionalAudio( listener ) {
 
 	Audio.call( this, listener );
 
@@ -20,69 +20,69 @@ PositionalAudio.prototype = Object.assign( Object.create( Audio.prototype ), {
 
 	constructor: PositionalAudio,
 
-	getOutput: function () {
+	getOutput() {
 
 		return this.panner;
 
-	},
+	}
 
-	getRefDistance: function () {
+	getRefDistance() {
 
 		return this.panner.refDistance;
 
-	},
+	}
 
-	setRefDistance: function ( value ) {
+	setRefDistance( value ) {
 
 		this.panner.refDistance = value;
 
 		return this;
 
-	},
+	}
 
-	getRolloffFactor: function () {
+	getRolloffFactor() {
 
 		return this.panner.rolloffFactor;
 
-	},
+	}
 
-	setRolloffFactor: function ( value ) {
+	setRolloffFactor( value ) {
 
 		this.panner.rolloffFactor = value;
 
 		return this;
 
-	},
+	}
 
-	getDistanceModel: function () {
+	getDistanceModel() {
 
 		return this.panner.distanceModel;
 
-	},
+	}
 
-	setDistanceModel: function ( value ) {
+	setDistanceModel( value ) {
 
 		this.panner.distanceModel = value;
 
 		return this;
 
-	},
+	}
 
-	getMaxDistance: function () {
+	getMaxDistance() {
 
 		return this.panner.maxDistance;
 
-	},
+	}
 
-	setMaxDistance: function ( value ) {
+	setMaxDistance( value ) {
 
 		this.panner.maxDistance = value;
 
 		return this;
 
-	},
+	}
 
-	setDirectionalCone: function ( coneInnerAngle, coneOuterAngle, coneOuterGain ) {
+	setDirectionalCone( coneInnerAngle, coneOuterAngle, coneOuterGain ) {
 
 		this.panner.coneInnerAngle = coneInnerAngle;
 		this.panner.coneOuterAngle = coneOuterAngle;
@@ -90,9 +90,9 @@ PositionalAudio.prototype = Object.assign( Object.create( Audio.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	updateMatrixWorld: ( function () {
+	updateMatrixWorld: ( export function () {
 
 		var position = new Vector3();
 		var quaternion = new Quaternion();
@@ -100,7 +100,7 @@ PositionalAudio.prototype = Object.assign( Object.create( Audio.prototype ), {
 
 		var orientation = new Vector3();
 
-		return function updateMatrixWorld( force ) {
+		return export function updateMatrixWorld( force ) {
 
 			Object3D.prototype.updateMatrixWorld.call( this, force );
 
@@ -117,6 +117,6 @@ PositionalAudio.prototype = Object.assign( Object.create( Audio.prototype ), {
 	} )()
 
 
-} );
+}
 
 export { PositionalAudio };

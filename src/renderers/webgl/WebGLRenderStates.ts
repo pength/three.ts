@@ -1,36 +1,37 @@
 /**
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { WebGLLights } from './WebGLLights.js';
+import { WebGLLights } from './WebGLLights';
 
-function WebGLRenderState() {
+export function WebGLRenderState() {
 
 	var lights = new WebGLLights();
 
 	var lightsArray = [];
 	var shadowsArray = [];
 
-	function init() {
+	export function init() {
 
 		lightsArray.length = 0;
 		shadowsArray.length = 0;
 
 	}
 
-	function pushLight( light ) {
+	export function pushLight( light ) {
 
 		lightsArray.push( light );
 
 	}
 
-	function pushShadow( shadowLight ) {
+	export function pushShadow( shadowLight ) {
 
 		shadowsArray.push( shadowLight );
 
 	}
 
-	function setupLights( camera ) {
+	export function setupLights( camera ) {
 
 		lights.setup( lightsArray, shadowsArray, camera );
 
@@ -54,11 +55,11 @@ function WebGLRenderState() {
 
 }
 
-function WebGLRenderStates() {
+export function WebGLRenderStates() {
 
 	var renderStates = {};
 
-	function get( scene, camera ) {
+	export function get( scene, camera ) {
 
 		var renderState;
 
@@ -87,7 +88,7 @@ function WebGLRenderStates() {
 
 	}
 
-	function dispose() {
+	export function dispose() {
 
 		renderStates = {};
 

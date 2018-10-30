@@ -1,12 +1,13 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Cache } from './Cache.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
+import { Cache } from './Cache';
+import { DefaultLoadingManager } from './LoadingManager';
 
 
-function ImageLoader( manager ) {
+export function ImageLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
@@ -16,7 +17,7 @@ Object.assign( ImageLoader.prototype, {
 
 	crossOrigin: 'anonymous',
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		if ( url === undefined ) url = '';
 
@@ -32,13 +33,13 @@ Object.assign( ImageLoader.prototype, {
 
 			scope.manager.itemStart( url );
 
-			setTimeout( function () {
+			setTimeout( export function () {
 
 				if ( onLoad ) onLoad( cached );
 
 				scope.manager.itemEnd( url );
 
-			}, 0 );
+			} 0 );
 
 			return cached;
 
@@ -46,7 +47,7 @@ Object.assign( ImageLoader.prototype, {
 
 		var image = document.createElementNS( 'http://www.w3.org/1999/xhtml', 'img' );
 
-		function onImageLoad() {
+		export function onImageLoad() {
 
 			image.removeEventListener( 'load', onImageLoad, false );
 			image.removeEventListener( 'error', onImageError, false );
@@ -59,7 +60,7 @@ Object.assign( ImageLoader.prototype, {
 
 		}
 
-		function onImageError( event ) {
+		export function onImageError( event ) {
 
 			image.removeEventListener( 'load', onImageLoad, false );
 			image.removeEventListener( 'error', onImageError, false );
@@ -86,23 +87,23 @@ Object.assign( ImageLoader.prototype, {
 
 		return image;
 
-	},
+	}
 
-	setCrossOrigin: function ( value ) {
+	setCrossOrigin( value ) {
 
 		this.crossOrigin = value;
 		return this;
 
-	},
+	}
 
-	setPath: function ( value ) {
+	setPath( value ) {
 
 		this.path = value;
 		return this;
 
 	}
 
-} );
+}
 
 
 export { ImageLoader };

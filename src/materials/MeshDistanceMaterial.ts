@@ -1,8 +1,10 @@
-import { Material } from './Material.js';
-import { Vector3 } from '../math/Vector3.js';
+import { Material } from './Material';
+import { Vector3 } from '../math/Vector3';
+
 
 /**
- * @author WestLangley / http://github.com/WestLangley
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
  * parameters = {
  *
@@ -24,7 +26,7 @@ import { Vector3 } from '../math/Vector3.js';
  * }
  */
 
-function MeshDistanceMaterial( parameters ) {
+export function MeshDistanceMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -57,7 +59,7 @@ MeshDistanceMaterial.prototype.constructor = MeshDistanceMaterial;
 
 MeshDistanceMaterial.prototype.isMeshDistanceMaterial = true;
 
-MeshDistanceMaterial.prototype.copy = function ( source ) {
+MeshDistanceMaterial.prototype.copy = export function ( source ) {
 
 	Material.prototype.copy.call( this, source );
 

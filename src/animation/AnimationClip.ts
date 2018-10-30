@@ -1,22 +1,19 @@
-import { AnimationUtils } from './AnimationUtils.js';
-import { KeyframeTrack } from './KeyframeTrack.js';
-import { BooleanKeyframeTrack } from './tracks/BooleanKeyframeTrack.js';
-import { ColorKeyframeTrack } from './tracks/ColorKeyframeTrack.js';
-import { NumberKeyframeTrack } from './tracks/NumberKeyframeTrack.js';
-import { QuaternionKeyframeTrack } from './tracks/QuaternionKeyframeTrack.js';
-import { StringKeyframeTrack } from './tracks/StringKeyframeTrack.js';
-import { VectorKeyframeTrack } from './tracks/VectorKeyframeTrack.js';
-import { _Math } from '../math/Math.js';
+import { AnimationUtils } from './AnimationUtils';
+import { KeyframeTrack } from './KeyframeTrack';
+import { BooleanKeyframeTrack } from './tracks/BooleanKeyframeTrack';
+import { ColorKeyframeTrack } from './tracks/ColorKeyframeTrack';
+import { NumberKeyframeTrack } from './tracks/NumberKeyframeTrack';
+import { QuaternionKeyframeTrack } from './tracks/QuaternionKeyframeTrack';
+import { StringKeyframeTrack } from './tracks/StringKeyframeTrack';
+import { VectorKeyframeTrack } from './tracks/VectorKeyframeTrack';
+import { _Math } from '../math/Math';
 
 /**
- *
- * Reusable set of Tracks that represent an animation.
- *
- * @author Ben Houston / http://clara.io/
- * @author David Sarno / http://lighthaus.us/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function AnimationClip( name, duration, tracks ) {
+export function AnimationClip( name, duration, tracks ) {
 
 	this.name = name;
 	this.tracks = tracks;
@@ -33,7 +30,7 @@ function AnimationClip( name, duration, tracks ) {
 
 }
 
-function getTrackTypeForValueTypeName( typeName ) {
+export function getTrackTypeForValueTypeName( typeName ) {
 
 	switch ( typeName.toLowerCase() ) {
 
@@ -75,7 +72,7 @@ function getTrackTypeForValueTypeName( typeName ) {
 
 }
 
-function parseKeyframeTrack( json ) {
+export function parseKeyframeTrack( json ) {
 
 	if ( json.type === undefined ) {
 
@@ -112,7 +109,7 @@ function parseKeyframeTrack( json ) {
 
 Object.assign( AnimationClip, {
 
-	parse: function ( json ) {
+	parse( json ) {
 
 		var tracks = [],
 			jsonTracks = json.tracks,
@@ -126,9 +123,9 @@ Object.assign( AnimationClip, {
 
 		return new AnimationClip( json.name, json.duration, tracks );
 
-	},
+	}
 
-	toJSON: function ( clip ) {
+	toJSON( clip ) {
 
 		var tracks = [],
 			clipTracks = clip.tracks;
@@ -150,9 +147,9 @@ Object.assign( AnimationClip, {
 
 		return json;
 
-	},
+	}
 
-	CreateFromMorphTargetSequence: function ( name, morphTargetSequence, fps, noLoop ) {
+	CreateFromMorphTargetSequence( name, morphTargetSequence, fps, noLoop ) {
 
 		var numMorphTargets = morphTargetSequence.length;
 		var tracks = [];
@@ -192,9 +189,9 @@ Object.assign( AnimationClip, {
 
 		return new AnimationClip( name, - 1, tracks );
 
-	},
+	}
 
-	findByName: function ( objectOrClipArray, name ) {
+	findByName( objectOrClipArray, name ) {
 
 		var clipArray = objectOrClipArray;
 
@@ -217,9 +214,9 @@ Object.assign( AnimationClip, {
 
 		return null;
 
-	},
+	}
 
-	CreateClipsFromMorphTargetSequences: function ( morphTargets, fps, noLoop ) {
+	CreateClipsFromMorphTargetSequences( morphTargets, fps, noLoop ) {
 
 		var animationToMorphTargets = {};
 
@@ -261,10 +258,10 @@ Object.assign( AnimationClip, {
 
 		return clips;
 
-	},
+	}
 
 	// parse the animation.hierarchy format
-	parseAnimation: function ( animation, bones ) {
+	parseAnimation( animation, bones ) {
 
 		if ( ! animation ) {
 
@@ -273,7 +270,7 @@ Object.assign( AnimationClip, {
 
 		}
 
-		var addNonemptyTrack = function ( trackType, trackName, animationKeys, propertyName, destTracks ) {
+		var addNonemptyTrack = export function ( trackType, trackName, animationKeys, propertyName, destTracks ) {
 
 			// only return track if there are actually keys.
 			if ( animationKeys.length !== 0 ) {
@@ -387,11 +384,11 @@ Object.assign( AnimationClip, {
 
 	}
 
-} );
+}
 
 Object.assign( AnimationClip.prototype, {
 
-	resetDuration: function () {
+	resetDuration() {
 
 		var tracks = this.tracks, duration = 0;
 
@@ -407,9 +404,9 @@ Object.assign( AnimationClip.prototype, {
 
 		return this;
 
-	},
+	}
 
-	trim: function () {
+	trim() {
 
 		for ( var i = 0; i < this.tracks.length; i ++ ) {
 
@@ -419,9 +416,9 @@ Object.assign( AnimationClip.prototype, {
 
 		return this;
 
-	},
+	}
 
-	validate: function () {
+	validate() {
 
 		var valid = true;
 
@@ -433,9 +430,9 @@ Object.assign( AnimationClip.prototype, {
 
 		return valid;
 
-	},
+	}
 
-	optimize: function () {
+	optimize() {
 
 		for ( var i = 0; i < this.tracks.length; i ++ ) {
 
@@ -447,7 +444,7 @@ Object.assign( AnimationClip.prototype, {
 
 	}
 
-} );
+}
 
 
 export { AnimationClip };

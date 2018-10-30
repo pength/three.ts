@@ -1,22 +1,17 @@
 /**
- * @author oosmoxiecode / https://github.com/oosmoxiecode
- * @author WestLangley / https://github.com/WestLangley
- * @author zz85 / https://github.com/zz85
- * @author miningold / https://github.com/miningold
- * @author jonobr1 / https://github.com/jonobr1
- * @author Mugen87 / https://github.com/Mugen87
- *
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Vector2 } from '../math/Vector2.js';
-import { Vector3 } from '../math/Vector3.js';
+import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Vector2 } from '../math/Vector2';
+import { Vector3 } from '../math/Vector3';
 
 // TubeGeometry
 
-function TubeGeometry( path, tubularSegments, radius, radialSegments, closed, taper ) {
+export function TubeGeometry( path, tubularSegments, radius, radialSegments, closed, taper ) {
 
 	Geometry.call( this );
 
@@ -52,7 +47,7 @@ TubeGeometry.prototype.constructor = TubeGeometry;
 
 // TubeBufferGeometry
 
-function TubeBufferGeometry( path, tubularSegments, radius, radialSegments, closed ) {
+export function TubeBufferGeometry( path, tubularSegments, radius, radialSegments, closed ) {
 
 	BufferGeometry.call( this );
 
@@ -108,7 +103,7 @@ function TubeBufferGeometry( path, tubularSegments, radius, radialSegments, clos
 
 	// functions
 
-	function generateBufferData() {
+	export function generateBufferData() {
 
 		for ( i = 0; i < tubularSegments; i ++ ) {
 
@@ -134,7 +129,7 @@ function TubeBufferGeometry( path, tubularSegments, radius, radialSegments, clos
 
 	}
 
-	function generateSegment( i ) {
+	export function generateSegment( i ) {
 
 		// we use getPointAt to sample evenly distributed points from the given path
 
@@ -175,7 +170,7 @@ function TubeBufferGeometry( path, tubularSegments, radius, radialSegments, clos
 
 	}
 
-	function generateIndices() {
+	export function generateIndices() {
 
 		for ( j = 1; j <= tubularSegments; j ++ ) {
 
@@ -197,7 +192,7 @@ function TubeBufferGeometry( path, tubularSegments, radius, radialSegments, clos
 
 	}
 
-	function generateUVs() {
+	export function generateUVs() {
 
 		for ( i = 0; i <= tubularSegments; i ++ ) {
 

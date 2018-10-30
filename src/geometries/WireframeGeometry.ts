@@ -1,13 +1,13 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Vector3 } from '../math/Vector3.js';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Vector3 } from '../math/Vector3';
 
-function WireframeGeometry( geometry ) {
+export function WireframeGeometry( geometry ) {
 
 	BufferGeometry.call( this );
 
@@ -20,7 +20,7 @@ function WireframeGeometry( geometry ) {
 	// helper variables
 
 	var i, j, l, o, ol;
-	var edge = [ 0, 0 ], edges = {}, e, edge1, edge2;
+	var edge = [ 0, 0 ], edges = {} e, edge1, edge2;
 	var key, keys = [ 'a', 'b', 'c' ];
 	var vertex;
 

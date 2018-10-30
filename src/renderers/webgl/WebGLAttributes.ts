@@ -1,12 +1,13 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function WebGLAttributes( gl ) {
+export function WebGLAttributes( gl ) {
 
 	var buffers = new WeakMap();
 
-	function createBuffer( attribute, bufferType ) {
+	export function createBuffer( attribute, bufferType ) {
 
 		var array = attribute.array;
 		var usage = attribute.dynamic ? gl.DYNAMIC_DRAW : gl.STATIC_DRAW;
@@ -63,7 +64,7 @@ function WebGLAttributes( gl ) {
 
 	}
 
-	function updateBuffer( buffer, attribute, bufferType ) {
+	export function updateBuffer( buffer, attribute, bufferType ) {
 
 		var array = attribute.array;
 		var updateRange = attribute.updateRange;
@@ -97,7 +98,7 @@ function WebGLAttributes( gl ) {
 
 	//
 
-	function get( attribute ) {
+	export function get( attribute ) {
 
 		if ( attribute.isInterleavedBufferAttribute ) attribute = attribute.data;
 
@@ -105,7 +106,7 @@ function WebGLAttributes( gl ) {
 
 	}
 
-	function remove( attribute ) {
+	export function remove( attribute ) {
 
 		if ( attribute.isInterleavedBufferAttribute ) attribute = attribute.data;
 
@@ -121,7 +122,7 @@ function WebGLAttributes( gl ) {
 
 	}
 
-	function update( attribute, bufferType ) {
+	export function update( attribute, bufferType ) {
 
 		if ( attribute.isInterleavedBufferAttribute ) attribute = attribute.data;
 

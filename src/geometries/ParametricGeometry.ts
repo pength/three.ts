@@ -1,19 +1,16 @@
 /**
- * @author zz85 / https://github.com/zz85
- * @author Mugen87 / https://github.com/Mugen87
- *
- * Parametric Surfaces Geometry
- * based on the brilliant article by @prideout http://prideout.net/blog/?p=44
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Vector3 } from '../math/Vector3.js';
+import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Vector3 } from '../math/Vector3';
 
 // ParametricGeometry
 
-function ParametricGeometry( func, slices, stacks ) {
+export function ParametricGeometry( func, slices, stacks ) {
 
 	Geometry.call( this );
 
@@ -35,7 +32,7 @@ ParametricGeometry.prototype.constructor = ParametricGeometry;
 
 // ParametricBufferGeometry
 
-function ParametricBufferGeometry( func, slices, stacks ) {
+export function ParametricBufferGeometry( func, slices, stacks ) {
 
 	BufferGeometry.call( this );
 
@@ -65,7 +62,7 @@ function ParametricBufferGeometry( func, slices, stacks ) {
 
 	if ( func.length < 3 ) {
 
-		console.error( 'THREE.ParametricGeometry: Function must now modify a Vector3 as third parameter.' );
+		console.error( 'THREE.ParametricGeometrymust now modify a Vector3 as third parameter.' );
 
 	}
 

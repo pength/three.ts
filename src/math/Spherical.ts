@@ -1,4 +1,4 @@
-import { _Math } from './Math.js';
+import { _Math } from './Math';
 
 /**
  * Converted from three.js/Spherical.js, If you want to see the js code source file, please go to https://threejs.org/
@@ -18,7 +18,7 @@ init( radius, phi, theta ) {
 
 Object.assign( Spherical.prototype, {
 
-	set: function ( radius, phi, theta ) {
+	set( radius, phi, theta ) {
 
 		this.radius = radius;
 		this.phi = phi;
@@ -26,15 +26,15 @@ Object.assign( Spherical.prototype, {
 
 		return this;
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor().copy( this );
 
-	},
+	}
 
-	copy: function ( other ) {
+	copy( other ) {
 
 		this.radius = other.radius;
 		this.phi = other.phi;
@@ -42,25 +42,25 @@ Object.assign( Spherical.prototype, {
 
 		return this;
 
-	},
+	}
 
 	// restrict phi to be betwee EPS and PI-EPS
-	makeSafe: function () {
+	makeSafe() {
 
 		var EPS = 0.000001;
 		this.phi = Math.max( EPS, Math.min( Math.PI - EPS, this.phi ) );
 
 		return this;
 
-	},
+	}
 
-	setFromVector3: function ( v ) {
+	setFromVector3( v ) {
 
 		return this.setFromCartesianCoords( v.x, v.y, v.z );
 
-	},
+	}
 
-	setFromCartesianCoords: function ( x, y, z ) {
+	setFromCartesianCoords( x, y, z ) {
 
 		this.radius = Math.sqrt( x * x + y * y + z * z );
 

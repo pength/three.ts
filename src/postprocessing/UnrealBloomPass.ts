@@ -1,10 +1,8 @@
 /**
- * @author spidersharma / http://eduperiment.com/
- *
- * Inspired from Unreal Engine
- * https://docs.unrealengine.com/latest/INT/Engine/Rendering/PostProcessEffects/Bloom/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-THREE.UnrealBloomPass = function ( resolution, strength, radius, threshold ) {
+THREE.UnrealBloomPass = export function ( resolution, strength, radius, threshold ) {
 
 	THREE.Pass.call( this );
 
@@ -66,7 +64,7 @@ THREE.UnrealBloomPass = function ( resolution, strength, radius, threshold ) {
 		vertexShader: highPassShader.vertexShader,
 		fragmentShader: highPassShader.fragmentShader,
 		defines: {}
-	} );
+	}
 
 	// Gaussian Blur Materials
 	this.separableBlurMaterials = [];
@@ -123,7 +121,7 @@ THREE.UnrealBloomPass = function ( resolution, strength, radius, threshold ) {
 		depthTest: false,
 		depthWrite: false,
 		transparent: true
-	} );
+	}
 
 	this.enabled = true;
 	this.needsSwap = false;
@@ -146,7 +144,7 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
 
 	constructor: THREE.UnrealBloomPass,
 
-	dispose: function () {
+	dispose() {
 
 		for ( var i = 0; i < this.renderTargetsHorizontal.length; i ++ ) {
 
@@ -162,9 +160,9 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
 
 		this.renderTargetBright.dispose();
 
-	},
+	}
 
-	setSize: function ( width, height ) {
+	setSize( width, height ) {
 
 		var resx = Math.round( width / 2 );
 		var resy = Math.round( height / 2 );
@@ -183,9 +181,9 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
 
 		}
 
-	},
+	}
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		this.oldClearColor.copy( renderer.getClearColor() );
 		this.oldClearAlpha = renderer.getClearAlpha();
@@ -267,22 +265,22 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
 		renderer.setClearColor( this.oldClearColor, this.oldClearAlpha );
 		renderer.autoClear = oldAutoClear;
 
-	},
+	}
 
-	getSeperableBlurMaterial: function ( kernelRadius ) {
+	getSeperableBlurMaterial( kernelRadius ) {
 
 		return new THREE.ShaderMaterial( {
 
 			defines: {
 				"KERNEL_RADIUS": kernelRadius,
 				"SIGMA": kernelRadius
-			},
+			}
 
 			uniforms: {
-				"colorTexture": { value: null },
-				"texSize": { value: new THREE.Vector2( 0.5, 0.5 ) },
+				"colorTexture": { value: null }
+				"texSize": { value: new THREE.Vector2( 0.5, 0.5 ) }
 				"direction": { value: new THREE.Vector2( 0.5, 0.5 ) }
-			},
+			}
 
 			vertexShader:
 				"varying vec2 vUv;\n\
@@ -317,30 +315,30 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
 					}\
 					gl_FragColor = vec4(diffuseSum/weightSum, 1.0);\n\
 				}"
-		} );
+		}
 
-	},
+	}
 
-	getCompositeMaterial: function ( nMips ) {
+	getCompositeMaterial( nMips ) {
 
 		return new THREE.ShaderMaterial( {
 
 			defines: {
 				"NUM_MIPS": nMips
-			},
+			}
 
 			uniforms: {
-				"blurTexture1": { value: null },
-				"blurTexture2": { value: null },
-				"blurTexture3": { value: null },
-				"blurTexture4": { value: null },
-				"blurTexture5": { value: null },
-				"dirtTexture": { value: null },
-				"bloomStrength": { value: 1.0 },
-				"bloomFactors": { value: null },
-				"bloomTintColors": { value: null },
+				"blurTexture1": { value: null }
+				"blurTexture2": { value: null }
+				"blurTexture3": { value: null }
+				"blurTexture4": { value: null }
+				"blurTexture5": { value: null }
+				"dirtTexture": { value: null }
+				"bloomStrength": { value: 1.0 }
+				"bloomFactors": { value: null }
+				"bloomTintColors": { value: null }
 				"bloomRadius": { value: 0.0 }
-			},
+			}
 
 			vertexShader:
 				"varying vec2 vUv;\n\
@@ -374,11 +372,11 @@ THREE.UnrealBloomPass.prototype = Object.assign( Object.create( THREE.Pass.proto
 													 lerpBloomFactor(bloomFactors[3]) * vec4(bloomTintColors[3], 1.0) * texture2D(blurTexture4, vUv) + \
 													 lerpBloomFactor(bloomFactors[4]) * vec4(bloomTintColors[4], 1.0) * texture2D(blurTexture5, vUv) );\
 				}"
-		} );
+		}
 
 	}
 
-} );
+}
 
 THREE.UnrealBloomPass.BlurDirectionX = new THREE.Vector2( 1.0, 0.0 );
 THREE.UnrealBloomPass.BlurDirectionY = new THREE.Vector2( 0.0, 1.0 );

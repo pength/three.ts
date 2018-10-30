@@ -1,10 +1,11 @@
-import { BufferGeometry } from './BufferGeometry.js';
+import { BufferGeometry } from './BufferGeometry';
 
 /**
- * @author benaadams / https://twitter.com/ben_a_adams
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function InstancedBufferGeometry() {
+export function InstancedBufferGeometry() {
 
 	BufferGeometry.call( this );
 
@@ -19,7 +20,7 @@ InstancedBufferGeometry.prototype = Object.assign( Object.create( BufferGeometry
 
 	isInstancedBufferGeometry: true,
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		BufferGeometry.prototype.copy.call( this, source );
 
@@ -27,14 +28,14 @@ InstancedBufferGeometry.prototype = Object.assign( Object.create( BufferGeometry
 
 		return this;
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor().copy( this );
 
 	}
 
-} );
+}
 
 export { InstancedBufferGeometry };

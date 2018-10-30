@@ -1,17 +1,14 @@
-import { InterpolateDiscrete } from '../../constants.js';
-import { KeyframeTrack } from '../KeyframeTrack.js';
+import { InterpolateDiscrete } from '../../constants';
+import { KeyframeTrack } from '../KeyframeTrack';
 
 /**
- *
- * A Track of Boolean keyframe values.
- *
- *
- * @author Ben Houston / http://clara.io/
- * @author David Sarno / http://lighthaus.us/
- * @author tschw
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function BooleanKeyframeTrack( name, times, values ) {
+
+
+export function BooleanKeyframeTrack( name, times, values ) {
 
 	KeyframeTrack.call( this, name, times, values );
 
@@ -33,6 +30,6 @@ BooleanKeyframeTrack.prototype = Object.assign( Object.create( KeyframeTrack.pro
 	// representation of a single value and a custom interpolant that
 	// computes "firstValue ^ isOdd( index )".
 
-} );
+}
 
 export { BooleanKeyframeTrack };

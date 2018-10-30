@@ -1,8 +1,9 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.GlitchPass = function ( dt_size ) {
+THREE.GlitchPass = export function ( dt_size ) {
 
 	THREE.Pass.call( this );
 
@@ -21,7 +22,7 @@ THREE.GlitchPass = function ( dt_size ) {
 		uniforms: this.uniforms,
 		vertexShader: shader.vertexShader,
 		fragmentShader: shader.fragmentShader
-	} );
+	}
 
 	this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
 	this.scene  = new THREE.Scene();
@@ -40,7 +41,7 @@ THREE.GlitchPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 
 	constructor: THREE.GlitchPass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		this.uniforms[ "tDiffuse" ].value = readBuffer.texture;
 		this.uniforms[ 'seed' ].value = Math.random();//default seeding
@@ -85,13 +86,13 @@ THREE.GlitchPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 
 		}
 
-	},
+	}
 
 	generateTrigger: function() {
 
 		this.randX = THREE.Math.randInt( 120, 240 );
 
-	},
+	}
 
 	generateHeightmap: function( dt_size ) {
 
@@ -113,4 +114,4 @@ THREE.GlitchPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 
 	}
 
-} );
+}

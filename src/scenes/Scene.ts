@@ -1,10 +1,11 @@
-import { Object3D } from '../core/Object3D.js';
+import { Object3D } from '../core/Object3D';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Scene() {
+export function Scene() {
 
 	Object3D.call( this );
 
@@ -22,7 +23,7 @@ Scene.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Scene,
 
-	copy: function ( source, recursive ) {
+	copy( source, recursive ) {
 
 		Object3D.prototype.copy.call( this, source, recursive );
 
@@ -35,9 +36,9 @@ Scene.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	toJSON: function ( meta ) {
+	toJSON( meta ) {
 
 		var data = Object3D.prototype.toJSON.call( this, meta );
 
@@ -48,7 +49,7 @@ Scene.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	}
 
-} );
+}
 
 
 

@@ -1,13 +1,13 @@
 /**
- * @author alteredq / http://alteredqualia.com/
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Mesh } from '../objects/Mesh.js';
-import { MeshBasicMaterial } from '../materials/MeshBasicMaterial.js';
-import { SphereBufferGeometry } from '../geometries/SphereGeometry.js';
+import { Mesh } from '../objects/Mesh';
+import { MeshBasicMaterial } from '../materials/MeshBasicMaterial';
+import { SphereBufferGeometry } from '../geometries/SphereGeometry';
 
-function PointLightHelper( light, sphereSize, color ) {
+export function PointLightHelper( light, sphereSize, color ) {
 
 	this.light = light;
 	this.light.updateMatrixWorld();
@@ -15,7 +15,7 @@ function PointLightHelper( light, sphereSize, color ) {
 	this.color = color;
 
 	var geometry = new SphereBufferGeometry( sphereSize, 4, 2 );
-	var material = new MeshBasicMaterial( { wireframe: true, fog: false } );
+	var material = new MeshBasicMaterial( { wireframe: true, fog: false }
 
 	Mesh.call( this, geometry, material );
 
@@ -27,7 +27,7 @@ function PointLightHelper( light, sphereSize, color ) {
 
 	/*
 	var distanceGeometry = new THREE.IcosahedronGeometry( 1, 2 );
-	var distanceMaterial = new THREE.MeshBasicMaterial( { color: hexColor, fog: false, wireframe: true, opacity: 0.1, transparent: true } );
+	var distanceMaterial = new THREE.MeshBasicMaterial( { color: hexColor, fog: false, wireframe: true, opacity: 0.1, transparent: true }
 
 	this.lightSphere = new THREE.Mesh( bulbGeometry, bulbMaterial );
 	this.lightDistance = new THREE.Mesh( distanceGeometry, distanceMaterial );
@@ -52,14 +52,14 @@ function PointLightHelper( light, sphereSize, color ) {
 PointLightHelper.prototype = Object.create( Mesh.prototype );
 PointLightHelper.prototype.constructor = PointLightHelper;
 
-PointLightHelper.prototype.dispose = function () {
+PointLightHelper.prototype.dispose = export function () {
 
 	this.geometry.dispose();
 	this.material.dispose();
 
 };
 
-PointLightHelper.prototype.update = function () {
+PointLightHelper.prototype.update = export function () {
 
 	if ( this.color !== undefined ) {
 

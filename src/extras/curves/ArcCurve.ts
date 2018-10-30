@@ -1,7 +1,10 @@
-import { EllipseCurve } from './EllipseCurve.js';
+import { EllipseCurve } from './EllipseCurve';
+/**
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
 
-
-function ArcCurve( aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise ) {
+export function ArcCurve( aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise ) {
 
 	EllipseCurve.call( this, aX, aY, aRadius, aRadius, aStartAngle, aEndAngle, aClockwise );
 

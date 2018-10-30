@@ -1,9 +1,12 @@
-import { Curve } from '../core/Curve.js';
-import { QuadraticBezier } from '../core/Interpolations.js';
-import { Vector2 } from '../../math/Vector2.js';
+import { Curve } from '../core/Curve';
+import { QuadraticBezier } from '../core/Interpolations';
+import { Vector2 } from '../../math/Vector2';
+/**
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
 
-
-function QuadraticBezierCurve( v0, v1, v2 ) {
+export function QuadraticBezierCurve( v0, v1, v2 ) {
 
 	Curve.call( this );
 
@@ -20,7 +23,7 @@ QuadraticBezierCurve.prototype.constructor = QuadraticBezierCurve;
 
 QuadraticBezierCurve.prototype.isQuadraticBezierCurve = true;
 
-QuadraticBezierCurve.prototype.getPoint = function ( t, optionalTarget ) {
+QuadraticBezierCurve.prototype.getPoint = export function ( t, optionalTarget ) {
 
 	var point = optionalTarget || new Vector2();
 
@@ -35,7 +38,7 @@ QuadraticBezierCurve.prototype.getPoint = function ( t, optionalTarget ) {
 
 };
 
-QuadraticBezierCurve.prototype.copy = function ( source ) {
+QuadraticBezierCurve.prototype.copy = export function ( source ) {
 
 	Curve.prototype.copy.call( this, source );
 
@@ -47,7 +50,7 @@ QuadraticBezierCurve.prototype.copy = function ( source ) {
 
 };
 
-QuadraticBezierCurve.prototype.toJSON = function () {
+QuadraticBezierCurve.prototype.toJSON = export function () {
 
 	var data = Curve.prototype.toJSON.call( this );
 
@@ -59,7 +62,7 @@ QuadraticBezierCurve.prototype.toJSON = function () {
 
 };
 
-QuadraticBezierCurve.prototype.fromJSON = function ( json ) {
+QuadraticBezierCurve.prototype.fromJSON = export function ( json ) {
 
 	Curve.prototype.fromJSON.call( this, json );
 

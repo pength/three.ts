@@ -1,17 +1,18 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Uint16BufferAttribute, Uint32BufferAttribute } from '../../core/BufferAttribute.js';
-import { BufferGeometry } from '../../core/BufferGeometry.js';
-import { arrayMax } from '../../utils.js';
+import { Uint16BufferAttribute, Uint32BufferAttribute } from '../../core/BufferAttribute';
+import { BufferGeometry } from '../../core/BufferGeometry';
+import { arrayMax } from '../../utils';
 
-function WebGLGeometries( gl, attributes, info ) {
+export function WebGLGeometries( gl, attributes, info ) {
 
 	var geometries = {};
 	var wireframeAttributes = {};
 
-	function onGeometryDispose( event ) {
+	export function onGeometryDispose( event ) {
 
 		var geometry = event.target;
 		var buffergeometry = geometries[ geometry.id ];
@@ -47,7 +48,7 @@ function WebGLGeometries( gl, attributes, info ) {
 
 	}
 
-	function get( object, geometry ) {
+	export function get( object, geometry ) {
 
 		var buffergeometry = geometries[ geometry.id ];
 
@@ -79,7 +80,7 @@ function WebGLGeometries( gl, attributes, info ) {
 
 	}
 
-	function update( geometry ) {
+	export function update( geometry ) {
 
 		var index = geometry.index;
 		var geometryAttributes = geometry.attributes;
@@ -114,7 +115,7 @@ function WebGLGeometries( gl, attributes, info ) {
 
 	}
 
-	function getWireframeAttribute( geometry ) {
+	export function getWireframeAttribute( geometry ) {
 
 		var attribute = wireframeAttributes[ geometry.id ];
 

@@ -1,19 +1,19 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function absNumericalSort( a, b ) {
+export function absNumericalSort( a, b ) {
 
 	return Math.abs( b[ 1 ] ) - Math.abs( a[ 1 ] );
 
 }
 
-function WebGLMorphtargets( gl ) {
+export function WebGLMorphtargets( gl ) {
 
 	var influencesList = {};
 	var morphInfluences = new Float32Array( 8 );
 
-	function update( object, geometry, material, program ) {
+	export function update( object, geometry, material, program ) {
 
 		var objectInfluences = object.morphTargetInfluences;
 

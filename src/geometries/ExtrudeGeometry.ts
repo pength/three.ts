@@ -1,36 +1,18 @@
 /**
- * @author zz85 / http://www.lab4games.net/zz85/blog
- *
- * Creates extruded geometry from a path shape.
- *
- * parameters = {
- *
- *  curveSegments: <int>, // number of points on the curves
- *  steps: <int>, // number of points for z-side extrusions / used for subdividing segments of extrude spline too
- *  depth: <float>, // Depth to extrude the shape
- *
- *  bevelEnabled: <bool>, // turn on bevel
- *  bevelThickness: <float>, // how deep into the original shape bevel goes
- *  bevelSize: <float>, // how far from shape outline is bevel
- *  bevelSegments: <int>, // number of bevel layers
- *
- *  extrudePath: <THREE.Curve> // curve to extrude shape along
- *
- *  UVGenerator: <Object> // object that provides UV generator functions
- *
- * }
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Vector2 } from '../math/Vector2.js';
-import { Vector3 } from '../math/Vector3.js';
-import { ShapeUtils } from '../extras/ShapeUtils.js';
+import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Vector2 } from '../math/Vector2';
+import { Vector3 } from '../math/Vector3';
+import { ShapeUtils } from '../extras/ShapeUtils';
 
 // ExtrudeGeometry
 
-function ExtrudeGeometry( shapes, options ) {
+export function ExtrudeGeometry( shapes, options ) {
 
 	Geometry.call( this );
 
@@ -49,7 +31,7 @@ function ExtrudeGeometry( shapes, options ) {
 ExtrudeGeometry.prototype = Object.create( Geometry.prototype );
 ExtrudeGeometry.prototype.constructor = ExtrudeGeometry;
 
-ExtrudeGeometry.prototype.toJSON = function () {
+ExtrudeGeometry.prototype.toJSON = export function () {
 
 	var data = Geometry.prototype.toJSON.call( this );
 
@@ -62,7 +44,7 @@ ExtrudeGeometry.prototype.toJSON = function () {
 
 // ExtrudeBufferGeometry
 
-function ExtrudeBufferGeometry( shapes, options ) {
+export function ExtrudeBufferGeometry( shapes, options ) {
 
 	BufferGeometry.call( this );
 
@@ -96,7 +78,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 
 	// functions
 
-	function addShape( shape ) {
+	export function addShape( shape ) {
 
 		var placeholder = [];
 
@@ -207,7 +189,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 		}
 
 
-		function scalePt2( pt, vec, size ) {
+		export function scalePt2( pt, vec, size ) {
 
 			if ( ! vec ) console.error( "THREE.ExtrudeGeometry: vec does not exist" );
 
@@ -223,7 +205,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 		// Find directions for point movement
 
 
-		function getBevelVec( inPt, inPrev, inNext ) {
+		export function getBevelVec( inPt, inPrev, inNext ) {
 
 			// computes for inPt the corresponding point inPt' on a new contour
 			//   shifted by 1 unit (length of normalized vector) to the left
@@ -542,7 +524,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 
 		/////  Internal functions
 
-		function buildLidFaces() {
+		export function buildLidFaces() {
 
 			var start = verticesArray.length / 3;
 
@@ -600,7 +582,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 
 		// Create faces for the z-sides of the shape
 
-		function buildSideFaces() {
+		export function buildSideFaces() {
 
 			var start = verticesArray.length / 3;
 			var layeroffset = 0;
@@ -623,7 +605,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 
 		}
 
-		function sidewalls( contour, layeroffset ) {
+		export function sidewalls( contour, layeroffset ) {
 
 			var j, k;
 			i = contour.length;
@@ -657,7 +639,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 
 		}
 
-		function v( x, y, z ) {
+		export function v( x, y, z ) {
 
 			placeholder.push( x );
 			placeholder.push( y );
@@ -666,7 +648,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 		}
 
 
-		function f3( a, b, c ) {
+		export function f3( a, b, c ) {
 
 			addVertex( a );
 			addVertex( b );
@@ -681,7 +663,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 
 		}
 
-		function f4( a, b, c, d ) {
+		export function f4( a, b, c, d ) {
 
 			addVertex( a );
 			addVertex( b );
@@ -705,7 +687,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 
 		}
 
-		function addVertex( index ) {
+		export function addVertex( index ) {
 
 			verticesArray.push( placeholder[ index * 3 + 0 ] );
 			verticesArray.push( placeholder[ index * 3 + 1 ] );
@@ -714,7 +696,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 		}
 
 
-		function addUV( vector2 ) {
+		export function addUV( vector2 ) {
 
 			uvArray.push( vector2.x );
 			uvArray.push( vector2.y );
@@ -728,7 +710,7 @@ function ExtrudeBufferGeometry( shapes, options ) {
 ExtrudeBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
 ExtrudeBufferGeometry.prototype.constructor = ExtrudeBufferGeometry;
 
-ExtrudeBufferGeometry.prototype.toJSON = function () {
+ExtrudeBufferGeometry.prototype.toJSON = export function () {
 
 	var data = BufferGeometry.prototype.toJSON.call( this );
 
@@ -743,7 +725,7 @@ ExtrudeBufferGeometry.prototype.toJSON = function () {
 
 var WorldUVGenerator = {
 
-	generateTopUV: function ( geometry, vertices, indexA, indexB, indexC ) {
+	generateTopUV( geometry, vertices, indexA, indexB, indexC ) {
 
 		var a_x = vertices[ indexA * 3 ];
 		var a_y = vertices[ indexA * 3 + 1 ];
@@ -758,9 +740,9 @@ var WorldUVGenerator = {
 			new Vector2( c_x, c_y )
 		];
 
-	},
+	}
 
-	generateSideWallUV: function ( geometry, vertices, indexA, indexB, indexC, indexD ) {
+	generateSideWallUV( geometry, vertices, indexA, indexB, indexC, indexD ) {
 
 		var a_x = vertices[ indexA * 3 ];
 		var a_y = vertices[ indexA * 3 + 1 ];
@@ -798,7 +780,7 @@ var WorldUVGenerator = {
 	}
 };
 
-function toJSON( shapes, options, data ) {
+export function toJSON( shapes, options, data ) {
 
 	//
 

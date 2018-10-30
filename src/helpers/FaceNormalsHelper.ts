@@ -1,16 +1,16 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author WestLangley / http://github.com/WestLangley
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Matrix3 } from '../math/Matrix3.js';
-import { Vector3 } from '../math/Vector3.js';
-import { LineSegments } from '../objects/LineSegments.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
+import { Matrix3 } from '../math/Matrix3';
+import { Vector3 } from '../math/Vector3';
+import { LineSegments } from '../objects/LineSegments';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from '../core/BufferGeometry';
 
-function FaceNormalsHelper( object, size, hex, linewidth ) {
+export function FaceNormalsHelper( object, size, hex, linewidth ) {
 
 	// FaceNormalsHelper only supports THREE.Geometry
 
@@ -58,13 +58,13 @@ function FaceNormalsHelper( object, size, hex, linewidth ) {
 FaceNormalsHelper.prototype = Object.create( LineSegments.prototype );
 FaceNormalsHelper.prototype.constructor = FaceNormalsHelper;
 
-FaceNormalsHelper.prototype.update = ( function () {
+FaceNormalsHelper.prototype.update = ( export function () {
 
 	var v1 = new Vector3();
 	var v2 = new Vector3();
 	var normalMatrix = new Matrix3();
 
-	return function update() {
+	return export function update() {
 
 		this.object.updateMatrixWorld( true );
 

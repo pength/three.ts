@@ -1,12 +1,12 @@
-import { Color } from '../math/Color.js';
-import { Vector3 } from '../math/Vector3.js';
+import { Color } from '../math/Color';
+import { Vector3 } from '../math/Vector3';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Face3( a, b, c, normal, color, materialIndex ) {
+export function Face3( a, b, c, normal, color, materialIndex ) {
 
 	this.a = a;
 	this.b = b;
@@ -24,13 +24,13 @@ function Face3( a, b, c, normal, color, materialIndex ) {
 
 Object.assign( Face3.prototype, {
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor().copy( this );
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		this.a = source.a;
 		this.b = source.b;
@@ -57,7 +57,7 @@ Object.assign( Face3.prototype, {
 
 	}
 
-} );
+}
 
 
 export { Face3 };

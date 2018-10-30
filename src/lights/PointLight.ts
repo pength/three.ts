@@ -1,34 +1,34 @@
-import { Light } from './Light.js';
-import { PerspectiveCamera } from '../cameras/PerspectiveCamera.js';
-import { LightShadow } from './LightShadow.js';
+import { Light } from './Light';
+import { PerspectiveCamera } from '../cameras/PerspectiveCamera';
+import { LightShadow } from './LightShadow';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-
-function PointLight( color, intensity, distance, decay ) {
+export function PointLight( color, intensity, distance, decay ) {
 
 	Light.call( this, color, intensity );
 
 	this.type = 'PointLight';
 
 	Object.defineProperty( this, 'power', {
-		get: function () {
+		get() {
 
 			// intensity = power per solid angle.
 			// ref: equation (15) from https://seblagarde.files.wordpress.com/2015/07/course_notes_moving_frostbite_to_pbr_v32.pdf
 			return this.intensity * 4 * Math.PI;
 
-		},
-		set: function ( power ) {
+		}
+		set( power ) {
 
 			// intensity = power per solid angle.
 			// ref: equation (15) from https://seblagarde.files.wordpress.com/2015/07/course_notes_moving_frostbite_to_pbr_v32.pdf
 			this.intensity = power / ( 4 * Math.PI );
 
 		}
-	} );
+	}
 
 	this.distance = ( distance !== undefined ) ? distance : 0;
 	this.decay = ( decay !== undefined ) ? decay : 1;	// for physically correct lights, should be 2.
@@ -43,7 +43,7 @@ PointLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	isPointLight: true,
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		Light.prototype.copy.call( this, source );
 
@@ -56,7 +56,7 @@ PointLight.prototype = Object.assign( Object.create( Light.prototype ), {
 
 	}
 
-} );
+}
 
 
 export { PointLight };

@@ -1,12 +1,12 @@
-import { AnimationClip } from '../animation/AnimationClip.js';
-import { FileLoader } from './FileLoader.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
+import { AnimationClip } from '../animation/AnimationClip';
+import { FileLoader } from './FileLoader';
+import { DefaultLoadingManager } from './LoadingManager';
 
 /**
- * @author bhouston / http://clara.io/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function AnimationLoader( manager ) {
+export function AnimationLoader( manager ) {
 
 	this.manager = ( manager !== undefined ) ? manager : DefaultLoadingManager;
 
@@ -14,20 +14,20 @@ function AnimationLoader( manager ) {
 
 Object.assign( AnimationLoader.prototype, {
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		var scope = this;
 
 		var loader = new FileLoader( scope.manager );
-		loader.load( url, function ( text ) {
+		loader.load( url, export function ( text ) {
 
 			onLoad( scope.parse( JSON.parse( text ) ) );
 
-		}, onProgress, onError );
+		} onProgress, onError );
 
-	},
+	}
 
-	parse: function ( json, onLoad ) {
+	parse( json, onLoad ) {
 
 		var animations = [];
 
@@ -43,7 +43,7 @@ Object.assign( AnimationLoader.prototype, {
 
 	}
 
-} );
+}
 
 
 export { AnimationLoader };

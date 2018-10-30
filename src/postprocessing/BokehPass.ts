@@ -1,9 +1,9 @@
 /**
- * Depth-of-field post-process with bokeh shader
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-
-THREE.BokehPass = function ( scene, camera, params ) {
+THREE.BokehPass = export function ( scene, camera, params ) {
 
 	THREE.Pass.call( this );
 
@@ -24,7 +24,7 @@ THREE.BokehPass = function ( scene, camera, params ) {
 		minFilter: THREE.LinearFilter,
 		magFilter: THREE.LinearFilter,
 		format: THREE.RGBFormat
-	} );
+	}
 	this.renderTargetColor.texture.name = "BokehPass.color";
 
 	this.renderTargetDepth = this.renderTargetColor.clone();
@@ -57,11 +57,11 @@ THREE.BokehPass = function ( scene, camera, params ) {
 	bokehUniforms[ "farClip" ].value = camera.far;
 
 	this.materialBokeh = new THREE.ShaderMaterial( {
-		defines: Object.assign( {}, bokehShader.defines ),
+		defines: Object.assign( {} bokehShader.defines ),
 		uniforms: bokehUniforms,
 		vertexShader: bokehShader.vertexShader,
 		fragmentShader: bokehShader.fragmentShader
-	} );
+	}
 
 	this.uniforms = bokehUniforms;
 	this.needsSwap = false;
@@ -82,7 +82,7 @@ THREE.BokehPass.prototype = Object.assign( Object.create( THREE.Pass.prototype )
 
 	constructor: THREE.BokehPass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		this.quad2.material = this.materialBokeh;
 
@@ -122,4 +122,4 @@ THREE.BokehPass.prototype = Object.assign( Object.create( THREE.Pass.prototype )
 	
 	}
 
-} );
+}

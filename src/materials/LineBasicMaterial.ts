@@ -1,21 +1,12 @@
-import { Material } from './Material.js';
-import { Color } from '../math/Color.js';
+import { Material } from './Material';
+import { Color } from '../math/Color';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
- *
- * parameters = {
- *  color: <hex>,
- *  opacity: <float>,
- *
- *  linewidth: <float>,
- *  linecap: "round",
- *  linejoin: "round"
- * }
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function LineBasicMaterial( parameters ) {
+export function LineBasicMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -38,7 +29,7 @@ LineBasicMaterial.prototype.constructor = LineBasicMaterial;
 
 LineBasicMaterial.prototype.isLineBasicMaterial = true;
 
-LineBasicMaterial.prototype.copy = function ( source ) {
+LineBasicMaterial.prototype.copy = export function ( source ) {
 
 	Material.prototype.copy.call( this, source );
 

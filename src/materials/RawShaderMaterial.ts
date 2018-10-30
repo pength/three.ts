@@ -1,10 +1,10 @@
-import { ShaderMaterial } from './ShaderMaterial.js';
+import { ShaderMaterial } from './ShaderMaterial';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function RawShaderMaterial( parameters ) {
+export function RawShaderMaterial( parameters ) {
 
 	ShaderMaterial.call( this, parameters );
 

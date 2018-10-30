@@ -1,8 +1,11 @@
-import { Curve } from '../core/Curve.js';
-import { Vector2 } from '../../math/Vector2.js';
+import { Curve } from '../core/Curve';
+import { Vector2 } from '../../math/Vector2';
+/**
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
 
-
-function EllipseCurve( aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation ) {
+export function EllipseCurve( aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation ) {
 
 	Curve.call( this );
 
@@ -28,7 +31,7 @@ EllipseCurve.prototype.constructor = EllipseCurve;
 
 EllipseCurve.prototype.isEllipseCurve = true;
 
-EllipseCurve.prototype.getPoint = function ( t, optionalTarget ) {
+EllipseCurve.prototype.getPoint = export function ( t, optionalTarget ) {
 
 	var point = optionalTarget || new Vector2();
 
@@ -90,7 +93,7 @@ EllipseCurve.prototype.getPoint = function ( t, optionalTarget ) {
 
 };
 
-EllipseCurve.prototype.copy = function ( source ) {
+EllipseCurve.prototype.copy = export function ( source ) {
 
 	Curve.prototype.copy.call( this, source );
 
@@ -112,7 +115,7 @@ EllipseCurve.prototype.copy = function ( source ) {
 };
 
 
-EllipseCurve.prototype.toJSON = function () {
+EllipseCurve.prototype.toJSON = export function () {
 
 	var data = Curve.prototype.toJSON.call( this );
 
@@ -133,7 +136,7 @@ EllipseCurve.prototype.toJSON = function () {
 
 };
 
-EllipseCurve.prototype.fromJSON = function ( json ) {
+EllipseCurve.prototype.fromJSON = export function ( json ) {
 
 	Curve.prototype.fromJSON.call( this, json );
 

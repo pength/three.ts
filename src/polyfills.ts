@@ -1,4 +1,7 @@
-// Polyfills
+/**
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
 
 if ( Number.EPSILON === undefined ) {
 
@@ -11,7 +14,7 @@ if ( Number.isInteger === undefined ) {
 	// Missing in IE
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isInteger
 
-	Number.isInteger = function ( value ) {
+	Number.isInteger = export function ( value ) {
 
 		return typeof value === 'number' && isFinite( value ) && Math.floor( value ) === value;
 
@@ -25,7 +28,7 @@ if ( Math.sign === undefined ) {
 
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/sign
 
-	Math.sign = function ( x ) {
+	Math.sign = export function ( x ) {
 
 		return ( x < 0 ) ? - 1 : ( x > 0 ) ? 1 : + x;
 
@@ -40,13 +43,13 @@ if ( 'name' in Function.prototype === false ) {
 
 	Object.defineProperty( Function.prototype, 'name', {
 
-		get: function () {
+		get() {
 
 			return this.toString().match( /^\s*function\s*([^\(\s]*)/ )[ 1 ];
 
 		}
 
-	} );
+	}
 
 }
 
@@ -55,9 +58,9 @@ if ( Object.assign === undefined ) {
 	// Missing in IE
 	// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 
-	( function () {
+	( export function () {
 
-		Object.assign = function ( target ) {
+		Object.assign = export function ( target ) {
 
 			'use strict';
 

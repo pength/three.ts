@@ -1,14 +1,15 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { REVISION } from '../constants.js';
-import { WebGLExtensions } from './webgl/WebGLExtensions.js';
-import { WebGLState } from './webgl/WebGLState.js';
-import { Color } from '../math/Color.js';
-import { Vector4 } from '../math/Vector4.js';
+import { REVISION } from '../constants';
+import { WebGLExtensions } from './webgl/WebGLExtensions';
+import { WebGLState } from './webgl/WebGLState';
+import { Color } from '../math/Color';
+import { Vector4 } from '../math/Vector4';
 
-function WebGL2Renderer( parameters ) {
+export function WebGL2Renderer( parameters ) {
 
 	console.log( 'THREE.WebGL2Renderer', REVISION );
 
@@ -44,7 +45,7 @@ function WebGL2Renderer( parameters ) {
 		// event listeners must be registered before WebGL context is created, see #12753
 
 		_canvas.addEventListener( 'webglcontextlost', onContextLost, false );
-		_canvas.addEventListener( 'webglcontextrestored', function () { } );
+		_canvas.addEventListener( 'webglcontextrestored', export function () { }
 
 		gl = _context || _canvas.getContext( 'webgl2', attributes );
 
@@ -86,11 +87,11 @@ function WebGL2Renderer( parameters ) {
 		_viewport = new Vector4( 0, 0, _width, _height );
 
 	var extensions = new WebGLExtensions( gl );
-	var state = new WebGLState( gl, extensions, function () {} );
+	var state = new WebGLState( gl, extensions, export function () {}
 
 	//
 
-	function clear( color, depth, stencil ) {
+	export function clear( color, depth, stencil ) {
 
 		var bits = 0;
 
@@ -102,7 +103,7 @@ function WebGL2Renderer( parameters ) {
 
 	}
 
-	function setPixelRatio( value ) {
+	export function setPixelRatio( value ) {
 
 		if ( value === undefined ) return;
 
@@ -112,7 +113,7 @@ function WebGL2Renderer( parameters ) {
 
 	}
 
-	function setSize( width, height, updateStyle ) {
+	export function setSize( width, height, updateStyle ) {
 
 		_width = width;
 		_height = height;
@@ -131,13 +132,13 @@ function WebGL2Renderer( parameters ) {
 
 	}
 
-	function setViewport( x, y, width, height ) {
+	export function setViewport( x, y, width, height ) {
 
 		state.viewport( _viewport.set( x, y, width, height ) );
 
 	}
 
-	function render( scene, camera ) {
+	export function render( scene, camera ) {
 
 		if ( camera !== undefined && camera.isCamera !== true ) {
 
@@ -168,7 +169,7 @@ function WebGL2Renderer( parameters ) {
 
 	}
 
-	function onContextLost( event ) {
+	export function onContextLost( event ) {
 
 		event.preventDefault();
 

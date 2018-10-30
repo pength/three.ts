@@ -1,9 +1,12 @@
-import { Curve } from '../core/Curve.js';
-import { CubicBezier } from '../core/Interpolations.js';
-import { Vector3 } from '../../math/Vector3.js';
+import { Curve } from '../core/Curve';
+import { CubicBezier } from '../core/Interpolations';
+import { Vector3 } from '../../math/Vector3';
 
-
-function CubicBezierCurve3( v0, v1, v2, v3 ) {
+/**
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
+export function CubicBezierCurve3( v0, v1, v2, v3 ) {
 
 	Curve.call( this );
 
@@ -21,7 +24,7 @@ CubicBezierCurve3.prototype.constructor = CubicBezierCurve3;
 
 CubicBezierCurve3.prototype.isCubicBezierCurve3 = true;
 
-CubicBezierCurve3.prototype.getPoint = function ( t, optionalTarget ) {
+CubicBezierCurve3.prototype.getPoint = export function ( t, optionalTarget ) {
 
 	var point = optionalTarget || new Vector3();
 
@@ -37,7 +40,7 @@ CubicBezierCurve3.prototype.getPoint = function ( t, optionalTarget ) {
 
 };
 
-CubicBezierCurve3.prototype.copy = function ( source ) {
+CubicBezierCurve3.prototype.copy = export function ( source ) {
 
 	Curve.prototype.copy.call( this, source );
 
@@ -50,7 +53,7 @@ CubicBezierCurve3.prototype.copy = function ( source ) {
 
 };
 
-CubicBezierCurve3.prototype.toJSON = function () {
+CubicBezierCurve3.prototype.toJSON = export function () {
 
 	var data = Curve.prototype.toJSON.call( this );
 
@@ -63,7 +66,7 @@ CubicBezierCurve3.prototype.toJSON = function () {
 
 };
 
-CubicBezierCurve3.prototype.fromJSON = function ( json ) {
+CubicBezierCurve3.prototype.fromJSON = export function ( json ) {
 
 	Curve.prototype.fromJSON.call( this, json );
 

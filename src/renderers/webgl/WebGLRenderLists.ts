@@ -1,8 +1,9 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function painterSortStable( a, b ) {
+export function painterSortStable( a, b ) {
 
 	if ( a.renderOrder !== b.renderOrder ) {
 
@@ -28,7 +29,7 @@ function painterSortStable( a, b ) {
 
 }
 
-function reversePainterSortStable( a, b ) {
+export function reversePainterSortStable( a, b ) {
 
 	if ( a.renderOrder !== b.renderOrder ) {
 
@@ -47,7 +48,7 @@ function reversePainterSortStable( a, b ) {
 }
 
 
-function WebGLRenderList() {
+export function WebGLRenderList() {
 
 	var renderItems = [];
 	var renderItemsIndex = 0;
@@ -55,7 +56,7 @@ function WebGLRenderList() {
 	var opaque = [];
 	var transparent = [];
 
-	function init() {
+	export function init() {
 
 		renderItemsIndex = 0;
 
@@ -64,7 +65,7 @@ function WebGLRenderList() {
 
 	}
 
-	function push( object, geometry, material, z, group ) {
+	export function push( object, geometry, material, z, group ) {
 
 		var renderItem = renderItems[ renderItemsIndex ];
 
@@ -103,7 +104,7 @@ function WebGLRenderList() {
 
 	}
 
-	function sort() {
+	export function sort() {
 
 		if ( opaque.length > 1 ) opaque.sort( painterSortStable );
 		if ( transparent.length > 1 ) transparent.sort( reversePainterSortStable );
@@ -122,11 +123,11 @@ function WebGLRenderList() {
 
 }
 
-function WebGLRenderLists() {
+export function WebGLRenderLists() {
 
 	var lists = {};
 
-	function get( scene, camera ) {
+	export function get( scene, camera ) {
 
 		var hash = scene.id + ',' + camera.id;
 		var list = lists[ hash ];
@@ -144,7 +145,7 @@ function WebGLRenderLists() {
 
 	}
 
-	function dispose() {
+	export function dispose() {
 
 		lists = {};
 

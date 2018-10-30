@@ -1,17 +1,12 @@
-import { InterpolateDiscrete } from '../../constants.js';
-import { KeyframeTrack } from '../KeyframeTrack.js';
+import { InterpolateDiscrete } from '../../constants';
+import { KeyframeTrack } from '../KeyframeTrack';
 
 /**
- *
- * A Track that interpolates Strings
- *
- *
- * @author Ben Houston / http://clara.io/
- * @author David Sarno / http://lighthaus.us/
- * @author tschw
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function StringKeyframeTrack( name, times, values, interpolation ) {
+export function StringKeyframeTrack( name, times, values, interpolation ) {
 
 	KeyframeTrack.call( this, name, times, values, interpolation );
 
@@ -30,6 +25,6 @@ StringKeyframeTrack.prototype = Object.assign( Object.create( KeyframeTrack.prot
 
 	InterpolantFactoryMethodSmooth: undefined
 
-} );
+}
 
 export { StringKeyframeTrack };

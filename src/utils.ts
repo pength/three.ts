@@ -1,8 +1,9 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function arrayMin( array ) {
+export function arrayMin( array ) {
 
 	if ( array.length === 0 ) return Infinity;
 
@@ -18,7 +19,7 @@ function arrayMin( array ) {
 
 }
 
-function arrayMax( array ) {
+export function arrayMax( array ) {
 
 	if ( array.length === 0 ) return - Infinity;
 

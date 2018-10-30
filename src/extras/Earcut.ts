@@ -1,11 +1,11 @@
 /**
- * @author Mugen87 / https://github.com/Mugen87
- * Port from https://github.com/mapbox/earcut (v2.1.2)
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 var Earcut = {
 
-	triangulate: function ( data, holeIndices, dim ) {
+	triangulate( data, holeIndices, dim ) {
 
 		dim = dim || 2;
 
@@ -55,7 +55,7 @@ var Earcut = {
 
 // create a circular doubly linked list from polygon points in the specified winding order
 
-function linkedList( data, start, end, dim, clockwise ) {
+export function linkedList( data, start, end, dim, clockwise ) {
 
 	var i, last;
 
@@ -82,7 +82,7 @@ function linkedList( data, start, end, dim, clockwise ) {
 
 // eliminate colinear or duplicate points
 
-function filterPoints( start, end ) {
+export function filterPoints( start, end ) {
 
 	if ( ! start ) return start;
 	if ( ! end ) end = start;
@@ -114,7 +114,7 @@ function filterPoints( start, end ) {
 
 // main ear slicing loop which triangulates a polygon (given as a linked list)
 
-function earcutLinked( ear, triangles, dim, minX, minY, invSize, pass ) {
+export function earcutLinked( ear, triangles, dim, minX, minY, invSize, pass ) {
 
 	if ( ! ear ) return;
 
@@ -185,7 +185,7 @@ function earcutLinked( ear, triangles, dim, minX, minY, invSize, pass ) {
 
 // check whether a polygon node forms a valid ear with adjacent nodes
 
-function isEar( ear ) {
+export function isEar( ear ) {
 
 	var a = ear.prev,
 		b = ear,
@@ -212,7 +212,7 @@ function isEar( ear ) {
 
 }
 
-function isEarHashed( ear, minX, minY, invSize ) {
+export function isEarHashed( ear, minX, minY, invSize ) {
 
 	var a = ear.prev,
 		b = ear,
@@ -265,7 +265,7 @@ function isEarHashed( ear, minX, minY, invSize ) {
 
 // go through all polygon nodes and cure small local self-intersections
 
-function cureLocalIntersections( start, triangles, dim ) {
+export function cureLocalIntersections( start, triangles, dim ) {
 
 	var p = start;
 
@@ -298,7 +298,7 @@ function cureLocalIntersections( start, triangles, dim ) {
 
 // try splitting polygon into two and triangulate them independently
 
-function splitEarcut( start, triangles, dim, minX, minY, invSize ) {
+export function splitEarcut( start, triangles, dim, minX, minY, invSize ) {
 
 	// look for a valid diagonal that divides the polygon into two
 
@@ -341,7 +341,7 @@ function splitEarcut( start, triangles, dim, minX, minY, invSize ) {
 
 // link every hole into the outer loop, producing a single-ring polygon without holes
 
-function eliminateHoles( data, holeIndices, outerNode, dim ) {
+export function eliminateHoles( data, holeIndices, outerNode, dim ) {
 
 	var queue = [], i, len, start, end, list;
 
@@ -370,7 +370,7 @@ function eliminateHoles( data, holeIndices, outerNode, dim ) {
 
 }
 
-function compareX( a, b ) {
+export function compareX( a, b ) {
 
 	return a.x - b.x;
 
@@ -378,7 +378,7 @@ function compareX( a, b ) {
 
 // find a bridge between vertices that connects hole with an outer ring and and link it
 
-function eliminateHole( hole, outerNode ) {
+export function eliminateHole( hole, outerNode ) {
 
 	outerNode = findHoleBridge( hole, outerNode );
 
@@ -394,7 +394,7 @@ function eliminateHole( hole, outerNode ) {
 
 // David Eberly's algorithm for finding a bridge between hole and outer polygon
 
-function findHoleBridge( hole, outerNode ) {
+export function findHoleBridge( hole, outerNode ) {
 
 	var p = outerNode,
 		hx = hole.x,
@@ -474,7 +474,7 @@ function findHoleBridge( hole, outerNode ) {
 
 // interlink polygon nodes in z-order
 
-function indexCurve( start, minX, minY, invSize ) {
+export function indexCurve( start, minX, minY, invSize ) {
 
 	var p = start;
 
@@ -497,7 +497,7 @@ function indexCurve( start, minX, minY, invSize ) {
 // Simon Tatham's linked list merge sort algorithm
 // http://www.chiark.greenend.org.uk/~sgtatham/algorithms/listsort.html
 
-function sortLinked( list ) {
+export function sortLinked( list ) {
 
 	var i, p, q, e, tail, numMerges, pSize, qSize, inSize = 1;
 
@@ -563,7 +563,7 @@ function sortLinked( list ) {
 
 // z-order of a point given coords and inverse of the longer side of data bbox
 
-function zOrder( x, y, minX, minY, invSize ) {
+export function zOrder( x, y, minX, minY, invSize ) {
 
 	// coords are transformed into non-negative 15-bit integer range
 
@@ -586,7 +586,7 @@ function zOrder( x, y, minX, minY, invSize ) {
 
 // find the leftmost node of a polygon ring
 
-function getLeftmost( start ) {
+export function getLeftmost( start ) {
 
 	var p = start, leftmost = start;
 
@@ -603,7 +603,7 @@ function getLeftmost( start ) {
 
 // check if a point lies within a convex triangle
 
-function pointInTriangle( ax, ay, bx, by, cx, cy, px, py ) {
+export function pointInTriangle( ax, ay, bx, by, cx, cy, px, py ) {
 
 	return ( cx - px ) * ( ay - py ) - ( ax - px ) * ( cy - py ) >= 0 &&
 	 ( ax - px ) * ( by - py ) - ( bx - px ) * ( ay - py ) >= 0 &&
@@ -613,7 +613,7 @@ function pointInTriangle( ax, ay, bx, by, cx, cy, px, py ) {
 
 // check if a diagonal between two polygon nodes is valid (lies in polygon interior)
 
-function isValidDiagonal( a, b ) {
+export function isValidDiagonal( a, b ) {
 
 	return a.next.i !== b.i && a.prev.i !== b.i && ! intersectsPolygon( a, b ) &&
 		locallyInside( a, b ) && locallyInside( b, a ) && middleInside( a, b );
@@ -622,7 +622,7 @@ function isValidDiagonal( a, b ) {
 
 // signed area of a triangle
 
-function area( p, q, r ) {
+export function area( p, q, r ) {
 
 	return ( q.y - p.y ) * ( r.x - q.x ) - ( q.x - p.x ) * ( r.y - q.y );
 
@@ -630,7 +630,7 @@ function area( p, q, r ) {
 
 // check if two points are equal
 
-function equals( p1, p2 ) {
+export function equals( p1, p2 ) {
 
 	return p1.x === p2.x && p1.y === p2.y;
 
@@ -638,7 +638,7 @@ function equals( p1, p2 ) {
 
 // check if two segments intersect
 
-function intersects( p1, q1, p2, q2 ) {
+export function intersects( p1, q1, p2, q2 ) {
 
 	if ( ( equals( p1, q1 ) && equals( p2, q2 ) ) ||
 			( equals( p1, q2 ) && equals( p2, q1 ) ) ) return true;
@@ -650,7 +650,7 @@ function intersects( p1, q1, p2, q2 ) {
 
 // check if a polygon diagonal intersects any polygon segments
 
-function intersectsPolygon( a, b ) {
+export function intersectsPolygon( a, b ) {
 
 	var p = a;
 
@@ -673,7 +673,7 @@ function intersectsPolygon( a, b ) {
 
 // check if a polygon diagonal is locally inside the polygon
 
-function locallyInside( a, b ) {
+export function locallyInside( a, b ) {
 
 	return area( a.prev, a, a.next ) < 0 ?
 		area( a, b, a.next ) >= 0 && area( a, a.prev, b ) >= 0 :
@@ -683,7 +683,7 @@ function locallyInside( a, b ) {
 
 // check if the middle point of a polygon diagonal is inside the polygon
 
-function middleInside( a, b ) {
+export function middleInside( a, b ) {
 
 	var p = a,
 		inside = false,
@@ -710,7 +710,7 @@ function middleInside( a, b ) {
 // link two polygon vertices with a bridge; if the vertices belong to the same ring, it splits polygon into two;
 // if one belongs to the outer ring and another to a hole, it merges it into a single ring
 
-function splitPolygon( a, b ) {
+export function splitPolygon( a, b ) {
 
 	var a2 = new Node( a.i, a.x, a.y ),
 		b2 = new Node( b.i, b.x, b.y ),
@@ -735,7 +735,7 @@ function splitPolygon( a, b ) {
 
 // create a node and optionally link it with previous one (in a circular doubly linked list)
 
-function insertNode( i, x, y, last ) {
+export function insertNode( i, x, y, last ) {
 
 	var p = new Node( i, x, y );
 
@@ -757,7 +757,7 @@ function insertNode( i, x, y, last ) {
 
 }
 
-function removeNode( p ) {
+export function removeNode( p ) {
 
 	p.next.prev = p.prev;
 	p.prev.next = p.next;
@@ -767,7 +767,7 @@ function removeNode( p ) {
 
 }
 
-function Node( i, x, y ) {
+export function Node( i, x, y ) {
 
 	// vertice index in coordinates array
 	this.i = i;
@@ -792,7 +792,7 @@ function Node( i, x, y ) {
 
 }
 
-function signedArea( data, start, end, dim ) {
+export function signedArea( data, start, end, dim ) {
 
 	var sum = 0;
 

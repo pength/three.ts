@@ -1,17 +1,18 @@
 /**
- * @author WestLangley / http://github.com/WestLangley
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Line } from '../objects/Line.js';
-import { Mesh } from '../objects/Mesh.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { MeshBasicMaterial } from '../materials/MeshBasicMaterial.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Object3D } from '../core/Object3D.js';
-import { FrontSide, BackSide } from '../constants.js';
+import { Line } from '../objects/Line';
+import { Mesh } from '../objects/Mesh';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { MeshBasicMaterial } from '../materials/MeshBasicMaterial';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Object3D } from '../core/Object3D';
+import { FrontSide, BackSide } from '../constants';
 
-function PlaneHelper( plane, size, hex ) {
+export function PlaneHelper( plane, size, hex ) {
 
 	this.type = 'PlaneHelper';
 
@@ -44,7 +45,7 @@ function PlaneHelper( plane, size, hex ) {
 PlaneHelper.prototype = Object.create( Line.prototype );
 PlaneHelper.prototype.constructor = PlaneHelper;
 
-PlaneHelper.prototype.updateMatrixWorld = function ( force ) {
+PlaneHelper.prototype.updateMatrixWorld = export function ( force ) {
 
 	var scale = - this.plane.constant;
 

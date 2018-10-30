@@ -1,11 +1,9 @@
-import { Material } from './Material.js';
-import { BasicDepthPacking } from '../constants.js';
+import { Material } from './Material';
+import { BasicDepthPacking } from '../constants';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
- * @author bhouston / https://clara.io
- * @author WestLangley / http://github.com/WestLangley
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
  * parameters = {
  *
@@ -24,7 +22,7 @@ import { BasicDepthPacking } from '../constants.js';
  * }
  */
 
-function MeshDepthMaterial( parameters ) {
+export function MeshDepthMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -58,7 +56,7 @@ MeshDepthMaterial.prototype.constructor = MeshDepthMaterial;
 
 MeshDepthMaterial.prototype.isMeshDepthMaterial = true;
 
-MeshDepthMaterial.prototype.copy = function ( source ) {
+MeshDepthMaterial.prototype.copy = export function ( source ) {
 
 	Material.prototype.copy.call( this, source );
 

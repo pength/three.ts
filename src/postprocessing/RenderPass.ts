@@ -1,8 +1,9 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-THREE.RenderPass = function ( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
+THREE.RenderPass = export function ( scene, camera, overrideMaterial, clearColor, clearAlpha ) {
 
 	THREE.Pass.call( this );
 
@@ -24,7 +25,7 @@ THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 
 	constructor: THREE.RenderPass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		var oldAutoClear = renderer.autoClear;
 		renderer.autoClear = false;
@@ -60,4 +61,4 @@ THREE.RenderPass.prototype = Object.assign( Object.create( THREE.Pass.prototype 
 		renderer.autoClear = oldAutoClear;
 	}
 
-} );
+}

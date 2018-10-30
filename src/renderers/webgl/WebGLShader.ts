@@ -1,8 +1,8 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-function addLineNumbers( string ) {
+export function addLineNumbers( string ) {
 
 	var lines = string.split( '\n' );
 
@@ -16,7 +16,7 @@ function addLineNumbers( string ) {
 
 }
 
-function WebGLShader( gl, type, string ) {
+export function WebGLShader( gl, type, string ) {
 
 	var shader = gl.createShader( type );
 

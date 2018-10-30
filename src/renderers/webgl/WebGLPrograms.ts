@@ -1,11 +1,11 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
+import { BackSide, DoubleSide, CubeUVRefractionMapping, CubeUVReflectionMapping, GammaEncoding, LinearEncoding, ObjectSpaceNormalMap } from '../../constants';
+import { WebGLProgram } from './WebGLProgram';
 
-import { BackSide, DoubleSide, CubeUVRefractionMapping, CubeUVReflectionMapping, GammaEncoding, LinearEncoding, ObjectSpaceNormalMap } from '../../constants.js';
-import { WebGLProgram } from './WebGLProgram.js';
-
-function WebGLPrograms( renderer, extensions, capabilities ) {
+export function WebGLPrograms( renderer, extensions, capabilities ) {
 
 	var programs = [];
 
@@ -41,7 +41,7 @@ function WebGLPrograms( renderer, extensions, capabilities ) {
 	];
 
 
-	function allocateBones( object ) {
+	export function allocateBones( object ) {
 
 		var skeleton = object.skeleton;
 		var bones = skeleton.bones;
@@ -77,7 +77,7 @@ function WebGLPrograms( renderer, extensions, capabilities ) {
 
 	}
 
-	function getTextureEncodingFromMap( map, gammaOverrideLinear ) {
+	export function getTextureEncodingFromMap( map, gammaOverrideLinear ) {
 
 		var encoding;
 
@@ -107,7 +107,7 @@ function WebGLPrograms( renderer, extensions, capabilities ) {
 
 	}
 
-	this.getParameters = function ( material, lights, shadows, fog, nClipPlanes, nClipIntersection, object ) {
+	this.getParameters = export function ( material, lights, shadows, fog, nClipPlanes, nClipIntersection, object ) {
 
 		var shaderID = shaderIDs[ material.type ];
 
@@ -214,7 +214,7 @@ function WebGLPrograms( renderer, extensions, capabilities ) {
 
 	};
 
-	this.getProgramCode = function ( material, parameters ) {
+	this.getProgramCode = export function ( material, parameters ) {
 
 		var array = [];
 
@@ -254,7 +254,7 @@ function WebGLPrograms( renderer, extensions, capabilities ) {
 
 	};
 
-	this.acquireProgram = function ( material, shader, parameters, code ) {
+	this.acquireProgram = export function ( material, shader, parameters, code ) {
 
 		var program;
 
@@ -285,7 +285,7 @@ function WebGLPrograms( renderer, extensions, capabilities ) {
 
 	};
 
-	this.releaseProgram = function ( program ) {
+	this.releaseProgram = export function ( program ) {
 
 		if ( -- program.usedTimes === 0 ) {
 

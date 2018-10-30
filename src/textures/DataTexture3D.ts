@@ -1,11 +1,12 @@
 /**
- * @author Artur Trzesiok
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Texture } from './Texture.js';
-import { NearestFilter } from '../constants.js';
+import { Texture } from './Texture';
+import { NearestFilter } from '../constants';
 
-function DataTexture3D( data, width, height, depth ) {
+export function DataTexture3D( data, width, height, depth ) {
 
 	// We're going to add .setXXX() methods for setting properties later.
 	// Users can still set in DataTexture3D directly.

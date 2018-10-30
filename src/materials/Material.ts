@@ -1,17 +1,17 @@
-import { EventDispatcher } from '../core/EventDispatcher.js';
-import { NoColors, FrontSide, FlatShading, NormalBlending, LessEqualDepth, AddEquation, OneMinusSrcAlphaFactor, SrcAlphaFactor } from '../constants.js';
-import { _Math } from '../math/Math.js';
+import { EventDispatcher } from '../core/EventDispatcher';
+import { NoColors, FrontSide, FlatShading, NormalBlending, LessEqualDepth, AddEquation, OneMinusSrcAlphaFactor, SrcAlphaFactor } from '../constants';
+import { _Math } from '../math/Math';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
 var materialId = 0;
 
-function Material() {
+export function Material() {
 
-	Object.defineProperty( this, 'id', { value: materialId ++ } );
+	Object.defineProperty( this, 'id', { value: materialId ++ }
 
 	this.uuid = _Math.generateUUID();
 
@@ -75,9 +75,9 @@ Material.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 	isMaterial: true,
 
-	onBeforeCompile: function () {},
+	onBeforeCompile() {}
 
-	setValues: function ( values ) {
+	setValues( values ) {
 
 		if ( values === undefined ) return;
 
@@ -131,16 +131,16 @@ Material.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		}
 
-	},
+	}
 
-	toJSON: function ( meta ) {
+	toJSON( meta ) {
 
 		var isRoot = ( meta === undefined || typeof meta === 'string' );
 
 		if ( isRoot ) {
 
 			meta = {
-				textures: {},
+				textures: {}
 				images: {}
 			};
 
@@ -274,7 +274,7 @@ Material.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		// TODO: Copied from Object3D.toJSON
 
-		function extractFromCache( cache ) {
+		export function extractFromCache( cache ) {
 
 			var values = [];
 
@@ -302,15 +302,15 @@ Material.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		return data;
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor().copy( this );
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		this.name = source.name;
 
@@ -376,15 +376,15 @@ Material.prototype = Object.assign( Object.create( EventDispatcher.prototype ), 
 
 		return this;
 
-	},
+	}
 
-	dispose: function () {
+	dispose() {
 
-		this.dispatchEvent( { type: 'dispose' } );
+		this.dispatchEvent( { type: 'dispose' }
 
 	}
 
-} );
+}
 
 
 export { Material };

@@ -1,16 +1,14 @@
-import { Mesh } from './Mesh.js';
-import { Vector4 } from '../math/Vector4.js';
-import { Skeleton } from './Skeleton.js';
-import { Bone } from './Bone.js';
-import { Matrix4 } from '../math/Matrix4.js';
-
+import { Mesh } from './Mesh';
+import { Vector4 } from '../math/Vector4';
+import { Skeleton } from './Skeleton';
+import { Bone } from './Bone';
+import { Matrix4 } from '../math/Matrix4';
 /**
- * @author mikael emtinger / http://gomo.se/
- * @author alteredq / http://alteredqualia.com/
- * @author ikerr / http://verold.com
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function SkinnedMesh( geometry, material ) {
+export function SkinnedMesh( geometry, material ) {
 
 	Mesh.call( this, geometry, material );
 
@@ -35,7 +33,7 @@ SkinnedMesh.prototype = Object.assign( Object.create( Mesh.prototype ), {
 
 	isSkinnedMesh: true,
 
-	initBones: function () {
+	initBones() {
 
 		var bones = [], bone, gbone;
 		var i, il;
@@ -93,9 +91,9 @@ SkinnedMesh.prototype = Object.assign( Object.create( Mesh.prototype ), {
 
 		return bones;
 
-	},
+	}
 
-	bind: function ( skeleton, bindMatrix ) {
+	bind( skeleton, bindMatrix ) {
 
 		this.skeleton = skeleton;
 
@@ -112,15 +110,15 @@ SkinnedMesh.prototype = Object.assign( Object.create( Mesh.prototype ), {
 		this.bindMatrix.copy( bindMatrix );
 		this.bindMatrixInverse.getInverse( bindMatrix );
 
-	},
+	}
 
-	pose: function () {
+	pose() {
 
 		this.skeleton.pose();
 
-	},
+	}
 
-	normalizeSkinWeights: function () {
+	normalizeSkinWeights() {
 
 		var scale, i;
 
@@ -175,9 +173,9 @@ SkinnedMesh.prototype = Object.assign( Object.create( Mesh.prototype ), {
 
 		}
 
-	},
+	}
 
-	updateMatrixWorld: function ( force ) {
+	updateMatrixWorld( force ) {
 
 		Mesh.prototype.updateMatrixWorld.call( this, force );
 
@@ -195,15 +193,15 @@ SkinnedMesh.prototype = Object.assign( Object.create( Mesh.prototype ), {
 
 		}
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor( this.geometry, this.material ).copy( this );
 
 	}
 
-} );
+}
 
 
 export { SkinnedMesh };

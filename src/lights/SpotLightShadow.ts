@@ -1,12 +1,13 @@
-import { LightShadow } from './LightShadow.js';
-import { _Math } from '../math/Math.js';
-import { PerspectiveCamera } from '../cameras/PerspectiveCamera.js';
+import { LightShadow } from './LightShadow';
+import { _Math } from '../math/Math';
+import { PerspectiveCamera } from '../cameras/PerspectiveCamera';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function SpotLightShadow() {
+export function SpotLightShadow() {
 
 	LightShadow.call( this, new PerspectiveCamera( 50, 1, 0.5, 500 ) );
 
@@ -18,7 +19,7 @@ SpotLightShadow.prototype = Object.assign( Object.create( LightShadow.prototype 
 
 	isSpotLightShadow: true,
 
-	update: function ( light ) {
+	update( light ) {
 
 		var camera = this.camera;
 
@@ -37,7 +38,7 @@ SpotLightShadow.prototype = Object.assign( Object.create( LightShadow.prototype 
 
 	}
 
-} );
+}
 
 
 export { SpotLightShadow };

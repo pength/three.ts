@@ -1,10 +1,11 @@
-import { InterleavedBuffer } from './InterleavedBuffer.js';
+import { InterleavedBuffer } from './InterleavedBuffer';
 
 /**
- * @author benaadams / https://twitter.com/ben_a_adams
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function InstancedInterleavedBuffer( array, stride, meshPerAttribute ) {
+export function InstancedInterleavedBuffer( array, stride, meshPerAttribute ) {
 
 	InterleavedBuffer.call( this, array, stride );
 
@@ -18,7 +19,7 @@ InstancedInterleavedBuffer.prototype = Object.assign( Object.create( Interleaved
 
 	isInstancedInterleavedBuffer: true,
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		InterleavedBuffer.prototype.copy.call( this, source );
 
@@ -28,6 +29,6 @@ InstancedInterleavedBuffer.prototype = Object.assign( Object.create( Interleaved
 
 	}
 
-} );
+}
 
 export { InstancedInterleavedBuffer };

@@ -1,8 +1,9 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function LoadingManager( onLoad, onProgress, onError ) {
+export function LoadingManager( onLoad, onProgress, onError ) {
 
 	var scope = this;
 
@@ -19,7 +20,7 @@ function LoadingManager( onLoad, onProgress, onError ) {
 	this.onProgress = onProgress;
 	this.onError = onError;
 
-	this.itemStart = function ( url ) {
+	this.itemStart = export function ( url ) {
 
 		itemsTotal ++;
 
@@ -37,7 +38,7 @@ function LoadingManager( onLoad, onProgress, onError ) {
 
 	};
 
-	this.itemEnd = function ( url ) {
+	this.itemEnd = export function ( url ) {
 
 		itemsLoaded ++;
 
@@ -61,7 +62,7 @@ function LoadingManager( onLoad, onProgress, onError ) {
 
 	};
 
-	this.itemError = function ( url ) {
+	this.itemError = export function ( url ) {
 
 		if ( scope.onError !== undefined ) {
 
@@ -71,7 +72,7 @@ function LoadingManager( onLoad, onProgress, onError ) {
 
 	};
 
-	this.resolveURL = function ( url ) {
+	this.resolveURL = export function ( url ) {
 
 		if ( urlModifier ) {
 
@@ -83,7 +84,7 @@ function LoadingManager( onLoad, onProgress, onError ) {
 
 	};
 
-	this.setURLModifier = function ( transform ) {
+	this.setURLModifier = export function ( transform ) {
 
 		urlModifier = transform;
 		return this;

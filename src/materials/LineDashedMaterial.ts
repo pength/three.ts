@@ -1,21 +1,11 @@
 /**
- * @author alteredq / http://alteredqualia.com/
- *
- * parameters = {
- *  color: <hex>,
- *  opacity: <float>,
- *
- *  linewidth: <float>,
- *
- *  scale: <float>,
- *  dashSize: <float>,
- *  gapSize: <float>
- * }
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { LineBasicMaterial } from './LineBasicMaterial.js';
+import { LineBasicMaterial } from './LineBasicMaterial';
 
-function LineDashedMaterial( parameters ) {
+export function LineDashedMaterial( parameters ) {
 
 	LineBasicMaterial.call( this );
 
@@ -34,7 +24,7 @@ LineDashedMaterial.prototype.constructor = LineDashedMaterial;
 
 LineDashedMaterial.prototype.isLineDashedMaterial = true;
 
-LineDashedMaterial.prototype.copy = function ( source ) {
+LineDashedMaterial.prototype.copy = export function ( source ) {
 
 	LineBasicMaterial.prototype.copy.call( this, source );
 

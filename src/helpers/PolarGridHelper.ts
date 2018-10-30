@@ -1,17 +1,16 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author Mugen87 / http://github.com/Mugen87
- * @author Hectate / http://www.github.com/Hectate
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { LineSegments } from '../objects/LineSegments.js';
-import { VertexColors } from '../constants.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Color } from '../math/Color.js';
+import { LineSegments } from '../objects/LineSegments';
+import { VertexColors } from '../constants';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Color } from '../math/Color';
 
-function PolarGridHelper( radius, radials, circles, divisions, color1, color2 ) {
+export function PolarGridHelper( radius, radials, circles, divisions, color1, color2 ) {
 
 	radius = radius || 10;
 	radials = radials || 16;
@@ -83,7 +82,7 @@ function PolarGridHelper( radius, radials, circles, divisions, color1, color2 ) 
 	geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
 	geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
-	var material = new LineBasicMaterial( { vertexColors: VertexColors } );
+	var material = new LineBasicMaterial( { vertexColors: VertexColors }
 
 	LineSegments.call( this, geometry, material );
 

@@ -1,21 +1,20 @@
 /**
- * @author mikael emtinger / http://gomo.se/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-import { Vector2 } from '../math/Vector2.js';
-import { Vector3 } from '../math/Vector3.js';
-import { Matrix4 } from '../math/Matrix4.js';
-import { Triangle } from '../math/Triangle.js';
-import { Object3D } from '../core/Object3D.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { InterleavedBuffer } from '../core/InterleavedBuffer.js';
-import { InterleavedBufferAttribute } from '../core/InterleavedBufferAttribute.js';
-import { SpriteMaterial } from '../materials/SpriteMaterial.js';
+import { Vector2 } from '../math/Vector2';
+import { Vector3 } from '../math/Vector3';
+import { Matrix4 } from '../math/Matrix4';
+import { Triangle } from '../math/Triangle';
+import { Object3D } from '../core/Object3D';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { InterleavedBuffer } from '../core/InterleavedBuffer';
+import { InterleavedBufferAttribute } from '../core/InterleavedBufferAttribute';
+import { SpriteMaterial } from '../materials/SpriteMaterial';
 
 var geometry;
 
-function Sprite( material ) {
+export function Sprite( material ) {
 
 	Object3D.call( this );
 
@@ -53,7 +52,7 @@ Sprite.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	isSprite: true,
 
-	raycast: ( function () {
+	raycast: ( export function () {
 
 		var intersectPoint = new Vector3();
 		var worldScale = new Vector3();
@@ -71,7 +70,7 @@ Sprite.prototype = Object.assign( Object.create( Object3D.prototype ), {
 		var uvB = new Vector2();
 		var uvC = new Vector2();
 
-		function transformVertex( vertexPosition, mvPosition, center, scale, sin, cos ) {
+		export function transformVertex( vertexPosition, mvPosition, center, scale, sin, cos ) {
 
 			// compute position in camera space
 			alignedPosition.subVectors( vertexPosition, center ).addScalar( 0.5 ).multiply( scale );
@@ -98,7 +97,7 @@ Sprite.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		}
 
-		return function raycast( raycaster, intersects ) {
+		return export function raycast( raycaster, intersects ) {
 
 			worldScale.setFromMatrixScale( this.matrixWorld );
 			viewWorldMatrix.getInverse( this.modelViewMatrix ).premultiply( this.matrixWorld );
@@ -153,19 +152,19 @@ Sprite.prototype = Object.assign( Object.create( Object3D.prototype ), {
 				face: null,
 				object: this
 
-			} );
+			}
 
 		};
 
 	}() ),
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor( this.material ).copy( this );
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		Object3D.prototype.copy.call( this, source );
 
@@ -176,6 +175,6 @@ Sprite.prototype = Object.assign( Object.create( Object3D.prototype ), {
 	}
 
 
-} );
+}
 
 export { Sprite };

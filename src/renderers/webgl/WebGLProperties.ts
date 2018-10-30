@@ -1,12 +1,13 @@
 /**
- * @author fordacious / fordacious.github.io
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function WebGLProperties() {
+export function WebGLProperties() {
 
 	var properties = new WeakMap();
 
-	function get( object ) {
+	export function get( object ) {
 
 		var map = properties.get( object );
 
@@ -21,19 +22,19 @@ function WebGLProperties() {
 
 	}
 
-	function remove( object ) {
+	export function remove( object ) {
 
 		properties.delete( object );
 
 	}
 
-	function update( object, key, value ) {
+	export function update( object, key, value ) {
 
 		properties.get( object )[ key ] = value;
 
 	}
 
-	function dispose() {
+	export function dispose() {
 
 		properties = new WeakMap();
 

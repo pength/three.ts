@@ -1,16 +1,16 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Vector3 } from '../math/Vector3.js';
+import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Vector3 } from '../math/Vector3';
 
 // BoxGeometry
 
-function BoxGeometry( width, height, depth, widthSegments, heightSegments, depthSegments ) {
+export function BoxGeometry( width, height, depth, widthSegments, heightSegments, depthSegments ) {
 
 	Geometry.call( this );
 
@@ -35,7 +35,7 @@ BoxGeometry.prototype.constructor = BoxGeometry;
 
 // BoxBufferGeometry
 
-function BoxBufferGeometry( width, height, depth, widthSegments, heightSegments, depthSegments ) {
+export function BoxBufferGeometry( width, height, depth, widthSegments, heightSegments, depthSegments ) {
 
 	BufferGeometry.call( this );
 
@@ -90,7 +90,7 @@ function BoxBufferGeometry( width, height, depth, widthSegments, heightSegments,
 	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
 	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
-	function buildPlane( u, v, w, udir, vdir, width, height, depth, gridX, gridY, materialIndex ) {
+	export function buildPlane( u, v, w, udir, vdir, width, height, depth, gridX, gridY, materialIndex ) {
 
 		var segmentWidth = width / gridX;
 		var segmentHeight = height / gridY;

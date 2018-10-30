@@ -1,22 +1,19 @@
 /**
- * @author Sean Griffin / http://twitter.com/sgrif
- * @author Michael Guerrero / http://realitymeltdown.com
- * @author mrdoob / http://mrdoob.com/
- * @author ikerr / http://verold.com
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { LineSegments } from '../objects/LineSegments.js';
-import { Matrix4 } from '../math/Matrix4.js';
-import { VertexColors } from '../constants.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { Color } from '../math/Color.js';
-import { Vector3 } from '../math/Vector3.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Object3D } from '../core/Object3D.js';
+import { LineSegments } from '../objects/LineSegments';
+import { Matrix4 } from '../math/Matrix4';
+import { VertexColors } from '../constants';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { Color } from '../math/Color';
+import { Vector3 } from '../math/Vector3';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Object3D } from '../core/Object3D';
 
-function getBoneList( object ) {
+export function getBoneList( object ) {
 
 	var boneList = [];
 
@@ -36,7 +33,7 @@ function getBoneList( object ) {
 
 }
 
-function SkeletonHelper( object ) {
+export function SkeletonHelper( object ) {
 
 	var bones = getBoneList( object );
 
@@ -66,7 +63,7 @@ function SkeletonHelper( object ) {
 	geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
 	geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
-	var material = new LineBasicMaterial( { vertexColors: VertexColors, depthTest: false, depthWrite: false, transparent: true } );
+	var material = new LineBasicMaterial( { vertexColors: VertexColors, depthTest: false, depthWrite: false, transparent: true }
 
 	LineSegments.call( this, geometry, material );
 
@@ -81,14 +78,14 @@ function SkeletonHelper( object ) {
 SkeletonHelper.prototype = Object.create( LineSegments.prototype );
 SkeletonHelper.prototype.constructor = SkeletonHelper;
 
-SkeletonHelper.prototype.updateMatrixWorld = function () {
+SkeletonHelper.prototype.updateMatrixWorld = export function () {
 
 	var vector = new Vector3();
 
 	var boneMatrix = new Matrix4();
 	var matrixWorldInv = new Matrix4();
 
-	return function updateMatrixWorld( force ) {
+	return export function updateMatrixWorld( force ) {
 
 		var bones = this.bones;
 

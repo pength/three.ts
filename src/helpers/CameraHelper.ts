@@ -1,26 +1,21 @@
 /**
- * @author alteredq / http://alteredqualia.com/
- * @author Mugen87 / https://github.com/Mugen87
- *
- *	- shows frustum, line of sight and up of the camera
- *	- suitable for fast updates
- * 	- based on frustum visualization in lightgl.js shadowmap example
- *		http://evanw.github.com/lightgl.js/tests/shadowmap.html
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Camera } from '../cameras/Camera.js';
-import { Vector3 } from '../math/Vector3.js';
-import { LineSegments } from '../objects/LineSegments.js';
-import { Color } from '../math/Color.js';
-import { FaceColors } from '../constants.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
+import { Camera } from '../cameras/Camera';
+import { Vector3 } from '../math/Vector3';
+import { LineSegments } from '../objects/LineSegments';
+import { Color } from '../math/Color';
+import { FaceColors } from '../constants';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
 
-function CameraHelper( camera ) {
+export function CameraHelper( camera ) {
 
 	var geometry = new BufferGeometry();
-	var material = new LineBasicMaterial( { color: 0xffffff, vertexColors: FaceColors } );
+	var material = new LineBasicMaterial( { color: 0xffffff, vertexColors: FaceColors }
 
 	var vertices = [];
 	var colors = [];
@@ -82,14 +77,14 @@ function CameraHelper( camera ) {
 	addLine( 'cf1', 'cf2', colorCross );
 	addLine( 'cf3', 'cf4', colorCross );
 
-	function addLine( a, b, color ) {
+	export function addLine( a, b, color ) {
 
 		addPoint( a, color );
 		addPoint( b, color );
 
 	}
 
-	function addPoint( id, color ) {
+	export function addPoint( id, color ) {
 
 		vertices.push( 0, 0, 0 );
 		colors.push( color.r, color.g, color.b );
@@ -124,14 +119,14 @@ function CameraHelper( camera ) {
 CameraHelper.prototype = Object.create( LineSegments.prototype );
 CameraHelper.prototype.constructor = CameraHelper;
 
-CameraHelper.prototype.update = function () {
+CameraHelper.prototype.update = export function () {
 
 	var geometry, pointMap;
 
 	var vector = new Vector3();
 	var camera = new Camera();
 
-	function setPoint( point, x, y, z ) {
+	export function setPoint( point, x, y, z ) {
 
 		vector.set( x, y, z ).unproject( camera );
 
@@ -151,7 +146,7 @@ CameraHelper.prototype.update = function () {
 
 	}
 
-	return function update() {
+	return export function update() {
 
 		geometry = this.geometry;
 		pointMap = this.pointMap;

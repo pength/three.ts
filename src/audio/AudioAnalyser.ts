@@ -1,8 +1,9 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function AudioAnalyser( audio, fftSize ) {
+export function AudioAnalyser( audio, fftSize ) {
 
 	this.analyser = audio.context.createAnalyser();
 	this.analyser.fftSize = fftSize !== undefined ? fftSize : 2048;
@@ -15,15 +16,15 @@ function AudioAnalyser( audio, fftSize ) {
 
 Object.assign( AudioAnalyser.prototype, {
 
-	getFrequencyData: function () {
+	getFrequencyData() {
 
 		this.analyser.getByteFrequencyData( this.data );
 
 		return this.data;
 
-	},
+	}
 
-	getAverageFrequency: function () {
+	getAverageFrequency() {
 
 		var value = 0, data = this.getFrequencyData();
 
@@ -37,6 +38,6 @@ Object.assign( AudioAnalyser.prototype, {
 
 	}
 
-} );
+}
 
 export { AudioAnalyser };

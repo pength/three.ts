@@ -1,18 +1,16 @@
 /**
- * @author oosmoxiecode
- * @author Mugen87 / https://github.com/Mugen87
- *
- * based on http://www.blackpawn.com/texts/pqtorus/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Vector3 } from '../math/Vector3.js';
+import { Geometry } from '../core/Geometry';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Vector3 } from '../math/Vector3';
 
 // TorusKnotGeometry
 
-function TorusKnotGeometry( radius, tube, tubularSegments, radialSegments, p, q, heightScale ) {
+export function TorusKnotGeometry( radius, tube, tubularSegments, radialSegments, p, q, heightScale ) {
 
 	Geometry.call( this );
 
@@ -39,7 +37,7 @@ TorusKnotGeometry.prototype.constructor = TorusKnotGeometry;
 
 // TorusKnotBufferGeometry
 
-function TorusKnotBufferGeometry( radius, tube, tubularSegments, radialSegments, p, q ) {
+export function TorusKnotBufferGeometry( radius, tube, tubularSegments, radialSegments, p, q ) {
 
 	BufferGeometry.call( this );
 
@@ -170,9 +168,9 @@ function TorusKnotBufferGeometry( radius, tube, tubularSegments, radialSegments,
 	this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
 	this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
-	// this function calculates the current position on the torus curve
+	// this export function calculates the current position on the torus curve
 
-	function calculatePositionOnCurve( u, p, q, radius, position ) {
+	export function calculatePositionOnCurve( u, p, q, radius, position ) {
 
 		var cu = Math.cos( u );
 		var su = Math.sin( u );

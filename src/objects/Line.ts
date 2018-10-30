@@ -1,17 +1,18 @@
-import { Sphere } from '../math/Sphere.js';
-import { Ray } from '../math/Ray.js';
-import { Matrix4 } from '../math/Matrix4.js';
-import { Object3D } from '../core/Object3D.js';
-import { Vector3 } from '../math/Vector3.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
+import { Sphere } from '../math/Sphere';
+import { Ray } from '../math/Ray';
+import { Matrix4 } from '../math/Matrix4';
+import { Object3D } from '../core/Object3D';
+import { Vector3 } from '../math/Vector3';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Line( geometry, material, mode ) {
+export function Line( geometry, material, mode ) {
 
 	if ( mode === 1 ) {
 
@@ -24,7 +25,7 @@ function Line( geometry, material, mode ) {
 	this.type = 'Line';
 
 	this.geometry = geometry !== undefined ? geometry : new BufferGeometry();
-	this.material = material !== undefined ? material : new LineBasicMaterial( { color: Math.random() * 0xffffff } );
+	this.material = material !== undefined ? material : new LineBasicMaterial( { color: Math.random() * 0xffffff }
 
 }
 
@@ -34,12 +35,12 @@ Line.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	isLine: true,
 
-	computeLineDistances: ( function () {
+	computeLineDistances: ( export function () {
 
 		var start = new Vector3();
 		var end = new Vector3();
 
-		return function computeLineDistances() {
+		return export function computeLineDistances() {
 
 			var geometry = this.geometry;
 
@@ -92,13 +93,13 @@ Line.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	}() ),
 
-	raycast: ( function () {
+	raycast: ( export function () {
 
 		var inverseMatrix = new Matrix4();
 		var ray = new Ray();
 		var sphere = new Sphere();
 
-		return function raycast( raycaster, intersects ) {
+		return export function raycast( raycaster, intersects ) {
 
 			var precision = raycaster.linePrecision;
 
@@ -168,7 +169,7 @@ Line.prototype = Object.assign( Object.create( Object3D.prototype ), {
 							faceIndex: null,
 							object: this
 
-						} );
+						}
 
 					}
 
@@ -200,7 +201,7 @@ Line.prototype = Object.assign( Object.create( Object3D.prototype ), {
 							faceIndex: null,
 							object: this
 
-						} );
+						}
 
 					}
 
@@ -234,7 +235,7 @@ Line.prototype = Object.assign( Object.create( Object3D.prototype ), {
 						faceIndex: null,
 						object: this
 
-					} );
+					}
 
 				}
 
@@ -244,13 +245,13 @@ Line.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	}() ),
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor( this.geometry, this.material ).copy( this );
 
 	}
 
-} );
+}
 
 
 export { Line };

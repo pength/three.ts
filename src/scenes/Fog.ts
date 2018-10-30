@@ -1,11 +1,11 @@
-import { Color } from '../math/Color.js';
+import { Color } from '../math/Color';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Fog( color, near, far ) {
+export function Fog( color, near, far ) {
 
 	this.name = '';
 
@@ -18,13 +18,13 @@ function Fog( color, near, far ) {
 
 Fog.prototype.isFog = true;
 
-Fog.prototype.clone = function () {
+Fog.prototype.clone = export function () {
 
 	return new Fog( this.color, this.near, this.far );
 
 };
 
-Fog.prototype.toJSON = function ( /* meta */ ) {
+Fog.prototype.toJSON = export function ( /* meta */ ) {
 
 	return {
 		type: 'Fog',

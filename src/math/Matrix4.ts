@@ -744,7 +744,7 @@ export class Matrix4 {
 	decompose() {
 
 
-		return function decompose(position, quaternion, scale) {
+		return export function decompose(position, quaternion, scale) {
 
 			var te = this.elements;
 

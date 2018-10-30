@@ -1,8 +1,8 @@
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
-
-THREE.DotScreenPass = function ( center, angle, scale ) {
+THREE.DotScreenPass = export function ( center, angle, scale ) {
 
 	THREE.Pass.call( this );
 
@@ -23,7 +23,7 @@ THREE.DotScreenPass = function ( center, angle, scale ) {
 		vertexShader: shader.vertexShader,
 		fragmentShader: shader.fragmentShader
 
-	} );
+	}
 
 	this.camera = new THREE.OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
 	this.scene  = new THREE.Scene();
@@ -38,7 +38,7 @@ THREE.DotScreenPass.prototype = Object.assign( Object.create( THREE.Pass.prototy
 
 	constructor: THREE.DotScreenPass,
 
-	render: function ( renderer, writeBuffer, readBuffer, delta, maskActive ) {
+	render( renderer, writeBuffer, readBuffer, delta, maskActive ) {
 
 		this.uniforms[ "tDiffuse" ].value = readBuffer.texture;
 		this.uniforms[ "tSize" ].value.set( readBuffer.width, readBuffer.height );
@@ -57,4 +57,4 @@ THREE.DotScreenPass.prototype = Object.assign( Object.create( THREE.Pass.prototy
 
 	}
 
-} );
+}

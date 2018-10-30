@@ -1,17 +1,16 @@
 /**
- * @author alteredq / http://alteredqualia.com/
- * @author mrdoob / http://mrdoob.com/
- * @author WestLangley / http://github.com/WestLangley
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Vector3 } from '../math/Vector3.js';
-import { Object3D } from '../core/Object3D.js';
-import { Line } from '../objects/Line.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { LineBasicMaterial } from '../materials/LineBasicMaterial.js';
+import { Vector3 } from '../math/Vector3';
+import { Object3D } from '../core/Object3D';
+import { Line } from '../objects/Line';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { LineBasicMaterial } from '../materials/LineBasicMaterial';
 
-function DirectionalLightHelper( light, size, color ) {
+export function DirectionalLightHelper( light, size, color ) {
 
 	Object3D.call( this );
 
@@ -34,7 +33,7 @@ function DirectionalLightHelper( light, size, color ) {
 		- size, size, 0
 	], 3 ) );
 
-	var material = new LineBasicMaterial( { fog: false } );
+	var material = new LineBasicMaterial( { fog: false }
 
 	this.lightPlane = new Line( geometry, material );
 	this.add( this.lightPlane );
@@ -52,7 +51,7 @@ function DirectionalLightHelper( light, size, color ) {
 DirectionalLightHelper.prototype = Object.create( Object3D.prototype );
 DirectionalLightHelper.prototype.constructor = DirectionalLightHelper;
 
-DirectionalLightHelper.prototype.dispose = function () {
+DirectionalLightHelper.prototype.dispose = export function () {
 
 	this.lightPlane.geometry.dispose();
 	this.lightPlane.material.dispose();
@@ -61,13 +60,13 @@ DirectionalLightHelper.prototype.dispose = function () {
 
 };
 
-DirectionalLightHelper.prototype.update = function () {
+DirectionalLightHelper.prototype.update = export function () {
 
 	var v1 = new Vector3();
 	var v2 = new Vector3();
 	var v3 = new Vector3();
 
-	return function update() {
+	return export function update() {
 
 		v1.setFromMatrixPosition( this.light.matrixWorld );
 		v2.setFromMatrixPosition( this.light.target.matrixWorld );

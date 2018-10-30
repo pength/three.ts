@@ -1,12 +1,13 @@
 /**
- * @author thespite / http://clicktorelease.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Cache } from './Cache.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
+import { Cache } from './Cache';
+import { DefaultLoadingManager } from './LoadingManager';
 
 
-function ImageBitmapLoader( manager ) {
+export function ImageBitmapLoader( manager ) {
 
 	if ( typeof createImageBitmap === 'undefined' ) {
 
@@ -29,15 +30,15 @@ ImageBitmapLoader.prototype = {
 
 	constructor: ImageBitmapLoader,
 
-	setOptions: function setOptions( options ) {
+	setOptionssetOptions( options ) {
 
 		this.options = options;
 
 		return this;
 
-	},
+	}
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		if ( url === undefined ) url = '';
 
@@ -53,27 +54,27 @@ ImageBitmapLoader.prototype = {
 
 			scope.manager.itemStart( url );
 
-			setTimeout( function () {
+			setTimeout( export function () {
 
 				if ( onLoad ) onLoad( cached );
 
 				scope.manager.itemEnd( url );
 
-			}, 0 );
+			} 0 );
 
 			return cached;
 
 		}
 
-		fetch( url ).then( function ( res ) {
+		fetch( url ).then( export function ( res ) {
 
 			return res.blob();
 
-		} ).then( function ( blob ) {
+		} ).then( export function ( blob ) {
 
 			return createImageBitmap( blob, scope.options );
 
-		} ).then( function ( imageBitmap ) {
+		} ).then( export function ( imageBitmap ) {
 
 			Cache.add( url, imageBitmap );
 
@@ -81,24 +82,24 @@ ImageBitmapLoader.prototype = {
 
 			scope.manager.itemEnd( url );
 
-		} ).catch( function ( e ) {
+		} ).catch( export function ( e ) {
 
 			if ( onError ) onError( e );
 
 			scope.manager.itemEnd( url );
 			scope.manager.itemError( url );
 
-		} );
+		}
 
-	},
+	}
 
-	setCrossOrigin: function ( /* value */ ) {
+	setCrossOrigin( /* value */ ) {
 
 		return this;
 
-	},
+	}
 
-	setPath: function ( value ) {
+	setPath( value ) {
 
 		this.path = value;
 		return this;

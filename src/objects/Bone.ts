@@ -1,12 +1,11 @@
-import { Object3D } from '../core/Object3D.js';
+import { Object3D } from '../core/Object3D';
 
 /**
- * @author mikael emtinger / http://gomo.se/
- * @author alteredq / http://alteredqualia.com/
- * @author ikerr / http://verold.com
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Bone() {
+export function Bone() {
 
 	Object3D.call( this );
 
@@ -20,7 +19,7 @@ Bone.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	isBone: true
 
-} );
+}
 
 
 export { Bone };

@@ -1,8 +1,9 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function Uniform( value ) {
+export function Uniform( value ) {
 
 	if ( typeof value === 'string' ) {
 
@@ -15,7 +16,7 @@ function Uniform( value ) {
 
 }
 
-Uniform.prototype.clone = function () {
+Uniform.prototype.clone = export function () {
 
 	return new Uniform( this.value.clone === undefined ? this.value : this.value.clone() );
 

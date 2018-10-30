@@ -1,8 +1,8 @@
-import { Material } from './Material.js';
-import { Color } from '../math/Color.js';
-
+import { Material } from './Material';
+import { Color } from '../math/Color';
 /**
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  *
  * parameters = {
  *  color: <hex>,
@@ -12,7 +12,7 @@ import { Color } from '../math/Color.js';
  * }
  */
 
-function SpriteMaterial( parameters ) {
+export function SpriteMaterial( parameters ) {
 
 	Material.call( this );
 
@@ -36,7 +36,7 @@ SpriteMaterial.prototype = Object.create( Material.prototype );
 SpriteMaterial.prototype.constructor = SpriteMaterial;
 SpriteMaterial.prototype.isSpriteMaterial = true;
 
-SpriteMaterial.prototype.copy = function ( source ) {
+SpriteMaterial.prototype.copy = export function ( source ) {
 
 	Material.prototype.copy.call( this, source );
 

@@ -1,19 +1,19 @@
 /**
- * @author alteredq / http://alteredqualia.com/
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { FrontSide, BackSide, DoubleSide, RGBAFormat, NearestFilter, PCFShadowMap, RGBADepthPacking } from '../../constants.js';
-import { WebGLRenderTarget } from '../WebGLRenderTarget.js';
-import { MeshDepthMaterial } from '../../materials/MeshDepthMaterial.js';
-import { MeshDistanceMaterial } from '../../materials/MeshDistanceMaterial.js';
-import { Vector4 } from '../../math/Vector4.js';
-import { Vector3 } from '../../math/Vector3.js';
-import { Vector2 } from '../../math/Vector2.js';
-import { Matrix4 } from '../../math/Matrix4.js';
-import { Frustum } from '../../math/Frustum.js';
+import { FrontSide, BackSide, DoubleSide, RGBAFormat, NearestFilter, PCFShadowMap, RGBADepthPacking } from '../../constants';
+import { WebGLRenderTarget } from '../WebGLRenderTarget';
+import { MeshDepthMaterial } from '../../materials/MeshDepthMaterial';
+import { MeshDistanceMaterial } from '../../materials/MeshDistanceMaterial';
+import { Vector4 } from '../../math/Vector4';
+import { Vector3 } from '../../math/Vector3';
+import { Vector2 } from '../../math/Vector2';
+import { Matrix4 } from '../../math/Matrix4';
+import { Frustum } from '../../math/Frustum';
 
-function WebGLShadowMap( _renderer, _objects, maxTextureSize ) {
+export function WebGLShadowMap( _renderer, _objects, maxTextureSize ) {
 
 	var _frustum = new Frustum(),
 		_projScreenMatrix = new Matrix4(),
@@ -65,7 +65,7 @@ function WebGLShadowMap( _renderer, _objects, maxTextureSize ) {
 			morphTargets: useMorphing,
 			skinning: useSkinning
 
-		} );
+		}
 
 		_depthMaterials[ i ] = depthMaterial;
 
@@ -76,7 +76,7 @@ function WebGLShadowMap( _renderer, _objects, maxTextureSize ) {
 			morphTargets: useMorphing,
 			skinning: useSkinning
 
-		} );
+		}
 
 		_distanceMaterials[ i ] = distanceMaterial;
 
@@ -93,7 +93,7 @@ function WebGLShadowMap( _renderer, _objects, maxTextureSize ) {
 
 	this.type = PCFShadowMap;
 
-	this.render = function ( lights, scene, camera ) {
+	this.render = export function ( lights, scene, camera ) {
 
 		if ( scope.enabled === false ) return;
 		if ( scope.autoUpdate === false && scope.needsUpdate === false ) return;
@@ -260,7 +260,7 @@ function WebGLShadowMap( _renderer, _objects, maxTextureSize ) {
 
 	};
 
-	function getDepthMaterial( object, material, isPointLight, lightPositionWorld, shadowCameraNear, shadowCameraFar ) {
+	export function getDepthMaterial( object, material, isPointLight, lightPositionWorld, shadowCameraNear, shadowCameraFar ) {
 
 		var geometry = object.geometry;
 
@@ -370,7 +370,7 @@ function WebGLShadowMap( _renderer, _objects, maxTextureSize ) {
 
 	}
 
-	function renderObject( object, camera, shadowCamera, isPointLight ) {
+	export function renderObject( object, camera, shadowCamera, isPointLight ) {
 
 		if ( object.visible === false ) return;
 

@@ -1,12 +1,13 @@
 /**
- * https://github.com/mrdoob/eventdispatcher.js/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function EventDispatcher() {}
+export function EventDispatcher() {}
 
 Object.assign( EventDispatcher.prototype, {
 
-	addEventListener: function ( type, listener ) {
+	addEventListener( type, listener ) {
 
 		if ( this._listeners === undefined ) this._listeners = {};
 
@@ -24,9 +25,9 @@ Object.assign( EventDispatcher.prototype, {
 
 		}
 
-	},
+	}
 
-	hasEventListener: function ( type, listener ) {
+	hasEventListener( type, listener ) {
 
 		if ( this._listeners === undefined ) return false;
 
@@ -34,9 +35,9 @@ Object.assign( EventDispatcher.prototype, {
 
 		return listeners[ type ] !== undefined && listeners[ type ].indexOf( listener ) !== - 1;
 
-	},
+	}
 
-	removeEventListener: function ( type, listener ) {
+	removeEventListener( type, listener ) {
 
 		if ( this._listeners === undefined ) return;
 
@@ -55,9 +56,9 @@ Object.assign( EventDispatcher.prototype, {
 
 		}
 
-	},
+	}
 
-	dispatchEvent: function ( event ) {
+	dispatchEvent( event ) {
 
 		if ( this._listeners === undefined ) return;
 
@@ -80,7 +81,7 @@ Object.assign( EventDispatcher.prototype, {
 
 	}
 
-} );
+}
 
 
 export { EventDispatcher };

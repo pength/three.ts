@@ -1,14 +1,15 @@
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function WebGLExtensions( gl ) {
+export function WebGLExtensions( gl ) {
 
 	var extensions = {};
 
 	return {
 
-		get: function ( name ) {
+		get( name ) {
 
 			if ( extensions[ name ] !== undefined ) {
 

@@ -1,19 +1,18 @@
 /**
- * @author zz85 / https://github.com/zz85
- * @author bhouston / http://clara.io
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { Geometry } from '../core/Geometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Vector3 } from '../math/Vector3.js';
-import { Vector2 } from '../math/Vector2.js';
-import { _Math } from '../math/Math.js';
+import { Geometry } from '../core/Geometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Vector3 } from '../math/Vector3';
+import { Vector2 } from '../math/Vector2';
+import { _Math } from '../math/Math';
 
 // LatheGeometry
 
-function LatheGeometry( points, segments, phiStart, phiLength ) {
+export function LatheGeometry( points, segments, phiStart, phiLength ) {
 
 	Geometry.call( this );
 
@@ -36,7 +35,7 @@ LatheGeometry.prototype.constructor = LatheGeometry;
 
 // LatheBufferGeometry
 
-function LatheBufferGeometry( points, segments, phiStart, phiLength ) {
+export function LatheBufferGeometry( points, segments, phiStart, phiLength ) {
 
 	BufferGeometry.call( this );
 

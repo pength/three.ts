@@ -1,14 +1,13 @@
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author mikael emtinger / http://gomo.se/
- * @author WestLangley / http://github.com/WestLangley
-*/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
 
-import { Matrix4 } from '../math/Matrix4.js';
-import { Object3D } from '../core/Object3D.js';
-import { Vector3 } from '../math/Vector3.js';
+import { Matrix4 } from '../math/Matrix4';
+import { Object3D } from '../core/Object3D';
+import { Vector3 } from '../math/Vector3';
 
-function Camera() {
+export function Camera() {
 
 	Object3D.call( this );
 
@@ -27,7 +26,7 @@ Camera.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	isCamera: true,
 
-	copy: function ( source, recursive ) {
+	copy( source, recursive ) {
 
 		Object3D.prototype.copy.call( this, source, recursive );
 
@@ -38,9 +37,9 @@ Camera.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	getWorldDirection: function ( target ) {
+	getWorldDirection( target ) {
 
 		if ( target === undefined ) {
 
@@ -55,22 +54,22 @@ Camera.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		return target.set( - e[ 8 ], - e[ 9 ], - e[ 10 ] ).normalize();
 
-	},
+	}
 
-	updateMatrixWorld: function ( force ) {
+	updateMatrixWorld( force ) {
 
 		Object3D.prototype.updateMatrixWorld.call( this, force );
 
 		this.matrixWorldInverse.getInverse( this.matrixWorld );
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor().copy( this );
 
 	}
 
-} );
+}
 
 export { Camera };

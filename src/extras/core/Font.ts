@@ -1,12 +1,12 @@
 /**
- * @author zz85 / http://www.lab4games.net/zz85/blog
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { ShapePath } from './ShapePath.js';
+import { ShapePath } from './ShapePath';
 
 
-function Font( data ) {
+export function Font( data ) {
 
 	this.type = 'Font';
 
@@ -18,7 +18,7 @@ Object.assign( Font.prototype, {
 
 	isFont: true,
 
-	generateShapes: function ( text, size ) {
+	generateShapes( text, size ) {
 
 		if ( size === undefined ) size = 100;
 
@@ -35,9 +35,9 @@ Object.assign( Font.prototype, {
 
 	}
 
-} );
+}
 
-function createPaths( text, size, data ) {
+export function createPaths( text, size, data ) {
 
 	var chars = Array.from ? Array.from( text ) : String( text ).split( '' ); // see #13988
 	var scale = size / data.resolution;
@@ -70,7 +70,7 @@ function createPaths( text, size, data ) {
 
 }
 
-function createPath( char, scale, offsetX, offsetY, data ) {
+export function createPath( char, scale, offsetX, offsetY, data ) {
 
 	var glyph = data.glyphs[ char ] || data.glyphs[ '?' ];
 

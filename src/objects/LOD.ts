@@ -1,13 +1,12 @@
-import { Vector3 } from '../math/Vector3.js';
-import { Object3D } from '../core/Object3D.js';
+import { Vector3 } from '../math/Vector3';
+import { Object3D } from '../core/Object3D';
 
 /**
- * @author mikael emtinger / http://gomo.se/
- * @author alteredq / http://alteredqualia.com/
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function LOD() {
+export function LOD() {
 
 	Object3D.call( this );
 
@@ -18,7 +17,7 @@ function LOD() {
 			enumerable: true,
 			value: []
 		}
-	} );
+	}
 
 }
 
@@ -26,7 +25,7 @@ LOD.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: LOD,
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		Object3D.prototype.copy.call( this, source, false );
 
@@ -42,9 +41,9 @@ LOD.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	addLevel: function ( object, distance ) {
+	addLevel( object, distance ) {
 
 		if ( distance === undefined ) distance = 0;
 
@@ -62,13 +61,13 @@ LOD.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		}
 
-		levels.splice( l, 0, { distance: distance, object: object } );
+		levels.splice( l, 0, { distance: distance, object: object }
 
 		this.add( object );
 
-	},
+	}
 
-	getObjectForDistance: function ( distance ) {
+	getObjectForDistance( distance ) {
 
 		var levels = this.levels;
 
@@ -84,13 +83,13 @@ LOD.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		return levels[ i - 1 ].object;
 
-	},
+	}
 
-	raycast: ( function () {
+	raycast: ( export function () {
 
 		var matrixPosition = new Vector3();
 
-		return function raycast( raycaster, intersects ) {
+		return export function raycast( raycaster, intersects ) {
 
 			matrixPosition.setFromMatrixPosition( this.matrixWorld );
 
@@ -102,12 +101,12 @@ LOD.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	}() ),
 
-	update: function () {
+	update() {
 
 		var v1 = new Vector3();
 		var v2 = new Vector3();
 
-		return function update( camera ) {
+		return export function update( camera ) {
 
 			var levels = this.levels;
 
@@ -145,9 +144,9 @@ LOD.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		};
 
-	}(),
+	}
 
-	toJSON: function ( meta ) {
+	toJSON( meta ) {
 
 		var data = Object3D.prototype.toJSON.call( this, meta );
 
@@ -162,7 +161,7 @@ LOD.prototype = Object.assign( Object.create( Object3D.prototype ), {
 			data.object.levels.push( {
 				object: level.object.uuid,
 				distance: level.distance
-			} );
+			}
 
 		}
 
@@ -170,7 +169,7 @@ LOD.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	}
 
-} );
+}
 
 
 export { LOD };

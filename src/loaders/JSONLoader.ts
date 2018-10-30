@@ -1,21 +1,21 @@
-import { Loader } from './Loader.js';
-import { LoaderUtils } from './LoaderUtils.js';
-import { AnimationClip } from '../animation/AnimationClip.js';
-import { Vector3 } from '../math/Vector3.js';
-import { Vector4 } from '../math/Vector4.js';
-import { Color } from '../math/Color.js';
-import { Vector2 } from '../math/Vector2.js';
-import { Face3 } from '../core/Face3.js';
-import { Geometry } from '../core/Geometry.js';
-import { FileLoader } from './FileLoader.js';
-import { DefaultLoadingManager } from './LoadingManager.js';
+import { Loader } from './Loader';
+import { LoaderUtils } from './LoaderUtils';
+import { AnimationClip } from '../animation/AnimationClip';
+import { Vector3 } from '../math/Vector3';
+import { Vector4 } from '../math/Vector4';
+import { Color } from '../math/Color';
+import { Vector2 } from '../math/Vector2';
+import { Face3 } from '../core/Face3';
+import { Geometry } from '../core/Geometry';
+import { FileLoader } from './FileLoader';
+import { DefaultLoadingManager } from './LoadingManager';
 
 /**
- * @author mrdoob / http://mrdoob.com/
- * @author alteredq / http://alteredqualia.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function JSONLoader( manager ) {
+export function JSONLoader( manager ) {
 
 	if ( typeof manager === 'boolean' ) {
 
@@ -34,7 +34,7 @@ Object.assign( JSONLoader.prototype, {
 
 	crossOrigin: 'anonymous',
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load( url, onLoad, onProgress, onError ) {
 
 		var scope = this;
 
@@ -43,7 +43,7 @@ Object.assign( JSONLoader.prototype, {
 		var loader = new FileLoader( this.manager );
 		loader.setPath( this.path );
 		loader.setWithCredentials( this.withCredentials );
-		loader.load( url, function ( text ) {
+		loader.load( url, export function ( text ) {
 
 			var json = JSON.parse( text );
 			var metadata = json.metadata;
@@ -68,36 +68,36 @@ Object.assign( JSONLoader.prototype, {
 			var object = scope.parse( json, path );
 			onLoad( object.geometry, object.materials );
 
-		}, onProgress, onError );
+		} onProgress, onError );
 
-	},
+	}
 
-	setPath: function ( value ) {
+	setPath( value ) {
 
 		this.path = value;
 		return this;
 
-	},
+	}
 
-	setResourcePath: function ( value ) {
+	setResourcePath( value ) {
 
 		this.resourcePath = value;
 		return this;
 
-	},
+	}
 
-	setCrossOrigin: function ( value ) {
+	setCrossOrigin( value ) {
 
 		this.crossOrigin = value;
 		return this;
 
-	},
+	}
 
-	parse: ( function () {
+	parse: ( export function () {
 
-		function parseModel( json, geometry ) {
+		export function parseModel( json, geometry ) {
 
-			function isBitSet( value, position ) {
+			export function isBitSet( value, position ) {
 
 				return value & ( 1 << position );
 
@@ -397,7 +397,7 @@ Object.assign( JSONLoader.prototype, {
 
 		}
 
-		function parseSkin( json, geometry ) {
+		export function parseSkin( json, geometry ) {
 
 			var influencesPerVertex = ( json.influencesPerVertex !== undefined ) ? json.influencesPerVertex : 2;
 
@@ -442,7 +442,7 @@ Object.assign( JSONLoader.prototype, {
 
 		}
 
-		function parseMorphing( json, geometry ) {
+		export function parseMorphing( json, geometry ) {
 
 			var scale = json.scale;
 
@@ -489,7 +489,7 @@ Object.assign( JSONLoader.prototype, {
 
 		}
 
-		function parseAnimations( json, geometry ) {
+		export function parseAnimations( json, geometry ) {
 
 			var outputAnimations = [];
 
@@ -536,7 +536,7 @@ Object.assign( JSONLoader.prototype, {
 
 		}
 
-		return function parse( json, path ) {
+		return export function parse( json, path ) {
 
 			if ( json.data !== undefined ) {
 
@@ -581,7 +581,7 @@ Object.assign( JSONLoader.prototype, {
 
 	} )()
 
-} );
+}
 
 
 export { JSONLoader };

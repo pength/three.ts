@@ -1,14 +1,14 @@
 /**
- * @author WestLangley / http://github.com/WestLangley
- * @author Mugen87 / https://github.com/Mugen87
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-import { BufferGeometry } from '../core/BufferGeometry.js';
-import { Float32BufferAttribute } from '../core/BufferAttribute.js';
-import { Geometry } from '../core/Geometry.js';
-import { _Math } from '../math/Math.js';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { Float32BufferAttribute } from '../core/BufferAttribute';
+import { Geometry } from '../core/Geometry';
+import { _Math } from '../math/Math';
 
-function EdgesGeometry( geometry, thresholdAngle ) {
+export function EdgesGeometry( geometry, thresholdAngle ) {
 
 	BufferGeometry.call( this );
 
@@ -27,7 +27,7 @@ function EdgesGeometry( geometry, thresholdAngle ) {
 	// helper variables
 
 	var thresholdDot = Math.cos( _Math.DEG2RAD * thresholdAngle );
-	var edge = [ 0, 0 ], edges = {}, edge1, edge2;
+	var edge = [ 0, 0 ], edges = {} edge1, edge2;
 	var key, keys = [ 'a', 'b', 'c' ];
 
 	// prepare source geometry

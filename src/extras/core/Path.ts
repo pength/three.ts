@@ -1,17 +1,17 @@
-import { Vector2 } from '../../math/Vector2.js';
-import { CurvePath } from './CurvePath.js';
-import { EllipseCurve } from '../curves/EllipseCurve.js';
-import { SplineCurve } from '../curves/SplineCurve.js';
-import { CubicBezierCurve } from '../curves/CubicBezierCurve.js';
-import { QuadraticBezierCurve } from '../curves/QuadraticBezierCurve.js';
-import { LineCurve } from '../curves/LineCurve.js';
+import { Vector2 } from '../../math/Vector2';
+import { CurvePath } from './CurvePath';
+import { EllipseCurve } from '../curves/EllipseCurve';
+import { SplineCurve } from '../curves/SplineCurve';
+import { CubicBezierCurve } from '../curves/CubicBezierCurve';
+import { QuadraticBezierCurve } from '../curves/QuadraticBezierCurve';
+import { LineCurve } from '../curves/LineCurve';
 
 /**
- * @author zz85 / http://www.lab4games.net/zz85/blog
- * Creates free form 2d path using series of points, lines or curves.
- **/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
+ */
 
-function Path( points ) {
+export function Path( points ) {
 
 	CurvePath.call( this );
 
@@ -31,7 +31,7 @@ Path.prototype = Object.assign( Object.create( CurvePath.prototype ), {
 
 	constructor: Path,
 
-	setFromPoints: function ( points ) {
+	setFromPoints( points ) {
 
 		this.moveTo( points[ 0 ].x, points[ 0 ].y );
 
@@ -41,24 +41,24 @@ Path.prototype = Object.assign( Object.create( CurvePath.prototype ), {
 
 		}
 
-	},
+	}
 
-	moveTo: function ( x, y ) {
+	moveTo( x, y ) {
 
 		this.currentPoint.set( x, y ); // TODO consider referencing vectors instead of copying?
 
-	},
+	}
 
-	lineTo: function ( x, y ) {
+	lineTo( x, y ) {
 
 		var curve = new LineCurve( this.currentPoint.clone(), new Vector2( x, y ) );
 		this.curves.push( curve );
 
 		this.currentPoint.set( x, y );
 
-	},
+	}
 
-	quadraticCurveTo: function ( aCPx, aCPy, aX, aY ) {
+	quadraticCurveTo( aCPx, aCPy, aX, aY ) {
 
 		var curve = new QuadraticBezierCurve(
 			this.currentPoint.clone(),
@@ -70,9 +70,9 @@ Path.prototype = Object.assign( Object.create( CurvePath.prototype ), {
 
 		this.currentPoint.set( aX, aY );
 
-	},
+	}
 
-	bezierCurveTo: function ( aCP1x, aCP1y, aCP2x, aCP2y, aX, aY ) {
+	bezierCurveTo( aCP1x, aCP1y, aCP2x, aCP2y, aX, aY ) {
 
 		var curve = new CubicBezierCurve(
 			this.currentPoint.clone(),
@@ -85,9 +85,9 @@ Path.prototype = Object.assign( Object.create( CurvePath.prototype ), {
 
 		this.currentPoint.set( aX, aY );
 
-	},
+	}
 
-	splineThru: function ( pts /*Array of Vector*/ ) {
+	splineThru( pts /*Array of Vector*/ ) {
 
 		var npts = [ this.currentPoint.clone() ].concat( pts );
 
@@ -96,9 +96,9 @@ Path.prototype = Object.assign( Object.create( CurvePath.prototype ), {
 
 		this.currentPoint.copy( pts[ pts.length - 1 ] );
 
-	},
+	}
 
-	arc: function ( aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise ) {
+	arc( aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise ) {
 
 		var x0 = this.currentPoint.x;
 		var y0 = this.currentPoint.y;
@@ -106,24 +106,24 @@ Path.prototype = Object.assign( Object.create( CurvePath.prototype ), {
 		this.absarc( aX + x0, aY + y0, aRadius,
 			aStartAngle, aEndAngle, aClockwise );
 
-	},
+	}
 
-	absarc: function ( aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise ) {
+	absarc( aX, aY, aRadius, aStartAngle, aEndAngle, aClockwise ) {
 
 		this.absellipse( aX, aY, aRadius, aRadius, aStartAngle, aEndAngle, aClockwise );
 
-	},
+	}
 
-	ellipse: function ( aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation ) {
+	ellipse( aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation ) {
 
 		var x0 = this.currentPoint.x;
 		var y0 = this.currentPoint.y;
 
 		this.absellipse( aX + x0, aY + y0, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation );
 
-	},
+	}
 
-	absellipse: function ( aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation ) {
+	absellipse( aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation ) {
 
 		var curve = new EllipseCurve( aX, aY, xRadius, yRadius, aStartAngle, aEndAngle, aClockwise, aRotation );
 
@@ -145,9 +145,9 @@ Path.prototype = Object.assign( Object.create( CurvePath.prototype ), {
 		var lastPoint = curve.getPoint( 1 );
 		this.currentPoint.copy( lastPoint );
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		CurvePath.prototype.copy.call( this, source );
 
@@ -155,9 +155,9 @@ Path.prototype = Object.assign( Object.create( CurvePath.prototype ), {
 
 		return this;
 
-	},
+	}
 
-	toJSON: function () {
+	toJSON() {
 
 		var data = CurvePath.prototype.toJSON.call( this );
 
@@ -165,9 +165,9 @@ Path.prototype = Object.assign( Object.create( CurvePath.prototype ), {
 
 		return data;
 
-	},
+	}
 
-	fromJSON: function ( json ) {
+	fromJSON( json ) {
 
 		CurvePath.prototype.fromJSON.call( this, json );
 
@@ -177,7 +177,7 @@ Path.prototype = Object.assign( Object.create( CurvePath.prototype ), {
 
 	}
 
-} );
+}
 
 
 export { Path };

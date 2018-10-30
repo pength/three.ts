@@ -1,13 +1,14 @@
-import { Vector4 } from '../math/Vector4.js';
-import { Vector3 } from '../math/Vector3.js';
-import { Vector2 } from '../math/Vector2.js';
-import { Color } from '../math/Color.js';
+import { Vector4 } from '../math/Vector4';
+import { Vector3 } from '../math/Vector3';
+import { Vector2 } from '../math/Vector2';
+import { Color } from '../math/Color';
 
 /**
- * @author mrdoob / http://mrdoob.com/
+ * Converted from three.js/Box2.js, If you want to see the js code source file, please go to https://threejs.org/
+ * @author illegalDriver
  */
 
-function BufferAttribute( array, itemSize, normalized ) {
+export function BufferAttribute( array, itemSize, normalized ) {
 
 	if ( Array.isArray( array ) ) {
 
@@ -31,21 +32,21 @@ function BufferAttribute( array, itemSize, normalized ) {
 
 Object.defineProperty( BufferAttribute.prototype, 'needsUpdate', {
 
-	set: function ( value ) {
+	set( value ) {
 
 		if ( value === true ) this.version ++;
 
 	}
 
-} );
+}
 
 Object.assign( BufferAttribute.prototype, {
 
 	isBufferAttribute: true,
 
-	onUploadCallback: function () {},
+	onUploadCallback() {}
 
-	setArray: function ( array ) {
+	setArray( array ) {
 
 		if ( Array.isArray( array ) ) {
 
@@ -58,17 +59,17 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	setDynamic: function ( value ) {
+	setDynamic( value ) {
 
 		this.dynamic = value;
 
 		return this;
 
-	},
+	}
 
-	copy: function ( source ) {
+	copy( source ) {
 
 		this.name = source.name;
 		this.array = new source.array.constructor( source.array );
@@ -80,9 +81,9 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	copyAt: function ( index1, attribute, index2 ) {
+	copyAt( index1, attribute, index2 ) {
 
 		index1 *= this.itemSize;
 		index2 *= attribute.itemSize;
@@ -95,17 +96,17 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	copyArray: function ( array ) {
+	copyArray( array ) {
 
 		this.array.set( array );
 
 		return this;
 
-	},
+	}
 
-	copyColorsArray: function ( colors ) {
+	copyColorsArray( colors ) {
 
 		var array = this.array, offset = 0;
 
@@ -128,9 +129,9 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	copyVector2sArray: function ( vectors ) {
+	copyVector2sArray( vectors ) {
 
 		var array = this.array, offset = 0;
 
@@ -152,9 +153,9 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	copyVector3sArray: function ( vectors ) {
+	copyVector3sArray( vectors ) {
 
 		var array = this.array, offset = 0;
 
@@ -177,9 +178,9 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	copyVector4sArray: function ( vectors ) {
+	copyVector4sArray( vectors ) {
 
 		var array = this.array, offset = 0;
 
@@ -203,9 +204,9 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	set: function ( value, offset ) {
+	set( value, offset ) {
 
 		if ( offset === undefined ) offset = 0;
 
@@ -213,65 +214,65 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	getX: function ( index ) {
+	getX( index ) {
 
 		return this.array[ index * this.itemSize ];
 
-	},
+	}
 
-	setX: function ( index, x ) {
+	setX( index, x ) {
 
 		this.array[ index * this.itemSize ] = x;
 
 		return this;
 
-	},
+	}
 
-	getY: function ( index ) {
+	getY( index ) {
 
 		return this.array[ index * this.itemSize + 1 ];
 
-	},
+	}
 
-	setY: function ( index, y ) {
+	setY( index, y ) {
 
 		this.array[ index * this.itemSize + 1 ] = y;
 
 		return this;
 
-	},
+	}
 
-	getZ: function ( index ) {
+	getZ( index ) {
 
 		return this.array[ index * this.itemSize + 2 ];
 
-	},
+	}
 
-	setZ: function ( index, z ) {
+	setZ( index, z ) {
 
 		this.array[ index * this.itemSize + 2 ] = z;
 
 		return this;
 
-	},
+	}
 
-	getW: function ( index ) {
+	getW( index ) {
 
 		return this.array[ index * this.itemSize + 3 ];
 
-	},
+	}
 
-	setW: function ( index, w ) {
+	setW( index, w ) {
 
 		this.array[ index * this.itemSize + 3 ] = w;
 
 		return this;
 
-	},
+	}
 
-	setXY: function ( index, x, y ) {
+	setXY( index, x, y ) {
 
 		index *= this.itemSize;
 
@@ -280,9 +281,9 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	setXYZ: function ( index, x, y, z ) {
+	setXYZ( index, x, y, z ) {
 
 		index *= this.itemSize;
 
@@ -292,9 +293,9 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	setXYZW: function ( index, x, y, z, w ) {
+	setXYZW( index, x, y, z, w ) {
 
 		index *= this.itemSize;
 
@@ -305,27 +306,27 @@ Object.assign( BufferAttribute.prototype, {
 
 		return this;
 
-	},
+	}
 
-	onUpload: function ( callback ) {
+	onUpload( callback ) {
 
 		this.onUploadCallback = callback;
 
 		return this;
 
-	},
+	}
 
-	clone: function () {
+	clone() {
 
 		return new this.constructor( this.array, this.itemSize ).copy( this );
 
 	}
 
-} );
+}
 
 //
 
-function Int8BufferAttribute( array, itemSize, normalized ) {
+export function Int8BufferAttribute( array, itemSize, normalized ) {
 
 	BufferAttribute.call( this, new Int8Array( array ), itemSize, normalized );
 
@@ -335,7 +336,7 @@ Int8BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
 Int8BufferAttribute.prototype.constructor = Int8BufferAttribute;
 
 
-function Uint8BufferAttribute( array, itemSize, normalized ) {
+export function Uint8BufferAttribute( array, itemSize, normalized ) {
 
 	BufferAttribute.call( this, new Uint8Array( array ), itemSize, normalized );
 
@@ -345,7 +346,7 @@ Uint8BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
 Uint8BufferAttribute.prototype.constructor = Uint8BufferAttribute;
 
 
-function Uint8ClampedBufferAttribute( array, itemSize, normalized ) {
+export function Uint8ClampedBufferAttribute( array, itemSize, normalized ) {
 
 	BufferAttribute.call( this, new Uint8ClampedArray( array ), itemSize, normalized );
 
@@ -355,7 +356,7 @@ Uint8ClampedBufferAttribute.prototype = Object.create( BufferAttribute.prototype
 Uint8ClampedBufferAttribute.prototype.constructor = Uint8ClampedBufferAttribute;
 
 
-function Int16BufferAttribute( array, itemSize, normalized ) {
+export function Int16BufferAttribute( array, itemSize, normalized ) {
 
 	BufferAttribute.call( this, new Int16Array( array ), itemSize, normalized );
 
@@ -365,7 +366,7 @@ Int16BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
 Int16BufferAttribute.prototype.constructor = Int16BufferAttribute;
 
 
-function Uint16BufferAttribute( array, itemSize, normalized ) {
+export function Uint16BufferAttribute( array, itemSize, normalized ) {
 
 	BufferAttribute.call( this, new Uint16Array( array ), itemSize, normalized );
 
@@ -375,7 +376,7 @@ Uint16BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
 Uint16BufferAttribute.prototype.constructor = Uint16BufferAttribute;
 
 
-function Int32BufferAttribute( array, itemSize, normalized ) {
+export function Int32BufferAttribute( array, itemSize, normalized ) {
 
 	BufferAttribute.call( this, new Int32Array( array ), itemSize, normalized );
 
@@ -385,7 +386,7 @@ Int32BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
 Int32BufferAttribute.prototype.constructor = Int32BufferAttribute;
 
 
-function Uint32BufferAttribute( array, itemSize, normalized ) {
+export function Uint32BufferAttribute( array, itemSize, normalized ) {
 
 	BufferAttribute.call( this, new Uint32Array( array ), itemSize, normalized );
 
@@ -395,7 +396,7 @@ Uint32BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
 Uint32BufferAttribute.prototype.constructor = Uint32BufferAttribute;
 
 
-function Float32BufferAttribute( array, itemSize, normalized ) {
+export function Float32BufferAttribute( array, itemSize, normalized ) {
 
 	BufferAttribute.call( this, new Float32Array( array ), itemSize, normalized );
 
@@ -405,7 +406,7 @@ Float32BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
 Float32BufferAttribute.prototype.constructor = Float32BufferAttribute;
 
 
-function Float64BufferAttribute( array, itemSize, normalized ) {
+export function Float64BufferAttribute( array, itemSize, normalized ) {
 
 	BufferAttribute.call( this, new Float64Array( array ), itemSize, normalized );
 
@@ -416,7 +417,7 @@ Float64BufferAttribute.prototype.constructor = Float64BufferAttribute;
 
 //
 
-export {
+export function {
 	Float64BufferAttribute,
 	Float32BufferAttribute,
 	Uint32BufferAttribute,
