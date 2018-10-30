@@ -88,9 +88,9 @@ export function export function Face4( a, b, c, d, normal, color, materialIndex 
 
 }
 
-export function var LineStrip = 0;
+export var LineStrip = 0;
 
-export function var LinePieces = 1;
+export var LinePieces = 1;
 
 export function export function MeshFaceMaterial( materials ) {
 
@@ -1757,7 +1757,7 @@ CubeCamera.prototype.updateCubeMap = export function ( renderer, scene ) {
 
 //
 
-export function var GeometryUtils = {
+export var GeometryUtils = {
 
 	merge( geometry1, geometry2, materialIndexOffset ) {
 
@@ -1874,7 +1874,7 @@ export function export function CanvasRenderer() {
 
 //
 
-export function var SceneUtils = {
+export var SceneUtils = {
 
 	createMultiMaterialObject( /* geometry, materials */ ) {
 
